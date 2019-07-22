@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>links</title>
+    </head>
+    <body>
+        <h1>Links!</h1>
+        <form action="/" method="post">
+            <h2>Create a new link:</h2>
+            <input type="text" name="l">
+        </form>
+        {{with .Msg}}
+            {{.}}
+        {{end}}
+        {{with .ID}}
+            <a href="/l/{{.}}">go</a>
+        {{end}}
+    </body>
+</html>
