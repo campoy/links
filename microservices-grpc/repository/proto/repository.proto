@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/api/annotations.proto";
+
 message NewRequest {
     string url = 1;
 }
@@ -17,7 +19,12 @@ message Link {
 message Nothing {}
 
 service Repository {
-    rpc New(NewRequest) returns (Link) {};
+    rpc New(NewRequest) returns (Link) {
+        option (google.api.http) = {
+            post: "/v1/link/"
+            body: "*"
+        };            
+    };
     rpc Get(IDRequest) returns (Link) {};
     rpc CountVisit(IDRequest) returns (Nothing) {};
 }
