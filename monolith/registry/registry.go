@@ -1,4 +1,4 @@
-package main
+package registry
 
 import (
 	"errors"
@@ -7,25 +7,27 @@ import (
 	"net/url"
 )
 
-type link struct {
+// A Link contains the information related to a shorten link.
+type Link struct {
 	ID    string `json:"id"`
 	URL   string `json:"url"`
 	Count int    `json:"count"`
 }
 
-var errNoSuchLink = errors.New("no such link")
+// ErrNoSuchLink is returned when a given Link does not exist.
+var ErrNoSuchLink = errors.New("no such link")
 
-var links = make(map[string]link)
+var links = make(map[string]Link)
 
 func randomString() string {
 	return fmt.Sprintf("%X", rand.Int63())
 }
 
-func newLink(u string) (*link, error) {
+func NewLink(u string) (*Link, error) {
 	if _, err := url.ParseRequestURI(u); err != nil {
 		return nil, err
 	}
-	l := link{
+	l := Link{
 		ID:  randomString(),
 		URL: u,
 	}
@@ -33,18 +35,18 @@ func newLink(u string) (*link, error) {
 	return &l, nil
 }
 
-func getLink(id string) (*link, error) {
+func GetLink(id string) (*Link, error) {
 	l, ok := links[id]
 	if !ok {
-		return nil, errNoSuchLink
+		return nil, ErrNoSuchLink
 	}
 	return &l, nil
 }
 
-func recordVisit(id string) error {
+func RecordVisit(id string) error {
 	l, ok := links[id]
 	if !ok {
-		return errNoSuchLink
+		return ErrNoSuchLink
 	}
 	l.Count++
 	links[id] = l

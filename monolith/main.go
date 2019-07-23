@@ -9,6 +9,8 @@ import (
 	"math/rand"
 	"net/http"
 	"time"
+
+	"github.com/campoy/links/monolith/registry"	
 )
 
 var domain = flag.String("d", "http://localhost:8080", "URL where the server will be accessible")
@@ -34,7 +36,7 @@ func handleNew(w http.ResponseWriter, r *http.Request) {
 	}{Code: http.StatusOK}
 
 	if r.Method == http.MethodPost {
-		l, err := newLink(r.FormValue("link"))
+		l, err := registry.NewLink(r.FormValue("link"))
 		if err != nil {
 			data.Code = http.StatusBadRequest
 			data.Msg = "the given link is not a valid URL"
@@ -52,9 +54,9 @@ func handleNew(w http.ResponseWriter, r *http.Request) {
 
 func handleVisit(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Path[3:]
-	l, err := getLink(id)
+	l, err := registry.GetLink(id)
 	if err != nil {
-		if err == errNoSuchLink {
+		if err == registry.ErrNoSuchLink {
 			http.NotFound(w, r)
 		} else {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -62,7 +64,7 @@ func handleVisit(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	recordVisit(id)
+	registry.RecordVisit(id)
 
 	fmt.Fprintf(w, "<p>redirecting to %s...</p>", l.URL)
 	fmt.Fprintf(w, "<script>setTimeout(function() { window.location = '%s'}, 1000)</script>", l.URL)
@@ -70,9 +72,9 @@ func handleVisit(w http.ResponseWriter, r *http.Request) {
 
 func handleStats(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Path[3:]
-	l, err := getLink(id)
+	l, err := registry.GetLink(id)
 	if err != nil {
-		if err == errNoSuchLink {
+		if err == registry.ErrNoSuchLink {
 			http.NotFound(w, r)
 		} else {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
