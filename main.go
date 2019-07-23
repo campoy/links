@@ -1,15 +1,23 @@
 package main
 
 import (
+	"encoding/json"
+	"flag"
 	"fmt"
 	"html/template"
 	"log"
 	"math/rand"
 	"net/http"
 	"net/url"
+	"time"
 )
 
+var domain = flag.String("d", "http://localhost:8080", "URL where the server will be accessible")
+
 func main() {
+	flag.Parse()
+	rand.Seed(time.Now().Unix())
+
 	http.HandleFunc("/", handleNew)
 	http.HandleFunc("/l/", handleVisit)
 	http.HandleFunc("/s/", handleStats)
@@ -17,25 +25,26 @@ func main() {
 }
 
 type link struct {
-	id    string
-	url   string
-	count int
+	ID    string `json:"id"`
+	URL   string `json:"url"`
+	Count int    `json:"count"`
 }
 
 var links = make(map[string]link)
 
-var home = template.Must(template.ParseFiles("home.html"))
-
 func handleNew(w http.ResponseWriter, r *http.Request) {
-	log.Printf(r.Method)
-	var data struct {
-		Code int
-		Msg  string
-		ID   string
-	}
+	var home = template.Must(template.ParseFiles("home.html"))
+
+	data := struct {
+		Code  int
+		Msg   string
+		Link  string
+		Stats string
+	}{Code: http.StatusOK}
 
 	if r.Method == http.MethodPost {
-		u := r.FormValue("l")
+		u := r.FormValue("link")
+
 		if _, err := url.ParseRequestURI(u); err != nil {
 			data.Code = http.StatusBadRequest
 			data.Msg = "the given link is not a valid URL"
@@ -47,14 +56,14 @@ func handleNew(w http.ResponseWriter, r *http.Request) {
 				}
 				id = randomString()
 			}
-			links[id] = link{id: id, url: u}
+			links[id] = link{ID: id, URL: u}
 
 			data.Code = http.StatusCreated
-			data.Msg = "link successfully created!"
-			data.ID = id
+			data.Link = fmt.Sprintf("%s/l/%s", *domain, id)
+			data.Stats = fmt.Sprintf("%s/s/%s", *domain, id)
 		}
 	}
-	log.Printf("rendering data: %v", data)
+
 	if err := home.Execute(w, data); err != nil {
 		log.Printf("could not render template: %v", err)
 	}
@@ -65,24 +74,29 @@ func randomString() string {
 }
 
 func handleVisit(w http.ResponseWriter, r *http.Request) {
-	l, ok := links[r.URL.Path[3:]]
+	id := r.URL.Path[3:]
+	l, ok := links[id]
 	if !ok {
 		http.NotFound(w, r)
 		return
 	}
 
-	l.count++
-	links[l.id] = l
+	l.Count++
+	links[l.ID] = l
 
-	http.Redirect(w, r, l.url, http.StatusPermanentRedirect)
+	fmt.Fprintf(w, "<p>redirecting to %s...</p>", l.URL)
+	fmt.Fprintf(w, "<script>setTimeout(function() { window.location = '%s'}, 1000)</script>", l.URL)
 }
 
 func handleStats(w http.ResponseWriter, r *http.Request) {
-	l, ok := links[r.URL.Path[3:]]
+	id := r.URL.Path[3:]
+	l, ok := links[id]
 	if !ok {
 		http.NotFound(w, r)
 		return
 	}
 
-	fmt.Fprintf(w, "link visited %d times\n", l.count)
+	if err := json.NewEncoder(w).Encode(l); err != nil {
+		log.Printf("could not encode link information")
+	}
 }
