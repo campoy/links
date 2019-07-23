@@ -10,14 +10,19 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/campoy/links/monolith/registry"	
+	"github.com/campoy/links/monolith/repository"
 )
 
-var domain = flag.String("d", "http://localhost:8080", "URL where the server will be accessible")
+var (
+	domain = flag.String("d", "http://localhost:8080", "URL where the server will be accessible")
+	links  repository.LinkRepository
+)
 
 func main() {
 	flag.Parse()
 	rand.Seed(time.Now().Unix())
+
+	links = repository.NewInMemory()
 
 	http.HandleFunc("/", handleNew)
 	http.HandleFunc("/l/", handleVisit)
@@ -36,7 +41,7 @@ func handleNew(w http.ResponseWriter, r *http.Request) {
 	}{Code: http.StatusOK}
 
 	if r.Method == http.MethodPost {
-		l, err := registry.NewLink(r.FormValue("link"))
+		l, err := links.New(r.FormValue("link"))
 		if err != nil {
 			data.Code = http.StatusBadRequest
 			data.Msg = "the given link is not a valid URL"
@@ -54,9 +59,9 @@ func handleNew(w http.ResponseWriter, r *http.Request) {
 
 func handleVisit(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Path[3:]
-	l, err := registry.GetLink(id)
+	l, err := links.Get(id)
 	if err != nil {
-		if err == registry.ErrNoSuchLink {
+		if err == repository.ErrNoSuchLink {
 			http.NotFound(w, r)
 		} else {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -64,7 +69,7 @@ func handleVisit(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	registry.RecordVisit(id)
+	links.CountVisit(id)
 
 	fmt.Fprintf(w, "<p>redirecting to %s...</p>", l.URL)
 	fmt.Fprintf(w, "<script>setTimeout(function() { window.location = '%s'}, 1000)</script>", l.URL)
@@ -72,9 +77,9 @@ func handleVisit(w http.ResponseWriter, r *http.Request) {
 
 func handleStats(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Path[3:]
-	l, err := registry.GetLink(id)
+	l, err := links.Get(id)
 	if err != nil {
-		if err == registry.ErrNoSuchLink {
+		if err == repository.ErrNoSuchLink {
 			http.NotFound(w, r)
 		} else {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
