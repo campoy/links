@@ -22,7 +22,11 @@ func main() {
 	flag.Parse()
 	rand.Seed(time.Now().Unix())
 
-	links = repository.NewInMemory()
+	db, err := repository.NewDiskRepository("data")
+	if err != nil {
+		log.Fatal(err)
+	}
+	links = db
 
 	http.HandleFunc("/", handleNew)
 	http.HandleFunc("/l/", handleVisit)
