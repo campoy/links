@@ -8,7 +8,6 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
-	"net/url"
 	"time"
 )
 
@@ -24,17 +23,9 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
-type link struct {
-	ID    string `json:"id"`
-	URL   string `json:"url"`
-	Count int    `json:"count"`
-}
-
-var links = make(map[string]link)
+var home = template.Must(template.ParseFiles("home.html"))
 
 func handleNew(w http.ResponseWriter, r *http.Request) {
-	var home = template.Must(template.ParseFiles("home.html"))
-
 	data := struct {
 		Code  int
 		Msg   string
@@ -43,24 +34,14 @@ func handleNew(w http.ResponseWriter, r *http.Request) {
 	}{Code: http.StatusOK}
 
 	if r.Method == http.MethodPost {
-		u := r.FormValue("link")
-
-		if _, err := url.ParseRequestURI(u); err != nil {
+		l, err := newLink(r.FormValue("link"))
+		if err != nil {
 			data.Code = http.StatusBadRequest
 			data.Msg = "the given link is not a valid URL"
 		} else {
-			id := randomString()
-			for {
-				if _, ok := links[id]; !ok {
-					break
-				}
-				id = randomString()
-			}
-			links[id] = link{ID: id, URL: u}
-
 			data.Code = http.StatusCreated
-			data.Link = fmt.Sprintf("%s/l/%s", *domain, id)
-			data.Stats = fmt.Sprintf("%s/s/%s", *domain, id)
+			data.Link = fmt.Sprintf("%s/l/%s", *domain, l.ID)
+			data.Stats = fmt.Sprintf("%s/s/%s", *domain, l.ID)
 		}
 	}
 
@@ -69,20 +50,19 @@ func handleNew(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func randomString() string {
-	return fmt.Sprintf("%X", rand.Int63())
-}
-
 func handleVisit(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Path[3:]
-	l, ok := links[id]
-	if !ok {
-		http.NotFound(w, r)
+	l, err := getLink(id)
+	if err != nil {
+		if err == errNoSuchLink {
+			http.NotFound(w, r)
+		} else {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
 		return
 	}
 
-	l.Count++
-	links[l.ID] = l
+	recordVisit(id)
 
 	fmt.Fprintf(w, "<p>redirecting to %s...</p>", l.URL)
 	fmt.Fprintf(w, "<script>setTimeout(function() { window.location = '%s'}, 1000)</script>", l.URL)
@@ -90,9 +70,13 @@ func handleVisit(w http.ResponseWriter, r *http.Request) {
 
 func handleStats(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Path[3:]
-	l, ok := links[id]
-	if !ok {
-		http.NotFound(w, r)
+	l, err := getLink(id)
+	if err != nil {
+		if err == errNoSuchLink {
+			http.NotFound(w, r)
+		} else {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
 		return
 	}
 
