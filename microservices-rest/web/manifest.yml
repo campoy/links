@@ -1,0 +1,38 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: docker.io/ellenkorbes/web
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8090
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+spec:
+  # When using minikube, set the type to "NodePort"
+  # When using Digital Ocean, set it to "LoadBalancer"
+  type: NodePort
+  ports:
+  - port: 8090
+    targetPort: 8090
+    nodePort: 30090
+    protocol: TCP
+    name: http
+  selector:
+    app: web

@@ -10,7 +10,7 @@ import (
 	"github.com/campoy/links/microservices-rest/repository/client"
 )
 
-var links = client.New("http://localhost:8080")
+var links = client.New("http://links:8080")
 
 func main() {
 	http.HandleFunc("/l/", handleVisit)

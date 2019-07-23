@@ -11,8 +11,8 @@ import (
 )
 
 var (
-	router = flag.String("d", "http://localhost:8085", "URL where the router will be accessible")
-	links  = client.New("http://localhost:8080")
+	router = flag.String("d", "http://router:8085", "URL where the router will be accessible")
+	links  = client.New("http://links:8080")
 )
 
 func main() {
