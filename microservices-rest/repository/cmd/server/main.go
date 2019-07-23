@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/campoy/links/microservices/repository"
+	"github.com/campoy/links/microservices-rest/repository"
 	"github.com/gorilla/mux"
 )
 

@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/campoy/links/microservices/repository/client"
+	"github.com/campoy/links/microservices-rest/repository/client"
 )
 
 var (

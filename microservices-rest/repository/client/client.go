@@ -7,7 +7,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/campoy/links/microservices/repository"
+	"github.com/campoy/links/microservices-rest/repository"
 )
 
 // New creates a LinkRepository that fetches client information.
