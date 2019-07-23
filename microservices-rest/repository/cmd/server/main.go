@@ -9,11 +9,19 @@ import (
 
 	"github.com/campoy/links/microservices-rest/repository"
 	"github.com/gorilla/mux"
+	"github.com/kelseyhightower/envconfig"
 )
 
 var links repository.LinkRepository
 
 func main() {
+	var config struct {
+		Address string `default:"localhost:8080"`
+	}
+	if err := envconfig.Process("REPOSITORY", &config); err != nil {
+		log.Fatal(err)
+	}
+
 	rand.Seed(time.Now().Unix())
 
 	db, err := repository.NewDiskRepository("data")
@@ -26,7 +34,7 @@ func main() {
 	mux.HandleFunc("/link/", newLink).Methods("POST")
 	mux.HandleFunc("/link/{id}", getLink).Methods("GET")
 	mux.HandleFunc("/link/{id}", countVisit).Methods("POST")
-	log.Fatal(http.ListenAndServe(":8080", mux))
+	log.Fatal(http.ListenAndServe(config.Address, mux))
 }
 
 func newLink(w http.ResponseWriter, r *http.Request) {

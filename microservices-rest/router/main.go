@@ -8,14 +8,25 @@ import (
 
 	"github.com/campoy/links/microservices-rest/repository"
 	"github.com/campoy/links/microservices-rest/repository/client"
+	"github.com/kelseyhightower/envconfig"
 )
 
-var links = client.New("http://localhost:8080")
+var links repository.LinkRepository
 
 func main() {
+	var config struct {
+		Address    string `default:"localhost:8085"`
+		Repository string `default:"localhost:8080"`
+	}
+	if err := envconfig.Process("ROUTER", &config); err != nil {
+		log.Fatal(err)
+	}
+
+	links = client.New(config.Repository)
+
 	http.HandleFunc("/l/", handleVisit)
 	http.HandleFunc("/s/", handleStats)
-	log.Fatal(http.ListenAndServe(":8085", nil))
+	log.Fatal(http.ListenAndServe(config.Address, nil))
 }
 
 func handleVisit(w http.ResponseWriter, r *http.Request) {
