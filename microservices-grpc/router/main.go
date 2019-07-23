@@ -8,21 +8,32 @@ import (
 
 	"github.com/campoy/links/microservices-grpc/repository"
 	pb "github.com/campoy/links/microservices-grpc/repository/proto"
+	"github.com/kelseyhightower/envconfig"
 	"google.golang.org/grpc"
 )
 
 var links pb.RepositoryClient
 
 func main() {
-	conn, err := grpc.Dial("localhost:8080", grpc.WithInsecure())
+	var config struct {
+		Address    string `default:"localhost:8085"`
+		Repository string `default:"localhost:8080"`
+	}
+	if err := envconfig.Process("ROUTER", &config); err != nil {
+		log.Fatal(err)
+	}
+
+	conn, err := grpc.Dial(config.Repository, grpc.WithInsecure())
 	if err != nil {
 		log.Fatal(err)
 	}
 	links = pb.NewRepositoryClient(conn)
+	log.Printf("connecting to repository on %s", config.Repository)
 
 	http.HandleFunc("/l/", handleVisit)
 	http.HandleFunc("/s/", handleStats)
-	log.Fatal(http.ListenAndServe(":8085", nil))
+	log.Printf("listening on %s", config.Address)
+	log.Fatal(http.ListenAndServe(config.Address, nil))
 }
 
 func handleVisit(w http.ResponseWriter, r *http.Request) {

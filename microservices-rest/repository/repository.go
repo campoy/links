@@ -1,6 +1,6 @@
 package repository
 
-import 	"errors"
+import "errors"
 
 // A LinkRepository provides all the operations to create and store links.
 type LinkRepository interface {

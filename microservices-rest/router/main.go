@@ -30,7 +30,9 @@ func handleVisit(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	links.CountVisit(id)
+	if err := links.CountVisit(id); err != nil {
+		log.Printf("could not track visit: %v", err)
+	}
 
 	fmt.Fprintf(w, "<p>redirecting to %s...</p>", l.URL)
 	fmt.Fprintf(w, "<script>setTimeout(function() { window.location = '%s'}, 1000)</script>", l.URL)

@@ -9,19 +9,25 @@ import (
 
 	"github.com/campoy/links/microservices-grpc/repository"
 	pb "github.com/campoy/links/microservices-grpc/repository/proto"
+	"github.com/kelseyhightower/envconfig"
 	"google.golang.org/grpc"
 )
-
-const port = ":8080"
 
 type server struct {
 	links repository.LinkRepository
 }
 
 func main() {
+	var config struct {
+		Address string `default:"localhost:8080"`
+	}
+	if err := envconfig.Process("REPOSITORY", &config); err != nil {
+		log.Fatal(err)
+	}
+
 	rand.Seed(time.Now().Unix())
 
-	lis, err := net.Listen("tcp", port)
+	lis, err := net.Listen("tcp", config.Address)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
@@ -31,6 +37,7 @@ func main() {
 		log.Fatal(err)
 	}
 
+	log.Printf("listening on %s", config.Address)
 	s := grpc.NewServer()
 	pb.RegisterRepositoryServer(s, &server{db})
 	if err := s.Serve(lis); err != nil {

@@ -8,30 +8,45 @@ import (
 	"net/http"
 
 	pb "github.com/campoy/links/microservices-grpc/repository/proto"
+	"github.com/kelseyhightower/envconfig"
 	"google.golang.org/grpc"
 )
 
-var (
-	router = flag.String("d", "http://localhost:8085", "URL where the router will be accessible")
-	links  pb.RepositoryClient
-)
+type server struct {
+	links pb.RepositoryClient
+	router string
+}
 
 func main() {
+	var config struct {
+		Address    string `default:"localhost:8090"`
+		Repository string `default:"localhost:8080"`
+		Router string `default:"localhost:8085"`
+	}
+	if err := envconfig.Process("WEB", &config); err != nil {
+		log.Fatal(err)
+	}
 	flag.Parse()
 
-	conn, err := grpc.Dial("localhost:8080", grpc.WithInsecure())
+	log.Printf("connecting to repository on %s", config.Repository)
+	conn, err := grpc.Dial(config.Repository, grpc.WithInsecure())
 	if err != nil {
 		log.Fatal(err)
 	}
-	links = pb.NewRepositoryClient(conn)
+	
+	s := server{
+		links: pb.NewRepositoryClient(conn),
+		router: config.Router,
+	}
 
-	http.HandleFunc("/", handleNew)
-	log.Fatal(http.ListenAndServe(":8090", nil))
+	log.Printf("listening on %s", config.Address)
+	http.HandleFunc("/", s.handleNew)
+	log.Fatal(http.ListenAndServe(config.Address, nil))
 }
 
 var home = template.Must(template.ParseFiles("home.html"))
 
-func handleNew(w http.ResponseWriter, r *http.Request) {
+func (s *server) handleNew(w http.ResponseWriter, r *http.Request) {
 	data := struct {
 		Code  int
 		Msg   string
@@ -40,14 +55,14 @@ func handleNew(w http.ResponseWriter, r *http.Request) {
 	}{Code: http.StatusOK}
 
 	if r.Method == http.MethodPost {
-		l, err := links.New(r.Context(), &pb.NewRequest{Url: r.FormValue("link")})
+		l, err := s.links.New(r.Context(), &pb.NewRequest{Url: r.FormValue("link")})
 		if err != nil {
 			data.Code = http.StatusBadRequest
 			data.Msg = err.Error()
 		} else {
 			data.Code = http.StatusCreated
-			data.Link = fmt.Sprintf("%s/l/%s", *router, l.Id)
-			data.Stats = fmt.Sprintf("%s/s/%s", *router, l.Id)
+			data.Link = fmt.Sprintf("%s/l/%s", s.router, l.Id)
+			data.Stats = fmt.Sprintf("%s/s/%s", s.router, l.Id)
 		}
 	}
 
