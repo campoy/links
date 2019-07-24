@@ -7,14 +7,14 @@ import (
 
 	pb "github.com/campoy/links/microservices-grpc/repository/proto"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	"google.golang.org/grpc"
 	"github.com/kelseyhightower/envconfig"
+	"google.golang.org/grpc"
 )
 
 func main() {
 	var config struct {
-		Address    string `default:"localhost:8081"`
-		Repository string `default:"localhost:8080"`
+		Address    string `default:"0.0.0.0:8081"`
+		Repository string `default:"0.0.0.0:8080"`
 	}
 	if err := envconfig.Process("GATEWAY", &config); err != nil {
 		log.Fatal(err)

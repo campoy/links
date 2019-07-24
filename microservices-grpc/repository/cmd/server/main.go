@@ -19,7 +19,7 @@ type server struct {
 
 func main() {
 	var config struct {
-		Address string `default:"localhost:8080"`
+		Address string `default:"0.0.0.0:8080"`
 	}
 	if err := envconfig.Process("REPOSITORY", &config); err != nil {
 		log.Fatal(err)

@@ -16,8 +16,8 @@ var links pb.RepositoryClient
 
 func main() {
 	var config struct {
-		Address    string `default:"localhost:8085"`
-		Repository string `default:"localhost:8080"`
+		Address    string `default:"0.0.0.0:8085"`
+		Repository string `default:"0.0.0.0:8080"`
 	}
 	if err := envconfig.Process("ROUTER", &config); err != nil {
 		log.Fatal(err)

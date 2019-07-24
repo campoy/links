@@ -13,15 +13,15 @@ import (
 )
 
 type server struct {
-	links pb.RepositoryClient
+	links  pb.RepositoryClient
 	router string
 }
 
 func main() {
 	var config struct {
-		Address    string `default:"localhost:8090"`
-		Repository string `default:"localhost:8080"`
-		Router string `default:"localhost:8085"`
+		Address    string `default:"0.0.0.0:8090"`
+		Repository string `default:"0.0.0.0:8080"`
+		Router     string `default:"loca0.0.0.05"`
 	}
 	if err := envconfig.Process("WEB", &config); err != nil {
 		log.Fatal(err)
@@ -33,9 +33,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	s := server{
-		links: pb.NewRepositoryClient(conn),
+		links:  pb.NewRepositoryClient(conn),
 		router: config.Router,
 	}
 

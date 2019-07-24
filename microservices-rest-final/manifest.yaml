@@ -1,0 +1,72 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: repository
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: repository
+  template:
+    metadata:
+      labels:
+        app: repository
+    spec:
+      containers:
+      - name: repository
+        image: docker.io/campoy/repository:rest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: docker.io/campoy/web:rest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8090
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: repository
+spec:
+  # When using minikube, set the type to "NodePort"
+  # When using Digital Ocean, set it to "LoadBalancer"
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: repository
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+spec:
+  type: NodePort
+  ports:
+  - port: 8090
+    targetPort: 8090
+    protocol: TCP
+    name: http
+  selector:
+    app: web

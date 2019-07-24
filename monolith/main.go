@@ -31,7 +31,7 @@ func main() {
 	http.HandleFunc("/", handleNew)
 	http.HandleFunc("/l/", handleVisit)
 	http.HandleFunc("/s/", handleStats)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe("0.0.0.0:8080", nil))
 }
 
 var home = template.Must(template.ParseFiles("home.html"))
