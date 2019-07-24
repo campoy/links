@@ -40,7 +40,7 @@ spec:
         imagePullPolicy: Always
         env:
         - name: WEB_REPOSITORY
-          value: http://repository:8080
+          value: repository:8080
         - name: WEB_ROUTER
           value: http://router:8085
         ports:
