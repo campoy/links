@@ -3,7 +3,10 @@ package client
 import (
 	"bytes"
 	"encoding/json"
+	"io/ioutil"
+	"log"
 	"net/http"
+	"strings"
 
 	"github.com/pkg/errors"
 
@@ -12,6 +15,10 @@ import (
 
 // New creates a LinkRepository that fetches client information.
 func New(addr string) repository.LinkRepository {
+	log.Printf("please")
+	if !strings.HasPrefix(addr, "http") {
+		addr = "http://" + addr
+	}
 	return client{addr}
 }
 
@@ -27,7 +34,9 @@ func (c client) do(method string, path string, body []byte, code int) (*http.Res
 		return nil, errors.Wrapf(err, "could not send request")
 	}
 	if res.StatusCode != code {
-		return nil, errors.Errorf("got status %s", res.Status)
+		msg, _ := ioutil.ReadAll(res.Body)
+		res.Body.Close()
+		return nil, errors.Errorf("got status %s: %s", res.Status, msg)
 	}
 	return res, nil
 }

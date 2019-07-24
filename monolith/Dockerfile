@@ -4,7 +4,7 @@ RUN apk add --no-cache git gcc musl-dev
 
 WORKDIR /app
 ENV GO111MODULE=on
-EXPOSE 8080
+ENV GOFLAGS=-mod=vendor
 COPY ./ ./
 
 RUN go build .

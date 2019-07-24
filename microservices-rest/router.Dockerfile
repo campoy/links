@@ -4,14 +4,13 @@ RUN apk add --no-cache git gcc musl-dev
 
 WORKDIR /app
 ENV GO111MODULE=on
+ENV GOFLAGS=-mod=vendor
 COPY ./ ./
 
-WORKDIR /app/web
+WORKDIR /app/router
 RUN go build .
 
 FROM alpine
 
-COPY --from=BUILD /app/web/web /app/web
-WORKDIR /app
-COPY ./web/home.html /app/home.html
-CMD ["./web"]
+COPY --from=BUILD /app/router/router /app/router
+CMD ["/app/router"]

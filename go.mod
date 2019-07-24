@@ -3,6 +3,7 @@ module github.com/campoy/links
 go 1.12
 
 require (
+	github.com/campoy/links/microservices-rest-final v0.0.0-20190724043447-2cacebac19ea // indirect
 	github.com/campoy/links/monolith v0.0.0-20190724034546-9149e0b98d9a // indirect
 	github.com/dgraph-io/badger v1.6.0
 	github.com/golang/protobuf v1.3.2

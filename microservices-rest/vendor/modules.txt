@@ -1,8 +1,5 @@
 # github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9
 github.com/AndreasBriese/bbloom
-# github.com/campoy/links v0.0.0-20190724034546-9149e0b98d9a
-github.com/campoy/links/microservices-rest/repository
-github.com/campoy/links/microservices-rest/repository/client
 # github.com/dgraph-io/badger v1.6.0
 github.com/dgraph-io/badger
 github.com/dgraph-io/badger/options
