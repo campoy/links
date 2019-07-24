@@ -1,0 +1,17 @@
+apiVersion: skaffold/v1beta13
+kind: Config
+build:
+  artifacts:
+  - image: docker.io/campoy/repository-rest
+    docker:
+      dockerfile: repository.Dockerfile
+  - image: docker.io/campoy/web-rest
+    docker:
+      dockerfile: web.Dockerfile
+  - image: docker.io/campoy/router-rest
+    docker:
+      dockerfile: router.Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - manifest.yaml

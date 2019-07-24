@@ -1,22 +1,22 @@
 all: web router repository
 
 web: web_image
-	docker push campoy/web:grpc
+	docker push campoy/web-grpc
 
 web_image:
-	docker build -f web.Dockerfile -t campoy/web:grpc .
+	docker build -f web.Dockerfile -t campoy/web-grpc .
 
 router: router_image
-	docker push campoy/router:grpc
+	docker push campoy/router-grpc
 
 router_image:
-	docker build -f router.Dockerfile -t campoy/router:grpc .
+	docker build -f router.Dockerfile -t campoy/router-grpc .
 
 repository:
-	docker push campoy/repository:grpc
+	docker push campoy/repository-grpc
 
 repository_image:
-	docker build -f repository.Dockerfile -t campoy/repository:grpc .
+	docker build -f repository.Dockerfile -t campoy/repository-grpc .
 
 kubenuke: nuke_deployments nuke_services nuke_pods
 

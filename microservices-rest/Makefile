@@ -1,22 +1,22 @@
 all: web router repository
 
 web: web_image
-	docker push campoy/web:rest
+	docker push campoy/web-rest
 
 web_image:
-	docker build -f web.Dockerfile -t campoy/web:rest .
+	docker build -f web.Dockerfile -t campoy/web-rest .
 
 router: router_image
-	docker push campoy/router:rest
+	docker push campoy/router-rest
 
 router_image:
-	docker build -f router.Dockerfile -t campoy/router:rest .
+	docker build -f router.Dockerfile -t campoy/router-rest .
 
-repository:
-	docker push campoy/repository:rest
+repository: repository_image
+	docker push campoy/repository-rest
 
 repository_image:
-	docker build -f repository.Dockerfile -t campoy/repository:rest .
+	docker build -f repository.Dockerfile -t campoy/repository-rest .
 
 kubenuke: nuke_deployments nuke_services nuke_pods
 

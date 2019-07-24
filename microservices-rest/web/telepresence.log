@@ -1,0 +1,981 @@
+   0.0 TEL | Telepresence 0.101 launched at Wed Jul 24 13:48:42 2019
+   0.0 TEL |   /usr/local/bin/telepresence --swap-deployment web --expose 8090 --run ./web
+   0.0 TEL | Platform: darwin
+   0.0 TEL | Python 3.7.4 (default, Jul  9 2019, 18:13:23)
+   0.0 TEL | [Clang 10.0.1 (clang-1001.0.46.4)]
+   0.0 TEL | [1] Running: uname -a
+   0.0   1 | Darwin francesc.local 18.6.0 Darwin Kernel Version 18.6.0: Thu Apr 25 23:16:27 PDT 2019; root:xnu-4903.261.4~2/RELEASE_X86_64 x86_64
+   0.0 TEL | [1] ran in 0.01 secs.
+   0.0 TEL | BEGIN SPAN main.py:40(main)
+   0.0 TEL | BEGIN SPAN startup.py:74(__init__)
+   0.0 TEL | Found kubectl -> /usr/local/bin/kubectl
+   0.0 TEL | [2] Capturing: kubectl version --short
+   0.2 TEL | [2] captured in 0.13 secs.
+   0.2 TEL | [3] Capturing: kubectl config current-context
+   0.3 TEL | [3] captured in 0.11 secs.
+   0.3 TEL | [4] Capturing: kubectl config view -o json
+   0.4 TEL | [4] captured in 0.10 secs.
+   0.4 TEL | [5] Capturing: kubectl --context docker-for-desktop get ns default
+   0.6 TEL | [5] captured in 0.21 secs.
+   0.6 TEL | Command: kubectl 1.10.11
+   0.6 TEL | Context: docker-for-desktop, namespace: default, version: 1.10.11
+   0.6 TEL | Looks like we're in a local VM, e.g. minikube.
+   0.6 TEL | END SPAN startup.py:74(__init__)    0.6s
+   0.6 TEL | Found ssh -> /usr/bin/ssh
+   0.6 TEL | [6] Capturing: ssh -V
+   0.6 TEL | [6] captured in 0.02 secs.
+   0.6 TEL | Found ./web -> ./web
+   0.6 TEL | Found sshuttle-telepresence -> /usr/local/Cellar/telepresence/0.101/libexec/sshuttle-telepresence
+   0.6 TEL | Found pfctl -> /sbin/pfctl
+   0.6 TEL | Found sudo -> /usr/bin/sudo
+   0.6 TEL | [7] Running: sudo -n echo -n
+   0.7 TEL | [7] ran in 0.04 secs.
+   0.7 >>> | Starting proxy with method 'vpn-tcp', which has the following limitations: All processes are affected, only one telepresence can run per machine, and you can't use other VPNs. You may need to add cloud hosts and headless services with --also-proxy. For a full list of method limitations see https://telepresence.io/reference/methods.html
+   0.7 TEL | Found sshfs -> /usr/local/bin/sshfs
+   0.7 TEL | Found umount -> /sbin/umount
+   0.7 >>> | Volumes are rooted at $TELEPRESENCE_ROOT. See https://telepresence.io/howto/volumes.html for details.
+   0.7 TEL | [8] Running: kubectl --context docker-for-desktop --namespace default get pods telepresence-connectivity-check --ignore-not-found
+   0.8 TEL | [8] ran in 0.14 secs.
+   1.1 TEL | Scout info: {'latest_version': '0.101', 'application': 'telepresence', 'notices': []}
+   1.1 TEL | BEGIN SPAN deployment.py:179(supplant_deployment)
+   1.1 >>> | Starting network proxy to cluster by swapping out Deployment web with a proxy
+   1.1 TEL | BEGIN SPAN remote.py:78(get_deployment_json)
+   1.1 TEL | [9] Capturing: kubectl --context docker-for-desktop --namespace default get deployment -o json web
+   1.3 TEL | [9] captured in 0.17 secs.
+   1.3 TEL | END SPAN remote.py:78(get_deployment_json)    0.2s
+   1.3 TEL | [10] Running: kubectl --context docker-for-desktop --namespace default delete deployment web-daf5f2ee2bec423588cda54a71213f35 --ignore-not-found
+   1.4 TEL | [10] ran in 0.15 secs.
+   1.4 TEL | [11] Running: kubectl --context docker-for-desktop --namespace default apply -f -
+   1.6  11 | deployment.extensions "web-daf5f2ee2bec423588cda54a71213f35" created
+   1.7 TEL | [11] ran in 0.22 secs.
+   1.7 TEL | [12] Running: kubectl --context docker-for-desktop --namespace default scale deployment web --replicas=0
+   1.9  12 | deployment.extensions "web" scaled
+   1.9 TEL | [12] ran in 0.30 secs.
+   1.9 TEL | END SPAN deployment.py:179(supplant_deployment)    0.8s
+   1.9 TEL | BEGIN SPAN remote.py:151(get_remote_info)
+   1.9 TEL | BEGIN SPAN remote.py:78(get_deployment_json)
+   1.9 TEL | [13] Capturing: kubectl --context docker-for-desktop --namespace default get deployment -o json --selector=telepresence=daf5f2ee2bec423588cda54a71213f35
+   2.4 TEL | [13] captured in 0.46 secs.
+   2.4 TEL | END SPAN remote.py:78(get_deployment_json)    0.5s
+   2.4 TEL | Searching for Telepresence pod:
+   2.4 TEL |   with name web-daf5f2ee2bec423588cda54a71213f35-*
+   2.4 TEL |   with labels {'app': 'web', 'telepresence': 'daf5f2ee2bec423588cda54a71213f35'}
+   2.4 TEL | [14] Capturing: kubectl --context docker-for-desktop --namespace default get pod -o json --selector=telepresence=daf5f2ee2bec423588cda54a71213f35
+   2.8 TEL | [14] captured in 0.39 secs.
+   2.8 TEL | Checking web-daf5f2ee2bec423588cda54a71213f35-66ddd4c48f-74vvj
+   2.8 TEL | Looks like we've found our pod!
+   2.8 TEL | BEGIN SPAN remote.py:113(wait_for_pod)
+   2.8 TEL | [15] Capturing: kubectl --context docker-for-desktop --namespace default get pod web-daf5f2ee2bec423588cda54a71213f35-66ddd4c48f-74vvj -o json
+   3.0 TEL | [15] captured in 0.21 secs.
+   3.3 TEL | [16] Capturing: kubectl --context docker-for-desktop --namespace default get pod web-daf5f2ee2bec423588cda54a71213f35-66ddd4c48f-74vvj -o json
+   3.4 TEL | [16] captured in 0.17 secs.
+   3.7 TEL | [17] Capturing: kubectl --context docker-for-desktop --namespace default get pod web-daf5f2ee2bec423588cda54a71213f35-66ddd4c48f-74vvj -o json
+   3.9 TEL | [17] captured in 0.18 secs.
+   4.1 TEL | [18] Capturing: kubectl --context docker-for-desktop --namespace default get pod web-daf5f2ee2bec423588cda54a71213f35-66ddd4c48f-74vvj -o json
+   4.4 TEL | [18] captured in 0.27 secs.
+   4.6 TEL | [19] Capturing: kubectl --context docker-for-desktop --namespace default get pod web-daf5f2ee2bec423588cda54a71213f35-66ddd4c48f-74vvj -o json
+   4.8 TEL | [19] captured in 0.15 secs.
+   4.8 TEL | END SPAN remote.py:113(wait_for_pod)    2.0s
+   4.8 TEL | END SPAN remote.py:151(get_remote_info)    2.8s
+   4.8 TEL | BEGIN SPAN connect.py:36(connect)
+   4.8 TEL | [20] Launching kubectl logs: kubectl --context docker-for-desktop --namespace default logs -f web-daf5f2ee2bec423588cda54a71213f35-66ddd4c48f-74vvj --container web --tail=10
+   4.8 TEL | [21] Launching kubectl port-forward: kubectl --context docker-for-desktop --namespace default port-forward web-daf5f2ee2bec423588cda54a71213f35-66ddd4c48f-74vvj 54685:8022
+   4.8 TEL | [22] Running: ssh -F /dev/null -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -q -p 54685 telepresence@127.0.0.1 /bin/true
+   4.8 TEL | [22] exit 255 in 0.03 secs.
+   5.1 TEL | [23] Running: ssh -F /dev/null -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -q -p 54685 telepresence@127.0.0.1 /bin/true
+   5.1 TEL | [23] exit 255 in 0.03 secs.
+   5.1  21 | Forwarding from 127.0.0.1:54685 -> 8022
+   5.1  21 | Forwarding from [::1]:54685 -> 8022
+   5.4 TEL | [24] Running: ssh -F /dev/null -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -q -p 54685 telepresence@127.0.0.1 /bin/true
+   5.4  21 | Handling connection for 54685
+   5.5  20 | Listening...
+   5.5  20 | 2019-07-24T20:48:47+0000 [-] Loading ./forwarder.py...
+   5.5  20 | 2019-07-24T20:48:48+0000 [-] SOCKSv5Factory starting on 9050
+   5.5  20 | 2019-07-24T20:48:48+0000 [socks.SOCKSv5Factory#info] Starting factory <socks.SOCKSv5Factory object at 0x7fbf4b1b33c8>
+   5.5  20 | 2019-07-24T20:48:48+0000 [-] DNSDatagramProtocol starting on 9053
+   5.5  20 | 2019-07-24T20:48:48+0000 [-] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1b3668>
+   5.5  20 | 2019-07-24T20:48:48+0000 [-] Loaded.
+   5.5  20 | 2019-07-24T20:48:48+0000 [twisted.scripts._twistd_unix.UnixAppLogger#info] twistd 19.2.1 (/usr/bin/python3.6 3.6.8) starting up.
+   5.5  20 | 2019-07-24T20:48:48+0000 [twisted.scripts._twistd_unix.UnixAppLogger#info] reactor class: twisted.internet.epollreactor.EPollReactor.
+   5.8 TEL | [24] ran in 0.39 secs.
+   5.8 >>> | Forwarding remote port 8090 to local port 8090.
+   5.8 TEL | [25] Launching SSH port forward (exposed ports): ssh -N -oServerAliveInterval=1 -oServerAliveCountMax=10 -F /dev/null -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -q -p 54685 telepresence@127.0.0.1 -R '*:8090:127.0.0.1:8090'
+   5.8 >>> | 
+   5.8 TEL | Launching Web server for proxy poll
+   5.8 TEL | [26] Launching SSH port forward (socks and proxy poll): ssh -N -oServerAliveInterval=1 -oServerAliveCountMax=10 -F /dev/null -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -q -p 54685 telepresence@127.0.0.1 -L127.0.0.1:54696:127.0.0.1:9050 -R9055:127.0.0.1:54697
+   5.8 TEL | END SPAN connect.py:36(connect)    1.0s
+   5.8 TEL | BEGIN SPAN remote_env.py:28(get_remote_env)
+   5.8 TEL | [27] Capturing: kubectl --context docker-for-desktop --namespace default exec web-daf5f2ee2bec423588cda54a71213f35-66ddd4c48f-74vvj --container web -- python3 podinfo.py
+   5.8  21 | Handling connection for 54685
+   5.8  21 | Handling connection for 54685
+   6.3 TEL | [27] captured in 0.53 secs.
+   6.3 TEL | END SPAN remote_env.py:28(get_remote_env)    0.5s
+   6.3 TEL | BEGIN SPAN mount.py:32(mount_remote_volumes)
+   6.3 TEL | [28] Running: sshfs -p 54685 -F /dev/null -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null telepresence@127.0.0.1:/ /tmp/tel-oni0n8zz/fs
+   6.4  21 | Handling connection for 54685
+   6.6 TEL | [28] ran in 0.31 secs.
+   6.6 TEL | END SPAN mount.py:32(mount_remote_volumes)    0.3s
+   6.6 TEL | BEGIN SPAN vpn.py:264(connect_sshuttle)
+   6.6 TEL | BEGIN SPAN vpn.py:74(get_proxy_cidrs)
+   6.6 TEL | END SPAN vpn.py:74(get_proxy_cidrs)    0.0s
+   6.6 TEL | [29] Launching sshuttle: sshuttle-telepresence -v --dns --method auto -e 'ssh -F /dev/null -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null' -r telepresence@127.0.0.1:54685 --to-ns 127.0.0.1:9053 10.96.0.0/12
+   6.6 TEL | BEGIN SPAN vpn.py:287(connect_sshuttle,sshuttle-wait)
+   6.6 TEL | Wait for vpn-tcp connection: hellotelepresence-0
+   6.6 TEL | [30] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-0")'
+   6.8 TEL | [30] exit 1 in 0.12 secs.
+   6.8 TEL | [31] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-0.a.sanity.check.telepresence.io")'
+   6.9 TEL | [31] exit 1 in 0.13 secs.
+   7.0 TEL | Wait for vpn-tcp connection: hellotelepresence-1
+   7.0 TEL | [32] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-1")'
+   7.1 TEL | [32] exit 1 in 0.12 secs.
+   7.1 TEL | [33] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-1.a.sanity.check.telepresence.io")'
+   7.2 TEL | [33] exit 1 in 0.13 secs.
+   7.3 TEL | Wait for vpn-tcp connection: hellotelepresence-2
+   7.3 TEL | [34] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-2")'
+   7.5 TEL | [34] exit 1 in 0.12 secs.
+   7.5 TEL | [35] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-2.a.sanity.check.telepresence.io")'
+   7.6  29 | Starting sshuttle proxy.
+   7.6 TEL | [35] exit 1 in 0.17 secs.
+   7.7 TEL | Wait for vpn-tcp connection: hellotelepresence-3
+   7.7 TEL | [36] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-3")'
+   7.9 TEL | [36] exit 1 in 0.12 secs.
+   7.9 TEL | [37] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-3.a.sanity.check.telepresence.io")'
+   8.0 TEL | [37] exit 1 in 0.13 secs.
+   8.1 TEL | Wait for vpn-tcp connection: hellotelepresence-4
+   8.1 TEL | [38] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-4")'
+   8.2 TEL | [38] exit 1 in 0.12 secs.
+   8.2 TEL | [39] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-4.a.sanity.check.telepresence.io")'
+   8.3 TEL | [39] exit 1 in 0.12 secs.
+   8.4  29 | firewall manager: Starting firewall with Python version 3.7.4
+   8.4  29 | firewall manager: ready method name pf.
+   8.4  29 | IPv6 enabled: True
+   8.4  29 | UDP enabled: False
+   8.4  29 | DNS enabled: True
+   8.4  29 | TCP redirector listening on ('::1', 12300, 0, 0).
+   8.4  29 | TCP redirector listening on ('127.0.0.1', 12300).
+   8.4  29 | DNS listening on ('::1', 12300, 0, 0).
+   8.4  29 | DNS listening on ('127.0.0.1', 12300).
+   8.4  29 | Starting client with Python version 3.7.4
+   8.4  29 | c : connecting to server...
+   8.4  21 | Handling connection for 54685
+   8.4 TEL | Wait for vpn-tcp connection: hellotelepresence-5
+   8.4 TEL | [40] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-5")'
+   8.5  29 | Warning: Permanently added '[127.0.0.1]:54685' (ECDSA) to the list of known hosts.
+   8.6 TEL | [40] exit 1 in 0.12 secs.
+   8.6 TEL | [41] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-5.a.sanity.check.telepresence.io")'
+   8.7 TEL | [41] exit 1 in 0.13 secs.
+   8.8 TEL | Wait for vpn-tcp connection: hellotelepresence-6
+   8.8 TEL | [42] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-6")'
+   8.9  29 | Starting server with Python version 3.6.8
+   8.9  29 |  s: latency control setting = True
+   8.9  29 |  s: available routes:
+   8.9  29 |  s:   2/10.1.0.0/16
+   8.9  29 | c : Connected.
+   8.9  29 | firewall manager: setting up.
+   8.9  29 | >> pfctl -s Interfaces -i lo -v
+   8.9  29 | >> pfctl -s all
+   8.9  29 | >> pfctl -a sshuttle6-12300 -f /dev/stdin
+   8.9  29 | >> pfctl -E
+   8.9  29 | >> pfctl -s Interfaces -i lo -v
+   8.9  29 | >> pfctl -s all
+   8.9 TEL | [42] exit 1 in 0.12 secs.
+   8.9 TEL | [43] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-6.a.sanity.check.telepresence.io")'
+   8.9  29 | >> pfctl -a sshuttle-12300 -f /dev/stdin
+   9.0  29 | >> pfctl -E
+   9.0  29 | c : DNS request from ('172.21.159.247', 57422) to None: 68 bytes
+   9.0  20 | 2019-07-24T20:48:51+0000 [stdout#info] Sanity check: b'hellotelepresence-6.a.sanity.check.telepresence.io'
+   9.1 TEL | [43] exit 1 in 0.12 secs.
+   9.2 TEL | Wait for vpn-tcp connection: hellotelepresence-7
+   9.2 TEL | [44] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-7")'
+   9.2  29 | c : DNS request from ('172.21.159.247', 54611) to None: 37 bytes
+   9.2  20 | 2019-07-24T20:48:51+0000 [stdout#info] Set DNS suffix we filter out to: [()]
+   9.2  20 | 2019-07-24T20:48:51+0000 [stdout#info] Result for b'hellotelepresence-7' is ['127.0.0.1']
+   9.2 TEL | [44] captured in 0.07 secs.
+   9.2 TEL | Resolved hellotelepresence-7. 2 more...
+   9.2 TEL | [45] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-7.a.sanity.check.telepresence.io")'
+   9.3  29 | c : DNS request from ('172.21.159.247', 52460) to None: 68 bytes
+   9.3  20 | 2019-07-24T20:48:51+0000 [stdout#info] Sanity check: b'hellotelepresence-7.a.sanity.check.telepresence.io'
+   9.3 TEL | [45] exit 1 in 0.08 secs.
+   9.4 TEL | Wait for vpn-tcp connection: hellotelepresence-8
+   9.4 TEL | [46] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-8")'
+   9.5  29 | c : DNS request from ('172.21.159.247', 60698) to None: 37 bytes
+   9.5  20 | 2019-07-24T20:48:52+0000 [stdout#info] Result for b'hellotelepresence-8' is ['127.0.0.1']
+   9.5 TEL | [46] captured in 0.12 secs.
+   9.5 TEL | Resolved hellotelepresence-8. 1 more...
+   9.5 TEL | [47] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-8.a.sanity.check.telepresence.io")'
+   9.6  29 | c : DNS request from ('172.21.159.247', 63327) to None: 68 bytes
+   9.6  20 | 2019-07-24T20:48:52+0000 [stdout#info] Sanity check: b'hellotelepresence-8.a.sanity.check.telepresence.io'
+   9.7 TEL | [47] exit 1 in 0.12 secs.
+   9.8 TEL | Wait for vpn-tcp connection: hellotelepresence-9
+   9.8 TEL | [48] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-9")'
+   9.8  29 | c : DNS request from ('172.21.159.247', 53326) to None: 37 bytes
+   9.9  20 | 2019-07-24T20:48:52+0000 [stdout#info] Result for b'hellotelepresence-9' is ['127.0.0.1']
+   9.9 TEL | [48] captured in 0.18 secs.
+   9.9 TEL | Resolved hellotelepresence-9. 0 more...
+   9.9 TEL | END SPAN vpn.py:287(connect_sshuttle,sshuttle-wait)    3.3s
+   9.9 TEL | END SPAN vpn.py:264(connect_sshuttle)    3.3s
+  12.1 >>> | Setup complete. Launching your command.
+  12.1 TEL | Everything launched. Waiting to exit...
+  12.1 TEL | BEGIN SPAN runner.py:682(wait_for_exit)
+  12.3  29 | c : DNS request from ('172.21.159.247', 52108) to None: 39 bytes
+  12.3  20 | 2019-07-24T20:48:54+0000 [stdout#info] A query: b'captive.g.aaplimg.com'
+  12.4  20 | 2019-07-24T20:48:54+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 58581
+  12.4  20 | 2019-07-24T20:48:54+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb208>
+  12.4  20 | 2019-07-24T20:48:54+0000 [-] (UDP Port 58581 Closed)
+  12.4  20 | 2019-07-24T20:48:54+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb208>
+  12.9  29 | c : DNS request from ('172.21.159.247', 53571) to None: 40 bytes
+  12.9  29 | c : DNS request from ('172.21.159.247', 54651) to None: 40 bytes
+  13.0  20 | 2019-07-24T20:48:55+0000 [stdout#info] AAAA query, sending back A instead: b'docker-for-desktop.lan'
+  13.0  20 | 2019-07-24T20:48:55+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+  13.0  20 | 2019-07-24T20:48:55+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+  13.0  20 | 2019-07-24T20:48:55+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 2228
+  13.0  20 | 2019-07-24T20:48:55+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb5c0>
+  13.0  20 | 2019-07-24T20:48:55+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+  13.0  20 | 2019-07-24T20:48:55+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+  13.0  20 | 2019-07-24T20:48:55+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 36341
+  13.0  20 | 2019-07-24T20:48:55+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb828>
+  13.0  20 | 2019-07-24T20:48:55+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=61243 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+  13.0  20 | 2019-07-24T20:48:55+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+  13.0  20 | 2019-07-24T20:48:55+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 8549
+  13.0  20 | 2019-07-24T20:48:55+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cbb38>
+  13.0  20 | 2019-07-24T20:48:55+0000 [-] (UDP Port 2228 Closed)
+  13.0  20 | 2019-07-24T20:48:55+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb5c0>
+  13.0  20 | 2019-07-24T20:48:55+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=29047 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+  13.0  20 | 2019-07-24T20:48:55+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+  13.0  20 | 2019-07-24T20:48:55+0000 [-] (UDP Port 36341 Closed)
+  13.0  20 | 2019-07-24T20:48:55+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb828>
+  13.0  20 | 2019-07-24T20:48:55+0000 [-] (UDP Port 8549 Closed)
+  13.0  20 | 2019-07-24T20:48:55+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cbb38>
+  15.8  29 | c : DNS request from ('172.21.159.247', 54470) to None: 50 bytes
+  15.8  29 | c : DNS request from ('172.21.159.247', 49168) to None: 50 bytes
+  15.9  20 | 2019-07-24T20:48:58+0000 [stdout#info] AAAA query, sending back A instead: b'docker-for-desktop.measurabl.com'
+  15.9  20 | 2019-07-24T20:48:58+0000 [stdout#info] A query: b'docker-for-desktop.measurabl.com'
+  15.9  20 | 2019-07-24T20:48:58+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 2401
+  15.9  20 | 2019-07-24T20:48:58+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cbac8>
+  15.9  20 | 2019-07-24T20:48:58+0000 [stdout#info] A query: b'docker-for-desktop.measurabl.com'
+  15.9  20 | 2019-07-24T20:48:58+0000 [-] (UDP Port 2401 Closed)
+  15.9  20 | 2019-07-24T20:48:58+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cbac8>
+  16.9  29 | c : DNS request from ('172.21.159.247', 58509) to None: 41 bytes
+  16.9  20 | 2019-07-24T20:48:59+0000 [stdout#info] A query: b'world-gen.g.aaplimg.com'
+  16.9  20 | 2019-07-24T20:48:59+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 22254
+  16.9  20 | 2019-07-24T20:48:59+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cbac8>
+  16.9  20 | 2019-07-24T20:48:59+0000 [-] (UDP Port 22254 Closed)
+  16.9  20 | 2019-07-24T20:48:59+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cbac8>
+  21.7  29 | c : DNS request from ('172.21.159.247', 52290) to None: 42 bytes
+  21.7  20 | 2019-07-24T20:49:04+0000 [stdout#info] A query: b'gateway.fe.apple-dns.net'
+  21.7  20 | 2019-07-24T20:49:04+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 8677
+  21.7  20 | 2019-07-24T20:49:04+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb6d8>
+  21.7  20 | 2019-07-24T20:49:04+0000 [-] (UDP Port 8677 Closed)
+  21.7  20 | 2019-07-24T20:49:04+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb6d8>
+  22.1  29 | c : DNS request from ('172.21.159.247', 26595) to None: 37 bytes
+  22.1  20 | 2019-07-24T20:49:04+0000 [stdout#info] A query: b'calendar.google.com'
+  22.1  20 | 2019-07-24T20:49:04+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 10678
+  22.1  20 | 2019-07-24T20:49:04+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb2b0>
+  22.2  20 | 2019-07-24T20:49:04+0000 [-] (UDP Port 10678 Closed)
+  22.2  20 | 2019-07-24T20:49:04+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb2b0>
+  23.0  29 | c : DNS request from ('172.21.159.247', 64261) to None: 40 bytes
+  23.0  29 | c : DNS request from ('172.21.159.247', 62221) to None: 40 bytes
+  23.0  20 | 2019-07-24T20:49:05+0000 [stdout#info] AAAA query, sending back A instead: b'docker-for-desktop.lan'
+  23.0  20 | 2019-07-24T20:49:05+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+  23.0  20 | 2019-07-24T20:49:05+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+  23.0  20 | 2019-07-24T20:49:05+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 32829
+  23.0  20 | 2019-07-24T20:49:05+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb198>
+  23.0  20 | 2019-07-24T20:49:05+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+  23.0  20 | 2019-07-24T20:49:05+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+  23.0  20 | 2019-07-24T20:49:05+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 33380
+  23.0  20 | 2019-07-24T20:49:05+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb048>
+  23.0  20 | 2019-07-24T20:49:05+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=51235 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+  23.0  20 | 2019-07-24T20:49:05+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+  23.0  20 | 2019-07-24T20:49:05+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 20236
+  23.0  20 | 2019-07-24T20:49:05+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cbd68>
+  23.0  20 | 2019-07-24T20:49:05+0000 [-] (UDP Port 32829 Closed)
+  23.0  20 | 2019-07-24T20:49:05+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb198>
+  23.0  20 | 2019-07-24T20:49:05+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=36728 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+  23.0  20 | 2019-07-24T20:49:05+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+  23.0  20 | 2019-07-24T20:49:05+0000 [-] (UDP Port 33380 Closed)
+  23.0  20 | 2019-07-24T20:49:05+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb048>
+  23.0  20 | 2019-07-24T20:49:05+0000 [-] (UDP Port 20236 Closed)
+  23.0  20 | 2019-07-24T20:49:05+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cbd68>
+  30.6  29 | c : DNS request from ('172.21.159.247', 12522) to None: 33 bytes
+  30.6  20 | 2019-07-24T20:49:13+0000 [stdout#info] A query: b'csi.gstatic.com'
+  30.6  20 | 2019-07-24T20:49:13+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 10130
+  30.6  20 | 2019-07-24T20:49:13+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb898>
+  30.6  20 | 2019-07-24T20:49:13+0000 [-] (UDP Port 10130 Closed)
+  30.6  20 | 2019-07-24T20:49:13+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb898>
+  30.7 TEL | [49] Running: sudo -n echo -n
+  30.8 TEL | [49] ran in 0.04 secs.
+  33.1  29 | c : DNS request from ('172.21.159.247', 60569) to None: 40 bytes
+  33.1  29 | c : DNS request from ('172.21.159.247', 65318) to None: 40 bytes
+  33.1  20 | 2019-07-24T20:49:15+0000 [stdout#info] AAAA query, sending back A instead: b'docker-for-desktop.lan'
+  33.1  20 | 2019-07-24T20:49:15+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+  33.1  20 | 2019-07-24T20:49:15+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+  33.1  20 | 2019-07-24T20:49:15+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 5865
+  33.1  20 | 2019-07-24T20:49:15+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cbc18>
+  33.1  20 | 2019-07-24T20:49:15+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+  33.1  20 | 2019-07-24T20:49:15+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+  33.1  20 | 2019-07-24T20:49:15+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 26452
+  33.1  20 | 2019-07-24T20:49:15+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb908>
+  33.1  20 | 2019-07-24T20:49:15+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=25834 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+  33.1  20 | 2019-07-24T20:49:15+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+  33.1  20 | 2019-07-24T20:49:15+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 7974
+  33.1  20 | 2019-07-24T20:49:15+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb2e8>
+  33.1  20 | 2019-07-24T20:49:15+0000 [-] (UDP Port 5865 Closed)
+  33.1  20 | 2019-07-24T20:49:15+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cbc18>
+  33.1  20 | 2019-07-24T20:49:15+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=59765 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+  33.1  20 | 2019-07-24T20:49:15+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+  33.2  20 | 2019-07-24T20:49:15+0000 [-] (UDP Port 26452 Closed)
+  33.2  20 | 2019-07-24T20:49:15+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb908>
+  33.2  20 | 2019-07-24T20:49:15+0000 [-] (UDP Port 7974 Closed)
+  33.2  20 | 2019-07-24T20:49:15+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1cb2e8>
+  35.5 TEL | (proxy checking local liveness)
+  35.6  20 | 2019-07-24T20:49:18+0000 [Poll#info] Checkpoint
+  37.5  29 | c : DNS request from ('172.21.159.247', 52073) to None: 32 bytes
+  37.6  20 | 2019-07-24T20:49:20+0000 [stdout#info] A query: b'4.sophosxl.net'
+  37.6  20 | 2019-07-24T20:49:20+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 26806
+  37.6  20 | 2019-07-24T20:49:20+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18ce80>
+  37.6  20 | 2019-07-24T20:49:20+0000 [-] (UDP Port 26806 Closed)
+  37.6  20 | 2019-07-24T20:49:20+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18ce80>
+  42.2  29 | c : DNS request from ('172.21.159.247', 31973) to None: 46 bytes
+  43.0  20 | 2019-07-24T20:49:25+0000 [stdout#info] A query: b'f-log-extension.grammarly.io'
+  43.0  20 | 2019-07-24T20:49:25+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 59078
+  43.0  20 | 2019-07-24T20:49:25+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18c6a0>
+  43.0  20 | 2019-07-24T20:49:25+0000 [-] (UDP Port 59078 Closed)
+  43.0  20 | 2019-07-24T20:49:25+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18c6a0>
+  49.0  29 | c : DNS request from ('172.21.159.247', 62132) to None: 35 bytes
+  49.0  20 | 2019-07-24T20:49:31+0000 [stdout#info] A query: b'edgeapi.slack.com'
+  49.0  20 | 2019-07-24T20:49:31+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 64187
+  49.0  20 | 2019-07-24T20:49:31+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cf98>
+  49.1  20 | 2019-07-24T20:49:31+0000 [-] (UDP Port 64187 Closed)
+  49.1  20 | 2019-07-24T20:49:31+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cf98>
+  58.6  29 | c : DNS request from ('172.21.159.247', 51308) to None: 27 bytes
+  58.6  20 | 2019-07-24T20:49:41+0000 [stdout#info] A query: b'slack.com'
+  58.6  20 | 2019-07-24T20:49:41+0000 [stdout#info] RESOLVING b'slack.com.svc.cluster.local'
+  58.7  20 | 2019-07-24T20:49:41+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 19110
+  58.7  20 | 2019-07-24T20:49:41+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124048>
+  58.7  20 | 2019-07-24T20:49:41+0000 [stdout#info] FAILED to lookup b'slack.com.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=50128 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('slack.com.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+  58.7  20 | 2019-07-24T20:49:41+0000 [stdout#info] ]), trying b'slack.com'
+  58.7  20 | 2019-07-24T20:49:41+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 34931
+  58.7  20 | 2019-07-24T20:49:41+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124390>
+  58.7  20 | 2019-07-24T20:49:41+0000 [-] (UDP Port 19110 Closed)
+  58.7  20 | 2019-07-24T20:49:41+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124048>
+  58.7  20 | 2019-07-24T20:49:41+0000 [-] (UDP Port 34931 Closed)
+  58.7  20 | 2019-07-24T20:49:41+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124390>
+  60.8 TEL | [50] Running: sudo -n echo -n
+  60.8 TEL | [50] ran in 0.04 secs.
+  65.5 TEL | (proxy checking local liveness)
+  65.5  20 | 2019-07-24T20:49:48+0000 [Poll#info] Checkpoint
+  77.2  29 | c : DNS request from ('172.21.159.247', 62700) to None: 40 bytes
+  77.2  20 | 2019-07-24T20:49:59+0000 [stdout#info] A query: b'sentry.postmanlabs.com'
+  77.3  20 | 2019-07-24T20:49:59+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 35575
+  77.3  20 | 2019-07-24T20:49:59+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124940>
+  77.3  20 | 2019-07-24T20:49:59+0000 [-] (UDP Port 35575 Closed)
+  77.3  20 | 2019-07-24T20:49:59+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124940>
+  79.2  29 | c : DNS request from ('172.21.159.247', 60349) to None: 54 bytes
+  79.3  20 | 2019-07-24T20:50:01+0000 [stdout#info] A query: b'googlehosted.l.googleusercontent.com'
+  79.3  20 | 2019-07-24T20:50:01+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 18908
+  79.3  20 | 2019-07-24T20:50:01+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1246a0>
+  79.3  20 | 2019-07-24T20:50:01+0000 [-] (UDP Port 18908 Closed)
+  79.3  20 | 2019-07-24T20:50:01+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1246a0>
+  83.8  29 | c : DNS request from ('172.21.159.247', 56417) to None: 43 bytes
+  83.8  20 | 2019-07-24T20:50:06+0000 [stdout#info] A query: b'vortex.data.microsoft.com'
+  83.8  20 | 2019-07-24T20:50:06+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 3953
+  83.8  20 | 2019-07-24T20:50:06+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124358>
+  83.9  20 | 2019-07-24T20:50:06+0000 [-] (UDP Port 3953 Closed)
+  83.9  20 | 2019-07-24T20:50:06+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124358>
+  84.2  29 | c : DNS request from ('172.21.159.247', 59686) to None: 44 bytes
+  84.2  20 | 2019-07-24T20:50:06+0000 [stdout#info] A query: b'stackpath.bootstrapcdn.com'
+  84.2  20 | 2019-07-24T20:50:06+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 29918
+  84.2  20 | 2019-07-24T20:50:06+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124978>
+  84.3  20 | 2019-07-24T20:50:06+0000 [-] (UDP Port 29918 Closed)
+  84.3  20 | 2019-07-24T20:50:06+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124978>
+  90.9 TEL | [51] Running: sudo -n echo -n
+  90.9 TEL | [51] ran in 0.04 secs.
+  93.4  29 | c : DNS request from ('172.21.159.247', 61288) to None: 34 bytes
+  93.4  20 | 2019-07-24T20:50:15+0000 [stdout#info] A query: b'swscan.apple.com'
+  93.4  20 | 2019-07-24T20:50:15+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 56180
+  93.4  20 | 2019-07-24T20:50:15+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124780>
+  93.4  20 | 2019-07-24T20:50:16+0000 [-] (UDP Port 56180 Closed)
+  93.4  20 | 2019-07-24T20:50:16+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124780>
+  93.5  29 | c : DNS request from ('172.21.159.247', 50636) to None: 27 bytes
+  93.5  20 | 2019-07-24T20:50:16+0000 [stdout#info] A query: b'slack.com'
+  93.5  20 | 2019-07-24T20:50:16+0000 [stdout#info] RESOLVING b'slack.com.svc.cluster.local'
+  93.5  20 | 2019-07-24T20:50:16+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 50531
+  93.5  20 | 2019-07-24T20:50:16+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124240>
+  93.5  20 | 2019-07-24T20:50:16+0000 [stdout#info] FAILED to lookup b'slack.com.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=14819 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('slack.com.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+  93.5  20 | 2019-07-24T20:50:16+0000 [stdout#info] ]), trying b'slack.com'
+  93.5  20 | 2019-07-24T20:50:16+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 42332
+  93.5  20 | 2019-07-24T20:50:16+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124940>
+  93.5  20 | 2019-07-24T20:50:16+0000 [-] (UDP Port 50531 Closed)
+  93.5  20 | 2019-07-24T20:50:16+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124240>
+  93.5  20 | 2019-07-24T20:50:16+0000 [-] (UDP Port 42332 Closed)
+  93.5  20 | 2019-07-24T20:50:16+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124940>
+  95.5 TEL | (proxy checking local liveness)
+  95.5  20 | 2019-07-24T20:50:18+0000 [Poll#info] Checkpoint
+  95.9  29 | c : DNS request from ('172.21.159.247', 53625) to None: 50 bytes
+  95.9  29 | c : DNS request from ('172.21.159.247', 64907) to None: 50 bytes
+  95.9  20 | 2019-07-24T20:50:18+0000 [stdout#info] AAAA query, sending back A instead: b'docker-for-desktop.measurabl.com'
+  95.9  20 | 2019-07-24T20:50:18+0000 [stdout#info] A query: b'docker-for-desktop.measurabl.com'
+  95.9  20 | 2019-07-24T20:50:18+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 50651
+  95.9  20 | 2019-07-24T20:50:18+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124fd0>
+  95.9  20 | 2019-07-24T20:50:18+0000 [stdout#info] A query: b'docker-for-desktop.measurabl.com'
+  96.0  20 | 2019-07-24T20:50:18+0000 [-] (UDP Port 50651 Closed)
+  96.0  20 | 2019-07-24T20:50:18+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124fd0>
+  97.5  29 | c : DNS request from ('172.21.159.247', 55458) to None: 82 bytes
+  97.5  20 | 2019-07-24T20:50:20+0000 [stdout#info] A query: b'mcs-us-east-2-cloudstation-787499290.us-east-2.elb.amazonaws.com'
+  97.5  20 | 2019-07-24T20:50:20+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 1282
+  97.5  20 | 2019-07-24T20:50:20+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124e48>
+  97.5  20 | 2019-07-24T20:50:20+0000 [-] (UDP Port 1282 Closed)
+  97.5  20 | 2019-07-24T20:50:20+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124e48>
+  98.2  29 | c : DNS request from ('172.21.159.247', 17360) to None: 33 bytes
+  98.2  20 | 2019-07-24T20:50:20+0000 [stdout#info] A query: b'ssl.gstatic.com'
+  98.2  20 | 2019-07-24T20:50:20+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 5855
+  98.2  20 | 2019-07-24T20:50:20+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124860>
+  98.3  20 | 2019-07-24T20:50:20+0000 [-] (UDP Port 5855 Closed)
+  98.3  20 | 2019-07-24T20:50:20+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124860>
+ 103.4  29 | c : DNS request from ('172.21.159.247', 57445) to None: 40 bytes
+ 103.4  29 | c : DNS request from ('172.21.159.247', 61724) to None: 40 bytes
+ 103.4  29 | c : DNS request from ('172.21.159.247', 61724) to None: 40 bytes
+ 103.4  20 | 2019-07-24T20:50:26+0000 [stdout#info] AAAA query, sending back A instead: b'docker-for-desktop.lan'
+ 103.5  20 | 2019-07-24T20:50:26+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+ 103.5  20 | 2019-07-24T20:50:26+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+ 103.5  20 | 2019-07-24T20:50:26+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 12778
+ 103.5  20 | 2019-07-24T20:50:26+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b128>
+ 103.5  20 | 2019-07-24T20:50:26+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+ 103.5  20 | 2019-07-24T20:50:26+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+ 103.5  20 | 2019-07-24T20:50:26+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 57744
+ 103.5  20 | 2019-07-24T20:50:26+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b4e0>
+ 103.5  20 | 2019-07-24T20:50:26+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+ 103.5  20 | 2019-07-24T20:50:26+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+ 103.5  20 | 2019-07-24T20:50:26+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 9594
+ 103.5  20 | 2019-07-24T20:50:26+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b8d0>
+ 103.5  20 | 2019-07-24T20:50:26+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=33206 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 103.5  20 | 2019-07-24T20:50:26+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+ 103.5  20 | 2019-07-24T20:50:26+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 28960
+ 103.5  20 | 2019-07-24T20:50:26+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124908>
+ 103.5  20 | 2019-07-24T20:50:26+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=4643 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 103.5  20 | 2019-07-24T20:50:26+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+ 103.5  20 | 2019-07-24T20:50:26+0000 [-] (UDP Port 12778 Closed)
+ 103.5  20 | 2019-07-24T20:50:26+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b128>
+ 103.5  20 | 2019-07-24T20:50:26+0000 [-] (UDP Port 57744 Closed)
+ 103.5  20 | 2019-07-24T20:50:26+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b4e0>
+ 103.5  20 | 2019-07-24T20:50:26+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=30344 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 103.5  20 | 2019-07-24T20:50:26+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+ 103.5  20 | 2019-07-24T20:50:26+0000 [-] (UDP Port 9594 Closed)
+ 103.5  20 | 2019-07-24T20:50:26+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b8d0>
+ 103.5  20 | 2019-07-24T20:50:26+0000 [-] (UDP Port 28960 Closed)
+ 103.5  20 | 2019-07-24T20:50:26+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124908>
+ 104.2  29 | c : DNS request from ('172.21.159.247', 14327) to None: 31 bytes
+ 104.2  20 | 2019-07-24T20:50:26+0000 [stdout#info] A query: b'js.driftt.com'
+ 104.2  20 | 2019-07-24T20:50:26+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 16380
+ 104.2  20 | 2019-07-24T20:50:26+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124c50>
+ 104.2  20 | 2019-07-24T20:50:26+0000 [-] (UDP Port 16380 Closed)
+ 104.2  20 | 2019-07-24T20:50:26+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124c50>
+ 109.0  29 | c : DNS request from ('172.21.159.247', 49932) to None: 35 bytes
+ 109.0  20 | 2019-07-24T20:50:31+0000 [stdout#info] A query: b'gophers.slack.com'
+ 109.0  20 | 2019-07-24T20:50:31+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 12017
+ 109.0  20 | 2019-07-24T20:50:31+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124a58>
+ 109.1  20 | 2019-07-24T20:50:31+0000 [-] (UDP Port 12017 Closed)
+ 109.1  20 | 2019-07-24T20:50:31+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124a58>
+ 109.8  29 | c : DNS request from ('172.21.159.247', 51818) to None: 47 bytes
+ 109.9  20 | 2019-07-24T20:50:32+0000 [stdout#info] A query: b'd3cv4a9a9wh0bt.cloudfront.net'
+ 109.9  20 | 2019-07-24T20:50:32+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 3911
+ 109.9  20 | 2019-07-24T20:50:32+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1246a0>
+ 109.9  20 | 2019-07-24T20:50:32+0000 [-] (UDP Port 3911 Closed)
+ 109.9  20 | 2019-07-24T20:50:32+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1246a0>
+ 113.5  29 | c : DNS request from ('172.21.159.247', 64771) to None: 40 bytes
+ 113.5  29 | c : DNS request from ('172.21.159.247', 57615) to None: 40 bytes
+ 113.5  20 | 2019-07-24T20:50:36+0000 [stdout#info] AAAA query, sending back A instead: b'docker-for-desktop.lan'
+ 113.5  20 | 2019-07-24T20:50:36+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+ 113.5  20 | 2019-07-24T20:50:36+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+ 113.5  20 | 2019-07-24T20:50:36+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 27442
+ 113.5  20 | 2019-07-24T20:50:36+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124b00>
+ 113.5  20 | 2019-07-24T20:50:36+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+ 113.5  20 | 2019-07-24T20:50:36+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+ 113.5  20 | 2019-07-24T20:50:36+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 32615
+ 113.5  20 | 2019-07-24T20:50:36+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124128>
+ 113.5  20 | 2019-07-24T20:50:36+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=5958 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 113.5  20 | 2019-07-24T20:50:36+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+ 113.5  20 | 2019-07-24T20:50:36+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 58237
+ 113.5  20 | 2019-07-24T20:50:36+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cd68>
+ 113.5  20 | 2019-07-24T20:50:36+0000 [-] (UDP Port 27442 Closed)
+ 113.5  20 | 2019-07-24T20:50:36+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124b00>
+ 113.5  20 | 2019-07-24T20:50:36+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=1672 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 113.5  20 | 2019-07-24T20:50:36+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+ 113.5  20 | 2019-07-24T20:50:36+0000 [-] (UDP Port 32615 Closed)
+ 113.5  20 | 2019-07-24T20:50:36+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124128>
+ 113.5  20 | 2019-07-24T20:50:36+0000 [-] (UDP Port 58237 Closed)
+ 113.5  20 | 2019-07-24T20:50:36+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cd68>
+ 114.0  29 | c : DNS request from ('172.21.159.247', 65120) to None: 35 bytes
+ 114.1  20 | 2019-07-24T20:50:36+0000 [stdout#info] A query: b'edgeapi.slack.com'
+ 114.1  20 | 2019-07-24T20:50:36+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 8243
+ 114.1  20 | 2019-07-24T20:50:36+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124ac8>
+ 114.1  20 | 2019-07-24T20:50:36+0000 [-] (UDP Port 8243 Closed)
+ 114.1  20 | 2019-07-24T20:50:36+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124ac8>
+ 119.3  29 | c : DNS request from ('172.21.159.247', 54743) to None: 35 bytes
+ 119.3  20 | 2019-07-24T20:50:41+0000 [stdout#info] A query: b'guzzoni.apple.com'
+ 119.3  20 | 2019-07-24T20:50:41+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 8332
+ 119.3  20 | 2019-07-24T20:50:41+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124160>
+ 119.3  20 | 2019-07-24T20:50:41+0000 [-] (UDP Port 8332 Closed)
+ 119.3  20 | 2019-07-24T20:50:41+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124160>
+ 121.0 TEL | [52] Running: sudo -n echo -n
+ 121.0 TEL | [52] ran in 0.05 secs.
+ 122.5  29 | c : DNS request from ('172.21.159.247', 41117) to None: 47 bytes
+ 122.5  20 | 2019-07-24T20:50:45+0000 [stdout#info] A query: b'people-pa.clients6.google.com'
+ 122.5  20 | 2019-07-24T20:50:45+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 51692
+ 122.5  20 | 2019-07-24T20:50:45+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124470>
+ 122.5  20 | 2019-07-24T20:50:45+0000 [-] (UDP Port 51692 Closed)
+ 122.5  20 | 2019-07-24T20:50:45+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124470>
+ 125.5 TEL | (proxy checking local liveness)
+ 125.5  20 | 2019-07-24T20:50:48+0000 [Poll#info] Checkpoint
+ 129.7  29 | c : DNS request from ('172.21.159.247', 57605) to None: 32 bytes
+ 129.7  20 | 2019-07-24T20:50:52+0000 [stdout#info] A query: b'4.sophosxl.net'
+ 129.7  20 | 2019-07-24T20:50:52+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 65022
+ 129.7  20 | 2019-07-24T20:50:52+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124470>
+ 129.7  20 | 2019-07-24T20:50:52+0000 [-] (UDP Port 65022 Closed)
+ 129.7  20 | 2019-07-24T20:50:52+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124470>
+ 146.7  29 | c : DNS request from ('172.21.159.247', 64278) to None: 33 bytes
+ 146.7  20 | 2019-07-24T20:51:09+0000 [stdout#info] A query: b'play.google.com'
+ 146.7  20 | 2019-07-24T20:51:09+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 41223
+ 146.7  20 | 2019-07-24T20:51:09+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cd30>
+ 146.7  20 | 2019-07-24T20:51:09+0000 [-] (UDP Port 41223 Closed)
+ 146.7  20 | 2019-07-24T20:51:09+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cd30>
+ 149.3  29 | c : DNS request from ('172.21.159.247', 49165) to None: 40 bytes
+ 149.3  20 | 2019-07-24T20:51:11+0000 [stdout#info] A query: b'az764295.vo.msecnd.net'
+ 149.3  20 | 2019-07-24T20:51:11+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 2491
+ 149.3  20 | 2019-07-24T20:51:11+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cf60>
+ 149.3  20 | 2019-07-24T20:51:11+0000 [-] (UDP Port 2491 Closed)
+ 149.3  20 | 2019-07-24T20:51:11+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cf60>
+ 151.1 TEL | [53] Running: sudo -n echo -n
+ 151.2 TEL | [53] ran in 0.04 secs.
+ 151.7  29 | c : DNS request from ('172.21.159.247', 56694) to None: 39 bytes
+ 151.7  20 | 2019-07-24T20:51:14+0000 [stdout#info] A query: b'wss-primary.slack.com'
+ 151.7  20 | 2019-07-24T20:51:14+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 49420
+ 151.7  20 | 2019-07-24T20:51:14+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124860>
+ 151.7  20 | 2019-07-24T20:51:14+0000 [-] (UDP Port 49420 Closed)
+ 151.7  20 | 2019-07-24T20:51:14+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124860>
+ 151.9  29 | c : DNS request from ('172.21.159.247', 59585) to None: 44 bytes
+ 151.9  29 | c : DNS request from ('172.21.159.247', 60568) to None: 27 bytes
+ 151.9  20 | 2019-07-24T20:51:14+0000 [stdout#info] A query: b'calendars.fe.apple-dns.net'
+ 151.9  20 | 2019-07-24T20:51:14+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 44002
+ 151.9  20 | 2019-07-24T20:51:14+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18c6a0>
+ 151.9  29 | c : DNS request from ('172.21.159.247', 50069) to None: 41 bytes
+ 151.9  20 | 2019-07-24T20:51:14+0000 [-] (UDP Port 44002 Closed)
+ 151.9  20 | 2019-07-24T20:51:14+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18c6a0>
+ 151.9  29 | c : DNS request from ('172.21.159.247', 50819) to None: 31 bytes
+ 151.9  20 | 2019-07-24T20:51:14+0000 [stdout#info] A query: b'icalx.com'
+ 151.9  20 | 2019-07-24T20:51:14+0000 [stdout#info] RESOLVING b'icalx.com.svc.cluster.local'
+ 151.9  20 | 2019-07-24T20:51:14+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 42870
+ 151.9  20 | 2019-07-24T20:51:14+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18ccc0>
+ 151.9  20 | 2019-07-24T20:51:14+0000 [stdout#info] FAILED to lookup b'icalx.com.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=55777 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('icalx.com.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 151.9  20 | 2019-07-24T20:51:14+0000 [stdout#info] ]), trying b'icalx.com'
+ 151.9  20 | 2019-07-24T20:51:14+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 57221
+ 151.9  20 | 2019-07-24T20:51:14+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b550>
+ 151.9  20 | 2019-07-24T20:51:14+0000 [-] (UDP Port 42870 Closed)
+ 151.9  20 | 2019-07-24T20:51:14+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18ccc0>
+ 151.9  20 | 2019-07-24T20:51:14+0000 [-] (UDP Port 57221 Closed)
+ 151.9  20 | 2019-07-24T20:51:14+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b550>
+ 151.9  20 | 2019-07-24T20:51:14+0000 [stdout#info] A query: b'caldav.fe.apple-dns.net'
+ 151.9  20 | 2019-07-24T20:51:14+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 60100
+ 151.9  20 | 2019-07-24T20:51:14+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cf98>
+ 152.0  20 | 2019-07-24T20:51:14+0000 [stdout#info] A query: b'www.webcal.fi'
+ 152.0  20 | 2019-07-24T20:51:14+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 46308
+ 152.0  20 | 2019-07-24T20:51:14+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b908>
+ 152.0  20 | 2019-07-24T20:51:14+0000 [-] (UDP Port 46308 Closed)
+ 152.0  20 | 2019-07-24T20:51:14+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b908>
+ 152.0  20 | 2019-07-24T20:51:14+0000 [-] (UDP Port 60100 Closed)
+ 152.0  20 | 2019-07-24T20:51:14+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cf98>
+ 154.4  29 | c : DNS request from ('172.21.159.247', 50322) to None: 41 bytes
+ 154.4  20 | 2019-07-24T20:51:16+0000 [stdout#info] A query: b'e5977.e9.akamaiedge.net'
+ 154.4  20 | 2019-07-24T20:51:16+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 32576
+ 154.4  20 | 2019-07-24T20:51:16+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cfd0>
+ 154.4  20 | 2019-07-24T20:51:16+0000 [-] (UDP Port 32576 Closed)
+ 154.4  20 | 2019-07-24T20:51:16+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cfd0>
+ 154.6  29 | c : DNS request from ('172.21.159.247', 62031) to None: 38 bytes
+ 154.6  20 | 2019-07-24T20:51:17+0000 [stdout#info] A query: b'realtime.bizzabo.com'
+ 154.6  20 | 2019-07-24T20:51:17+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 36305
+ 154.6  20 | 2019-07-24T20:51:17+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18c6a0>
+ 154.6  20 | 2019-07-24T20:51:17+0000 [-] (UDP Port 36305 Closed)
+ 154.6  20 | 2019-07-24T20:51:17+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18c6a0>
+ 155.2  29 | c : DNS request from ('172.21.159.247', 63528) to None: 41 bytes
+ 155.2  20 | 2019-07-24T20:51:17+0000 [stdout#info] A query: b'googleapis.l.google.com'
+ 155.2  20 | 2019-07-24T20:51:17+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 37450
+ 155.2  20 | 2019-07-24T20:51:17+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cf98>
+ 155.3  20 | 2019-07-24T20:51:17+0000 [-] (UDP Port 37450 Closed)
+ 155.3  20 | 2019-07-24T20:51:17+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cf98>
+ 155.5 TEL | (proxy checking local liveness)
+ 155.6  20 | 2019-07-24T20:51:18+0000 [Poll#info] Checkpoint
+ 158.1  29 | c : DNS request from ('172.21.159.247', 63873) to None: 41 bytes
+ 158.1  20 | 2019-07-24T20:51:20+0000 [stdout#info] A query: b'pollserver.lastpass.com'
+ 158.1  20 | 2019-07-24T20:51:20+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 45811
+ 158.1  20 | 2019-07-24T20:51:20+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b128>
+ 158.2  20 | 2019-07-24T20:51:20+0000 [-] (UDP Port 45811 Closed)
+ 158.2  20 | 2019-07-24T20:51:20+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b128>
+ 165.4  29 | c : DNS request from ('172.21.159.247', 56517) to None: 52 bytes
+ 165.4  20 | 2019-07-24T20:51:27+0000 [stdout#info] A query: b'gs-loc-new.ls-apple.com.akadns.net'
+ 165.4  20 | 2019-07-24T20:51:27+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 49903
+ 165.4  20 | 2019-07-24T20:51:27+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b390>
+ 165.5  20 | 2019-07-24T20:51:28+0000 [-] (UDP Port 49903 Closed)
+ 165.5  20 | 2019-07-24T20:51:28+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b390>
+ 172.9  29 | c : DNS request from ('172.21.159.247', 49903) to None: 40 bytes
+ 172.9  20 | 2019-07-24T20:51:35+0000 [stdout#info] A query: b'sjc-l1webui.egnyte.com'
+ 172.9  20 | 2019-07-24T20:51:35+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 34732
+ 172.9  20 | 2019-07-24T20:51:35+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b128>
+ 172.9  20 | 2019-07-24T20:51:35+0000 [-] (UDP Port 34732 Closed)
+ 172.9  20 | 2019-07-24T20:51:35+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b128>
+ 173.7  29 | c : DNS request from ('172.21.159.247', 58565) to None: 33 bytes
+ 173.7  20 | 2019-07-24T20:51:36+0000 [stdout#info] A query: b'C02TN26SG8WL-lm'
+ 173.7  20 | 2019-07-24T20:51:36+0000 [stdout#info] RESOLVING b'C02TN26SG8WL-lm.default.svc.cluster.local'
+ 173.7  20 | 2019-07-24T20:51:36+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 38966
+ 173.7  20 | 2019-07-24T20:51:36+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12ba20>
+ 173.7  20 | 2019-07-24T20:51:36+0000 [stdout#info] FAILED to lookup b'C02TN26SG8WL-lm.default.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=38718 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('C02TN26SG8WL-lm.default.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 173.7  20 | 2019-07-24T20:51:36+0000 [stdout#info] ]), trying b'C02TN26SG8WL-lm'
+ 173.8  20 | 2019-07-24T20:51:36+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 17725
+ 173.8  20 | 2019-07-24T20:51:36+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b240>
+ 173.8  20 | 2019-07-24T20:51:36+0000 [-] (UDP Port 38966 Closed)
+ 173.8  20 | 2019-07-24T20:51:36+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12ba20>
+ 173.8  20 | 2019-07-24T20:51:36+0000 [-] (UDP Port 17725 Closed)
+ 173.8  20 | 2019-07-24T20:51:36+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b240>
+ 173.8  29 | c : DNS request from ('172.21.159.247', 52538) to None: 38 bytes
+ 173.8  20 | 2019-07-24T20:51:36+0000 [stdout#info] A query: b'print.corp.yahoo.com'
+ 173.8  20 | 2019-07-24T20:51:36+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 32925
+ 173.8  29 | c : DNS request from ('172.21.159.247', 63819) to None: 43 bytes
+ 173.8  20 | 2019-07-24T20:51:36+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12ba20>
+ 173.8  20 | 2019-07-24T20:51:36+0000 [stdout#info] A query: b'autogravity.jamfcloud.com'
+ 173.8  20 | 2019-07-24T20:51:36+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 42538
+ 173.8  20 | 2019-07-24T20:51:36+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b320>
+ 173.8  20 | 2019-07-24T20:51:36+0000 [-] (UDP Port 32925 Closed)
+ 173.8  20 | 2019-07-24T20:51:36+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12ba20>
+ 173.8  20 | 2019-07-24T20:51:36+0000 [-] (UDP Port 42538 Closed)
+ 173.8  20 | 2019-07-24T20:51:36+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b320>
+ 176.1  29 | c : DNS request from ('172.21.159.247', 58335) to None: 50 bytes
+ 176.1  29 | c : DNS request from ('172.21.159.247', 54365) to None: 50 bytes
+ 176.1  20 | 2019-07-24T20:51:38+0000 [stdout#info] AAAA query, sending back A instead: b'docker-for-desktop.measurabl.com'
+ 176.1  20 | 2019-07-24T20:51:38+0000 [stdout#info] A query: b'docker-for-desktop.measurabl.com'
+ 176.1  20 | 2019-07-24T20:51:38+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 18609
+ 176.1  20 | 2019-07-24T20:51:38+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bba8>
+ 176.1  20 | 2019-07-24T20:51:38+0000 [stdout#info] A query: b'docker-for-desktop.measurabl.com'
+ 176.1  20 | 2019-07-24T20:51:38+0000 [-] (UDP Port 18609 Closed)
+ 176.1  20 | 2019-07-24T20:51:38+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bba8>
+ 178.3  29 | c : DNS request from ('172.21.159.247', 60357) to None: 52 bytes
+ 178.3  20 | 2019-07-24T20:51:40+0000 [stdout#info] A query: b'configuration.apple.com.akadns.net'
+ 178.3  20 | 2019-07-24T20:51:40+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 7998
+ 178.3  20 | 2019-07-24T20:51:40+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b550>
+ 178.3  20 | 2019-07-24T20:51:40+0000 [-] (UDP Port 7998 Closed)
+ 178.3  20 | 2019-07-24T20:51:40+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b550>
+ 179.0  29 | c : DNS request from ('172.21.159.247', 63386) to None: 35 bytes
+ 179.0  20 | 2019-07-24T20:51:41+0000 [stdout#info] A query: b'edgeapi.slack.com'
+ 179.0  20 | 2019-07-24T20:51:41+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 41046
+ 179.1  20 | 2019-07-24T20:51:41+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bc88>
+ 179.1  20 | 2019-07-24T20:51:41+0000 [-] (UDP Port 41046 Closed)
+ 179.1  20 | 2019-07-24T20:51:41+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bc88>
+ 181.2 TEL | [54] Running: sudo -n echo -n
+ 181.3 TEL | [54] ran in 0.04 secs.
+ 183.7  29 | c : DNS request from ('172.21.159.247', 53859) to None: 40 bytes
+ 183.7  29 | c : DNS request from ('172.21.159.247', 49742) to None: 40 bytes
+ 183.7  20 | 2019-07-24T20:51:46+0000 [stdout#info] AAAA query, sending back A instead: b'docker-for-desktop.lan'
+ 183.7  20 | 2019-07-24T20:51:46+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+ 183.7  20 | 2019-07-24T20:51:46+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+ 183.7  20 | 2019-07-24T20:51:46+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 15641
+ 183.7  20 | 2019-07-24T20:51:46+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b470>
+ 183.7  20 | 2019-07-24T20:51:46+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+ 183.7  20 | 2019-07-24T20:51:46+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+ 183.7  20 | 2019-07-24T20:51:46+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 53438
+ 183.8  20 | 2019-07-24T20:51:46+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b4e0>
+ 183.8  20 | 2019-07-24T20:51:46+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=23470 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 183.8  20 | 2019-07-24T20:51:46+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+ 183.8  20 | 2019-07-24T20:51:46+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 32751
+ 183.8  20 | 2019-07-24T20:51:46+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12be48>
+ 183.8  20 | 2019-07-24T20:51:46+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=3466 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 183.8  20 | 2019-07-24T20:51:46+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+ 183.8  20 | 2019-07-24T20:51:46+0000 [-] (UDP Port 15641 Closed)
+ 183.8  20 | 2019-07-24T20:51:46+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b470>
+ 183.8  20 | 2019-07-24T20:51:46+0000 [-] (UDP Port 53438 Closed)
+ 183.8  20 | 2019-07-24T20:51:46+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b4e0>
+ 183.8  20 | 2019-07-24T20:51:46+0000 [-] (UDP Port 32751 Closed)
+ 183.8  20 | 2019-07-24T20:51:46+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12be48>
+ 185.5 TEL | (proxy checking local liveness)
+ 185.5  20 | 2019-07-24T20:51:48+0000 [Poll#info] Checkpoint
+ 187.9  29 | c : DNS request from ('172.21.159.247', 55721) to None: 83 bytes
+ 187.9  20 | 2019-07-24T20:51:50+0000 [stdout#info] A query: b'prod-haproxy-wss-nlb-2fed50b5e262c97e.elb.us-west-2.amazonaws.com'
+ 187.9  20 | 2019-07-24T20:51:50+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 54172
+ 187.9  20 | 2019-07-24T20:51:50+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bd30>
+ 188.0  20 | 2019-07-24T20:51:50+0000 [-] (UDP Port 54172 Closed)
+ 188.0  20 | 2019-07-24T20:51:50+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bd30>
+ 189.2  29 | c : DNS request from ('172.21.159.247', 54621) to None: 33 bytes
+ 189.2  20 | 2019-07-24T20:51:51+0000 [stdout#info] A query: b'ssl.gstatic.com'
+ 189.2  20 | 2019-07-24T20:51:51+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 43169
+ 189.2  20 | 2019-07-24T20:51:51+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bb38>
+ 189.2  29 | c : DNS request from ('172.21.159.247', 50854) to None: 33 bytes
+ 189.2  20 | 2019-07-24T20:51:51+0000 [stdout#info] A query: b'docs.google.com'
+ 189.2  20 | 2019-07-24T20:51:51+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 8351
+ 189.2  20 | 2019-07-24T20:51:51+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bd68>
+ 189.2  20 | 2019-07-24T20:51:51+0000 [-] (UDP Port 43169 Closed)
+ 189.2  20 | 2019-07-24T20:51:51+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bb38>
+ 189.3  20 | 2019-07-24T20:51:51+0000 [-] (UDP Port 8351 Closed)
+ 189.3  20 | 2019-07-24T20:51:51+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bd68>
+ 193.2  29 | c : DNS request from ('172.21.159.247', 42446) to None: 33 bytes
+ 193.3  20 | 2019-07-24T20:51:55+0000 [stdout#info] A query: b'play.google.com'
+ 193.3  20 | 2019-07-24T20:51:55+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 43699
+ 193.3  20 | 2019-07-24T20:51:55+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bf28>
+ 193.3  20 | 2019-07-24T20:51:55+0000 [-] (UDP Port 43699 Closed)
+ 193.3  20 | 2019-07-24T20:51:55+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bf28>
+ 193.7  29 | c : DNS request from ('172.21.159.247', 64270) to None: 40 bytes
+ 193.7  29 | c : DNS request from ('172.21.159.247', 61841) to None: 40 bytes
+ 193.7  20 | 2019-07-24T20:51:56+0000 [stdout#info] AAAA query, sending back A instead: b'docker-for-desktop.lan'
+ 193.7  20 | 2019-07-24T20:51:56+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+ 193.7  20 | 2019-07-24T20:51:56+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+ 193.7  20 | 2019-07-24T20:51:56+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 18842
+ 193.7  20 | 2019-07-24T20:51:56+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bc50>
+ 193.7  20 | 2019-07-24T20:51:56+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=9012 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 193.7  20 | 2019-07-24T20:51:56+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+ 193.7  20 | 2019-07-24T20:51:56+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 36291
+ 193.7  20 | 2019-07-24T20:51:56+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b136160>
+ 193.7  20 | 2019-07-24T20:51:56+0000 [-] (UDP Port 18842 Closed)
+ 193.7  20 | 2019-07-24T20:51:56+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bc50>
+ 193.8  20 | 2019-07-24T20:51:56+0000 [-] (UDP Port 36291 Closed)
+ 193.8  20 | 2019-07-24T20:51:56+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b136160>
+ 193.8  20 | 2019-07-24T20:51:56+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+ 193.8  20 | 2019-07-24T20:51:56+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+ 193.8  20 | 2019-07-24T20:51:56+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 26050
+ 193.8  20 | 2019-07-24T20:51:56+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bb38>
+ 193.8  20 | 2019-07-24T20:51:56+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=15982 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 193.8  20 | 2019-07-24T20:51:56+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+ 193.8  20 | 2019-07-24T20:51:56+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 64965
+ 193.8  20 | 2019-07-24T20:51:56+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1362b0>
+ 193.8  20 | 2019-07-24T20:51:56+0000 [-] (UDP Port 26050 Closed)
+ 193.8  20 | 2019-07-24T20:51:56+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bb38>
+ 193.8  20 | 2019-07-24T20:51:56+0000 [-] (UDP Port 64965 Closed)
+ 193.8  20 | 2019-07-24T20:51:56+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1362b0>
+ 194.0  29 | c : DNS request from ('172.21.159.247', 50203) to None: 42 bytes
+ 194.1  20 | 2019-07-24T20:51:56+0000 [stdout#info] A query: b'gateway.fe.apple-dns.net'
+ 194.1  20 | 2019-07-24T20:51:56+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 1759
+ 194.1  20 | 2019-07-24T20:51:56+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bfd0>
+ 194.2  20 | 2019-07-24T20:51:56+0000 [-] (UDP Port 1759 Closed)
+ 194.2  20 | 2019-07-24T20:51:56+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bfd0>
+ 199.0  29 | c : DNS request from ('172.21.159.247', 53892) to None: 77 bytes
+ 199.0  20 | 2019-07-24T20:52:01+0000 [stdout#info] A query: b'companion-release-server.us-west-1.prod.public.atl-paas.net'
+ 199.0  20 | 2019-07-24T20:52:01+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 18826
+ 199.0  20 | 2019-07-24T20:52:01+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bc50>
+ 199.0  20 | 2019-07-24T20:52:01+0000 [-] (UDP Port 18826 Closed)
+ 199.1  20 | 2019-07-24T20:52:01+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bc50>
+ 201.0  29 | c : DNS request from ('172.21.159.247', 62899) to None: 27 bytes
+ 201.0  20 | 2019-07-24T20:52:03+0000 [stdout#info] A query: b'slack.com'
+ 201.0  20 | 2019-07-24T20:52:03+0000 [stdout#info] RESOLVING b'slack.com.svc.cluster.local'
+ 201.0  20 | 2019-07-24T20:52:03+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 53383
+ 201.0  20 | 2019-07-24T20:52:03+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b630>
+ 201.0  20 | 2019-07-24T20:52:03+0000 [stdout#info] FAILED to lookup b'slack.com.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=9108 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('slack.com.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 201.0  20 | 2019-07-24T20:52:03+0000 [stdout#info] ]), trying b'slack.com'
+ 201.0  20 | 2019-07-24T20:52:03+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 53813
+ 201.1  20 | 2019-07-24T20:52:03+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b136278>
+ 201.1  20 | 2019-07-24T20:52:03+0000 [-] (UDP Port 53383 Closed)
+ 201.1  20 | 2019-07-24T20:52:03+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b630>
+ 201.1  20 | 2019-07-24T20:52:03+0000 [-] (UDP Port 53813 Closed)
+ 201.1  20 | 2019-07-24T20:52:03+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b136278>
+ 206.5  29 | c : DNS request from ('172.21.159.247', 57217) to None: 47 bytes
+ 206.5  20 | 2019-07-24T20:52:09+0000 [stdout#info] A query: b'clientservices.googleapis.com'
+ 206.5  20 | 2019-07-24T20:52:09+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 38950
+ 206.5  20 | 2019-07-24T20:52:09+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bc50>
+ 206.5  20 | 2019-07-24T20:52:09+0000 [-] (UDP Port 38950 Closed)
+ 206.5  20 | 2019-07-24T20:52:09+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bc50>
+ 210.0  29 | c : DNS request from ('172.21.159.247', 57488) to None: 37 bytes
+ 210.0  20 | 2019-07-24T20:52:12+0000 [stdout#info] A query: b'measurabl.slack.com'
+ 210.0  20 | 2019-07-24T20:52:12+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 36456
+ 210.0  20 | 2019-07-24T20:52:12+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b5f8>
+ 210.1  20 | 2019-07-24T20:52:12+0000 [-] (UDP Port 36456 Closed)
+ 210.1  20 | 2019-07-24T20:52:12+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b5f8>
+ 211.0  29 | c : DNS request from ('172.21.159.247', 60647) to None: 37 bytes
+ 211.0  20 | 2019-07-24T20:52:13+0000 [stdout#info] A query: b'accounts.google.com'
+ 211.0  20 | 2019-07-24T20:52:13+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 4138
+ 211.0  20 | 2019-07-24T20:52:13+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bd68>
+ 211.0  20 | 2019-07-24T20:52:13+0000 [-] (UDP Port 4138 Closed)
+ 211.0  20 | 2019-07-24T20:52:13+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bd68>
+ 211.3 TEL | [55] Running: sudo -n echo -n
+ 211.4 TEL | [55] ran in 0.05 secs.
+ 212.6  29 | c : DNS request from ('172.21.159.247', 60900) to None: 39 bytes
+ 212.6  20 | 2019-07-24T20:52:15+0000 [stdout#info] A query: b'wss-primary.slack.com'
+ 212.6  20 | 2019-07-24T20:52:15+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 1309
+ 212.6  20 | 2019-07-24T20:52:15+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12ba20>
+ 212.6  20 | 2019-07-24T20:52:15+0000 [-] (UDP Port 1309 Closed)
+ 212.6  20 | 2019-07-24T20:52:15+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12ba20>
+ 215.5 TEL | (proxy checking local liveness)
+ 215.5  20 | 2019-07-24T20:52:18+0000 [Poll#info] Checkpoint
+ 217.5  29 | c : DNS request from ('172.21.159.247', 58187) to None: 82 bytes
+ 217.5  29 | c : DNS request from ('172.21.159.247', 56333) to None: 82 bytes
+ 217.5  20 | 2019-07-24T20:52:20+0000 [stdout#info] A query: b'mcs-us-east-2-cloudstation-787499290.us-east-2.elb.amazonaws.com'
+ 217.5  20 | 2019-07-24T20:52:20+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 24538
+ 217.5  20 | 2019-07-24T20:52:20+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b138588>
+ 217.5  20 | 2019-07-24T20:52:20+0000 [stdout#info] AAAA query, sending back A instead: b'mcs-us-east-2-cloudstation-787499290.us-east-2.elb.amazonaws.com'
+ 217.5  20 | 2019-07-24T20:52:20+0000 [stdout#info] A query: b'mcs-us-east-2-cloudstation-787499290.us-east-2.elb.amazonaws.com'
+ 217.6  20 | 2019-07-24T20:52:20+0000 [-] (UDP Port 24538 Closed)
+ 217.6  20 | 2019-07-24T20:52:20+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b138588>
+ 217.8  29 | c : DNS request from ('172.21.159.247', 53900) to None: 38 bytes
+ 217.8  20 | 2019-07-24T20:52:20+0000 [stdout#info] A query: b'wss-backup.slack.com'
+ 217.8  20 | 2019-07-24T20:52:20+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 65488
+ 217.8  20 | 2019-07-24T20:52:20+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1384a8>
+ 217.8  20 | 2019-07-24T20:52:20+0000 [-] (UDP Port 65488 Closed)
+ 217.8  20 | 2019-07-24T20:52:20+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1384a8>
+ 218.2  29 | c : DNS request from ('172.21.159.247', 51086) to None: 38 bytes
+ 218.3  20 | 2019-07-24T20:52:20+0000 [stdout#info] A query: b'snowflake.bjango.com'
+ 218.3  20 | 2019-07-24T20:52:20+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 41645
+ 218.3  20 | 2019-07-24T20:52:20+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b138668>
+ 218.3  20 | 2019-07-24T20:52:20+0000 [-] (UDP Port 41645 Closed)
+ 218.3  20 | 2019-07-24T20:52:20+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b138668>
+ 219.2  29 | c : DNS request from ('172.21.159.247', 52968) to None: 45 bytes
+ 219.2  20 | 2019-07-24T20:52:21+0000 [stdout#info] A query: b'safebrowsing.googleapis.com'
+ 219.2  20 | 2019-07-24T20:52:21+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 23996
+ 219.2  20 | 2019-07-24T20:52:21+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b138668>
+ 219.2  20 | 2019-07-24T20:52:21+0000 [-] (UDP Port 23996 Closed)
+ 219.2  20 | 2019-07-24T20:52:21+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b138668>
+ 219.7  29 | c : DNS request from ('172.21.159.247', 51628) to None: 41 bytes
+ 219.7  20 | 2019-07-24T20:52:22+0000 [stdout#info] A query: b'e5977.e9.akamaiedge.net'
+ 219.7  20 | 2019-07-24T20:52:22+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 58219
+ 219.7  20 | 2019-07-24T20:52:22+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b138630>
+ 219.7  20 | 2019-07-24T20:52:22+0000 [-] (UDP Port 58219 Closed)
+ 219.7  20 | 2019-07-24T20:52:22+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b138630>
+ 222.8  29 | c : DNS request from ('172.21.159.247', 56353) to None: 35 bytes
+ 222.8  20 | 2019-07-24T20:52:25+0000 [stdout#info] A query: b'dci.sophosupd.com'
+ 222.8  20 | 2019-07-24T20:52:25+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 61197
+ 222.8  20 | 2019-07-24T20:52:25+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1388d0>
+ 222.8  20 | 2019-07-24T20:52:25+0000 [-] (UDP Port 61197 Closed)
+ 222.8  20 | 2019-07-24T20:52:25+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1388d0>
+ 222.8  29 | c : DNS request from ('172.21.159.247', 49801) to None: 35 bytes
+ 222.9  20 | 2019-07-24T20:52:25+0000 [stdout#info] A query: b'dci.sophosupd.net'
+ 222.9  20 | 2019-07-24T20:52:25+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 48367
+ 222.9  20 | 2019-07-24T20:52:25+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1387b8>
+ 222.9  20 | 2019-07-24T20:52:25+0000 [-] (UDP Port 48367 Closed)
+ 222.9  20 | 2019-07-24T20:52:25+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1387b8>
+ 228.1  29 | c : DNS request from ('172.21.159.247', 59132) to None: 32 bytes
+ 228.1  20 | 2019-07-24T20:52:30+0000 [stdout#info] A query: b'4.sophosxl.net'
+ 228.1  20 | 2019-07-24T20:52:30+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 3814
+ 228.1  20 | 2019-07-24T20:52:30+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1384a8>
+ 228.1  20 | 2019-07-24T20:52:30+0000 [-] (UDP Port 3814 Closed)
+ 228.1  20 | 2019-07-24T20:52:30+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b1384a8>
+ 239.0  29 | c : DNS request from ('172.21.159.247', 53097) to None: 35 bytes
+ 239.0  20 | 2019-07-24T20:52:41+0000 [stdout#info] A query: b'gophers.slack.com'
+ 239.0  20 | 2019-07-24T20:52:41+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 31078
+ 239.0  20 | 2019-07-24T20:52:41+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b138358>
+ 239.1  20 | 2019-07-24T20:52:41+0000 [-] (UDP Port 31078 Closed)
+ 239.1  20 | 2019-07-24T20:52:41+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b138358>
+ 241.5 TEL | [56] Running: sudo -n echo -n
+ 241.5 TEL | [56] ran in 0.07 secs.
+ 245.5 TEL | (proxy checking local liveness)
+ 245.5  20 | 2019-07-24T20:52:48+0000 [Poll#info] Checkpoint
+ 252.3  29 | c : DNS request from ('172.21.159.247', 14006) to None: 33 bytes
+ 252.3  20 | 2019-07-24T20:52:54+0000 [stdout#info] A query: b'mail.google.com'
+ 252.3  20 | 2019-07-24T20:52:54+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 19367
+ 252.3  20 | 2019-07-24T20:52:54+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12beb8>
+ 252.3  20 | 2019-07-24T20:52:54+0000 [-] (UDP Port 19367 Closed)
+ 252.3  20 | 2019-07-24T20:52:54+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12beb8>
+ 255.9  29 | c : DNS request from ('172.21.159.247', 61795) to None: 47 bytes
+ 255.9  20 | 2019-07-24T20:52:58+0000 [stdout#info] A query: b'd3cv4a9a9wh0bt.cloudfront.net'
+ 255.9  20 | 2019-07-24T20:52:58+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 44960
+ 255.9  20 | 2019-07-24T20:52:58+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bda0>
+ 255.9  20 | 2019-07-24T20:52:58+0000 [-] (UDP Port 44960 Closed)
+ 255.9  20 | 2019-07-24T20:52:58+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bda0>
+ 256.2  29 | c : DNS request from ('172.21.159.247', 62587) to None: 50 bytes
+ 256.2  29 | c : DNS request from ('172.21.159.247', 58183) to None: 50 bytes
+ 256.2  20 | 2019-07-24T20:52:58+0000 [stdout#info] AAAA query, sending back A instead: b'docker-for-desktop.measurabl.com'
+ 256.2  20 | 2019-07-24T20:52:58+0000 [stdout#info] A query: b'docker-for-desktop.measurabl.com'
+ 256.2  20 | 2019-07-24T20:52:58+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 53657
+ 256.2  20 | 2019-07-24T20:52:58+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b2b0>
+ 256.3  20 | 2019-07-24T20:52:58+0000 [-] (UDP Port 53657 Closed)
+ 256.3  20 | 2019-07-24T20:52:58+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b2b0>
+ 256.3  20 | 2019-07-24T20:52:58+0000 [stdout#info] A query: b'docker-for-desktop.measurabl.com'
+ 256.3  20 | 2019-07-24T20:52:58+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 17910
+ 256.3  20 | 2019-07-24T20:52:58+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12be80>
+ 256.3  20 | 2019-07-24T20:52:58+0000 [-] (UDP Port 17910 Closed)
+ 256.3  20 | 2019-07-24T20:52:58+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12be80>
+ 263.9  29 | c : DNS request from ('172.21.159.247', 50640) to None: 38 bytes
+ 263.9  20 | 2019-07-24T20:53:06+0000 [stdout#info] A query: b'wss-backup.slack.com'
+ 263.9  20 | 2019-07-24T20:53:06+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 16892
+ 263.9  20 | 2019-07-24T20:53:06+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b240>
+ 263.9  20 | 2019-07-24T20:53:06+0000 [-] (UDP Port 16892 Closed)
+ 263.9  20 | 2019-07-24T20:53:06+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12b240>
+ 264.0  29 | c : DNS request from ('172.21.159.247', 52886) to None: 40 bytes
+ 264.0  29 | c : DNS request from ('172.21.159.247', 59123) to None: 40 bytes
+ 264.0  29 | c : DNS request from ('172.21.159.247', 59123) to None: 40 bytes
+ 264.0  20 | 2019-07-24T20:53:06+0000 [stdout#info] AAAA query, sending back A instead: b'docker-for-desktop.lan'
+ 264.0  20 | 2019-07-24T20:53:06+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+ 264.0  20 | 2019-07-24T20:53:06+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+ 264.0  20 | 2019-07-24T20:53:06+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 14030
+ 264.0  20 | 2019-07-24T20:53:06+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bba8>
+ 264.0  20 | 2019-07-24T20:53:06+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+ 264.0  20 | 2019-07-24T20:53:06+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+ 264.0  20 | 2019-07-24T20:53:06+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 45576
+ 264.0  20 | 2019-07-24T20:53:06+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cd30>
+ 264.0  20 | 2019-07-24T20:53:06+0000 [stdout#info] A query: b'docker-for-desktop.lan'
+ 264.0  20 | 2019-07-24T20:53:06+0000 [stdout#info] RESOLVING b'docker-for-desktop.lan.svc.cluster.local'
+ 264.0  20 | 2019-07-24T20:53:06+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 9616
+ 264.0  20 | 2019-07-24T20:53:06+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124c18>
+ 264.0  20 | 2019-07-24T20:53:06+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=50394 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 264.0  20 | 2019-07-24T20:53:06+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+ 264.0  20 | 2019-07-24T20:53:06+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 29336
+ 264.1  20 | 2019-07-24T20:53:06+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124160>
+ 264.1  20 | 2019-07-24T20:53:06+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=35630 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 264.1  20 | 2019-07-24T20:53:06+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+ 264.1  20 | 2019-07-24T20:53:06+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=12377 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 264.1  20 | 2019-07-24T20:53:06+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+ 264.1  20 | 2019-07-24T20:53:06+0000 [-] (UDP Port 14030 Closed)
+ 264.1  20 | 2019-07-24T20:53:06+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bba8>
+ 264.1  20 | 2019-07-24T20:53:06+0000 [-] (UDP Port 45576 Closed)
+ 264.1  20 | 2019-07-24T20:53:06+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cd30>
+ 264.1  20 | 2019-07-24T20:53:06+0000 [-] (UDP Port 9616 Closed)
+ 264.1  20 | 2019-07-24T20:53:06+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124c18>
+ 264.1  20 | 2019-07-24T20:53:06+0000 [-] (UDP Port 29336 Closed)
+ 264.1  20 | 2019-07-24T20:53:06+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124160>
+ 270.0 >>> | Keyboard interrupt (Ctrl-C/Ctrl-Break) pressed
+ 270.0 >>> | Exit cleanup in progress
+ 270.0 TEL | (Cleanup) Terminate local process
+ 270.0 TEL | Killing local process...
+ 270.0  29 | >> pfctl -a sshuttle6-12300 -F all
+ 270.0 TEL | (Cleanup) Kill BG process [29] sshuttle
+ 270.0 TEL | (Cleanup) Unmount remote filesystem
+ 270.0 TEL | [57] Running: umount -f /tmp/tel-oni0n8zz/fs
+ 270.0  29 | >> pfctl -X 16845124458631181961
+ 270.0  57 | umount: /tmp/tel-oni0n8zz/fs: not currently mounted
+ 270.0 TEL | [57] exit 1 in 0.04 secs.
+ 270.0 TEL | (Cleanup) Unmount remote filesystem failed:
+ 270.0 TEL | (Cleanup)   Command '['umount', '-f', '/tmp/tel-oni0n8zz/fs']' returned non-zero exit status 1.
+ 270.0 TEL | (Cleanup) Kill BG process [26] SSH port forward (socks and proxy poll)
+ 270.0 TEL | [26] SSH port forward (socks and proxy poll): exit 0
+ 270.0 TEL | (Cleanup) Kill Web server for proxy poll
+ 270.0  29 | >> pfctl -a sshuttle-12300 -F all
+ 270.1  29 | >> pfctl -X 16845124458631181193
+ 270.1 TEL | [29] sshuttle: exit -15
+ 270.1 TEL | (Cleanup) Kill BG process [25] SSH port forward (exposed ports)
+ 270.1 TEL | [25] SSH port forward (exposed ports): exit 0
+ 270.1 TEL | (Cleanup) Kill BG process [21] kubectl port-forward
+ 270.1 TEL | [21] kubectl port-forward: exit -15
+ 270.1 TEL | (Cleanup) Kill BG process [20] kubectl logs
+ 270.2 TEL | [20] kubectl logs: exit -15
+ 270.2 TEL | Background process (kubectl logs) exited with return code -15. Command was:
+ 270.2 TEL |   kubectl --context docker-for-desktop --namespace default logs -f web-daf5f2ee2bec423588cda54a71213f35-66ddd4c48f-74vvj --container web --tail=10
+ 270.2 TEL | 
+ 270.2 TEL | Recent output was:
+ 270.2 TEL |   2019-07-24T20:53:06+0000 [stdout#info] FAILED to lookup b'docker-for-desktop.lan.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=12377 rCode=3 maxSize=0 flags=answer,recDes,recAv queries=[Query('docker-for-desktop.lan.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=60s auth=False>]>
+ 270.2 TEL |   2019-07-24T20:53:06+0000 [stdout#info] ]), trying b'docker-for-desktop.lan'
+ 270.2 TEL |   2019-07-24T20:53:06+0000 [-] (UDP Port 14030 Closed)
+ 270.2 TEL |   2019-07-24T20:53:06+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b12bba8>
+ 270.2 TEL |   2019-07-24T20:53:06+0000 [-] (UDP Port 45576 Closed)
+ 270.2 TEL |   2019-07-24T20:53:06+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b18cd30>
+ 270.2 TEL |   2019-07-24T20:53:06+0000 [-] (UDP Port 9616 Closed)
+ 270.2 TEL |   2019-07-24T20:53:06+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124c18>
+ 270.2 TEL |   2019-07-24T20:53:06+0000 [-] (UDP Port 29336 Closed)
+ 270.2 TEL |   2019-07-24T20:53:06+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7fbf4b124160>
+ 270.2 TEL | (Cleanup) Re-scale original deployment
+ 270.2 TEL | [58] Running: kubectl --context docker-for-desktop --namespace default scale deployment web --replicas=1
+ 270.3  58 | deployment.extensions "web" scaled
+ 270.3 TEL | [58] ran in 0.18 secs.
+ 270.3 TEL | (Cleanup) Delete new deployment
+ 270.3 >>> | Swapping Deployment web back to its original state
+ 270.3 TEL | [59] Running: kubectl --context docker-for-desktop --namespace default delete deployment web-daf5f2ee2bec423588cda54a71213f35
+ 271.6 TEL | [60] Running: sudo -n echo -n
+ 271.6 TEL | [60] ran in 0.06 secs.
+ 272.0  59 | deployment.extensions "web-daf5f2ee2bec423588cda54a71213f35" deleted
+ 272.0 TEL | [59] ran in 1.64 secs.
+ 272.0 TEL | (Cleanup) Kill sudo privileges holder
+ 272.0 TEL | (Cleanup) Stop time tracking
+ 272.0 TEL | END SPAN main.py:40(main)  271.9s
+ 272.0 TEL | (Cleanup) Remove temporary directory
+ 272.2 TEL | (Cleanup) Save caches
+ 272.6 TEL | (sudo privileges holder thread exiting)

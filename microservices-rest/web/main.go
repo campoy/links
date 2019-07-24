@@ -37,9 +37,8 @@ func main() {
 	log.Fatal(http.ListenAndServe(config.Address, nil))
 }
 
-var home = template.Must(template.ParseFiles("home.html"))
-
 func (s *server) handleNew(w http.ResponseWriter, r *http.Request) {
+	var home = template.Must(template.ParseFiles("home.html"))
 	data := struct {
 		Code  int
 		Msg   string

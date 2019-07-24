@@ -1,0 +1,8 @@
+k8s_yaml(['manifest.yaml'])
+docker_build('docker.io/campoy/web-rest', '.', dockerfile='web.Dockerfile')
+docker_build('docker.io/campoy/router-rest', '.', dockerfile='router.Dockerfile')
+docker_build('docker.io/campoy/repository-rest', '.', dockerfile='repository.Dockerfile')
+
+k8s_resource('web', port_forwards=[8090])
+k8s_resource('router', port_forwards=[8085])
+k8s_resource('repository', port_forwards=[8080])
