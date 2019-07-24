@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"strings"
 
@@ -15,6 +14,9 @@ import (
 
 // New creates a LinkRepository that fetches client information.
 func New(addr string) repository.LinkRepository {
+	if !strings.HasPrefix(addr, "http") {
+		addr = "http://" + addr
+	}
 	return client{addr}
 }
 
