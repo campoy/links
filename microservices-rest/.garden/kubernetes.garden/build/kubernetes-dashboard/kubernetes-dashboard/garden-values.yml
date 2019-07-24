@@ -1,0 +1,39 @@
+image:
+  repository: k8s.gcr.io/kubernetes-dashboard-amd64
+  tag: v1.10.1
+  pullPolicy: IfNotPresent
+replicaCount: 1
+annotations: {}
+labels: {}
+enableSkipLogin: true
+enableInsecureLogin: true
+podAnnotations: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+service:
+  type: NodePort
+  externalPort: 443
+  annotations: {}
+  labels: {}
+resources:
+  limits:
+    cpu: 100m
+    memory: 100Mi
+  requests:
+    cpu: 100m
+    memory: 100Mi
+ingress:
+  enabled: false
+  paths:
+    - /
+rbac:
+  create: true
+  clusterAdminRole: true
+serviceAccount:
+  create: true
+  name: null
+livenessProbe:
+  initialDelaySeconds: 30
+  timeoutSeconds: 30
+fullnameOverride: kubernetes-dashboard

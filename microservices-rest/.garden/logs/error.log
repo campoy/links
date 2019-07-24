@@ -1,0 +1,903 @@
+
+[2019-07-24T00:42:14.736Z] Error: Command failed: /home/ellen/.garden/tools/helm/cc4f4840be03cb72/linux-amd64/helm --tiller-namespace garden-system --kube-context minikube install /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/kubernetes.garden/build/kubernetes-dashboard/kubernetes-dashboard --name kubernetes-dashboard --namespace garden-system --values /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/kubernetes.garden/build/kubernetes-dashboard/kubernetes-dashboard/garden-values.yml
+Error: release kubernetes-dashboard failed: clusterrolebindings.rbac.authorization.k8s.io "kubernetes-dashboard" already exists
+
+
+    at makeError (/snapshot/dist/node_modules/execa/index.js:174:9)
+    at module.exports.Promise.all.then.arr (/snapshot/dist/node_modules/execa/index.js:278:16)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+Error Details:
+code: 1
+stdout: ''
+stderr: >
+  Error: release kubernetes-dashboard failed:
+  clusterrolebindings.rbac.authorization.k8s.io "kubernetes-dashboard" already
+  exists
+failed: true
+signal: null
+cmd: >-
+  /home/ellen/.garden/tools/helm/cc4f4840be03cb72/linux-amd64/helm
+  --tiller-namespace garden-system --kube-context minikube install
+  /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/kubernetes.garden/build/kubernetes-dashboard/kubernetes-dashboard
+  --name kubernetes-dashboard --namespace garden-system --values
+  /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/kubernetes.garden/build/kubernetes-dashboard/kubernetes-dashboard/garden-values.yml
+timedOut: false
+killed: false
+
+
+[2019-07-24T00:42:14.841Z] Error: local-kubernetes: 1 errors occurred when configuring environment
+    at Object.<anonymous> (/snapshot/dist/build/src/plugins/kubernetes/system.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/plugins/kubernetes/system.js:0)
+Error Details:
+results:
+  taskResults:
+    build.kubernetes-dashboard:
+      type: build
+      key: build.kubernetes-dashboard
+      name: kubernetes-dashboard
+      description: building kubernetes-dashboard
+      output:
+        fresh: true
+      dependencyResults: {}
+    deploy.kubernetes-dashboard:
+      type: deploy
+      description: >-
+        deploying service kubernetes-dashboard (from module
+        kubernetes-dashboard)
+      key: deploy.kubernetes-dashboard
+      name: kubernetes-dashboard
+      error:
+        code: 1
+        stdout: ''
+        stderr: >
+          Error: release kubernetes-dashboard failed:
+          clusterrolebindings.rbac.authorization.k8s.io "kubernetes-dashboard"
+          already exists
+        failed: true
+        signal: null
+        cmd: >-
+          /home/ellen/.garden/tools/helm/cc4f4840be03cb72/linux-amd64/helm
+          --tiller-namespace garden-system --kube-context minikube install
+          /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/kubernetes.garden/build/kubernetes-dashboard/kubernetes-dashboard
+          --name kubernetes-dashboard --namespace garden-system --values
+          /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/kubernetes.garden/build/kubernetes-dashboard/kubernetes-dashboard/garden-values.yml
+        timedOut: false
+        killed: false
+  restartRequired: false
+
+
+[2019-07-24T01:09:29.986Z] Error: Could not parse garden.yml in directory /home/ellen/go/src/github.com/campoy/links/microservices-rest/web as valid YAML
+    at Object.<anonymous> (/snapshot/dist/build/src/config/base.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/config/base.js:0)
+Error Details:
+name: YAMLException
+reason: end of the stream or a document separator is expected
+mark:
+  name: null
+  buffer: "kind: Module\nname: web\ndescription: This is the web serice.\ntype: container\nhotReload:\n  sync:\n    - target: /go/src/app\nservices:\n  - name: web\n    ports:\n      - name: http\n        containerPort: 8090\n    ingresses:\n      - path: /\n        port: http\n- env:\n    WEB_ADDRESS: \":8090\"\n\0"
+  position: 253
+  line: 15
+  column: 0
+message: |-
+  end of the stream or a document separator is expected at line 16, column 1:
+      - env:
+      ^
+
+
+[2019-07-24T01:09:43.491Z] Error: Error validating module web (web/garden.yml): key .services[1][name] is required
+    at validate (/snapshot/dist/build/src/config/common.js:0)
+    at Object.validateWithPath (/snapshot/dist/build/src/config/common.js:0)
+    at Garden.<anonymous> (/snapshot/dist/build/src/garden.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/garden.js:0)
+Error Details:
+value:
+  hotReload:
+    sync:
+      - target: /go/src/app
+  services:
+    - name: web
+      ports:
+        - name: http
+          containerPort: 8090
+      ingresses:
+        - path: /
+          port: http
+    - env:
+        WEB_ADDRESS: ':8090'
+  build:
+    dependencies: []
+context: module web (web/garden.yml)
+errorDescription: "key \e[4m.services[1][name]\e[24m is required"
+errorDetails:
+  - message: "key \e[4m.services[1][name]\e[24m is required"
+    path:
+      - services
+      - 1
+      - name
+    type: any.required
+    context:
+      key: name
+      label: name
+
+
+[2019-07-24T01:09:43.531Z] Error: Error validating module web (web/garden.yml): key .services[1][name] is required
+    at validate (/snapshot/dist/build/src/config/common.js:0)
+    at Object.validateWithPath (/snapshot/dist/build/src/config/common.js:0)
+    at Garden.<anonymous> (/snapshot/dist/build/src/garden.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/garden.js:0)
+Error Details:
+value:
+  hotReload:
+    sync:
+      - target: /go/src/app
+  services:
+    - name: web
+      ports:
+        - name: http
+          containerPort: 8090
+      ingresses:
+        - path: /
+          port: http
+    - env:
+        WEB_ADDRESS: ':8090'
+  build:
+    dependencies: []
+context: module web (web/garden.yml)
+errorDescription: "key \e[4m.services[1][name]\e[24m is required"
+errorDetails:
+  - message: "key \e[4m.services[1][name]\e[24m is required"
+    path:
+      - services
+      - 1
+      - name
+    type: any.required
+    context:
+      key: name
+      label: name
+
+
+[2019-07-24T01:10:34.023Z] Error: Error validating module web (web/garden.yml): key .services[1][name] is required
+    at validate (/snapshot/dist/build/src/config/common.js:0)
+    at Object.validateWithPath (/snapshot/dist/build/src/config/common.js:0)
+    at Garden.<anonymous> (/snapshot/dist/build/src/garden.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/garden.js:0)
+Error Details:
+value:
+  hotReload:
+    sync:
+      - target: /go/src/app
+  services:
+    - name: web
+      ports:
+        - name: http
+          containerPort: 8090
+      ingresses:
+        - path: /
+          port: http
+    - env:
+        WEB_ADDRESS: ':8090'
+  build:
+    dependencies: []
+context: module web (web/garden.yml)
+errorDescription: "key \e[4m.services[1][name]\e[24m is required"
+errorDetails:
+  - message: "key \e[4m.services[1][name]\e[24m is required"
+    path:
+      - services
+      - 1
+      - name
+    type: any.required
+    context:
+      key: name
+      label: name
+
+
+[2019-07-24T01:10:34.053Z] Error: Error validating module web (web/garden.yml): key .services[1][name] is required
+    at validate (/snapshot/dist/build/src/config/common.js:0)
+    at Object.validateWithPath (/snapshot/dist/build/src/config/common.js:0)
+    at Garden.<anonymous> (/snapshot/dist/build/src/garden.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/garden.js:0)
+Error Details:
+value:
+  hotReload:
+    sync:
+      - target: /go/src/app
+  services:
+    - name: web
+      ports:
+        - name: http
+          containerPort: 8090
+      ingresses:
+        - path: /
+          port: http
+    - env:
+        WEB_ADDRESS: ':8090'
+  build:
+    dependencies: []
+context: module web (web/garden.yml)
+errorDescription: "key \e[4m.services[1][name]\e[24m is required"
+errorDetails:
+  - message: "key \e[4m.services[1][name]\e[24m is required"
+    path:
+      - services
+      - 1
+      - name
+    type: any.required
+    context:
+      key: name
+      label: name
+
+
+[2019-07-24T03:09:16.639Z] Error: Error validating module links (links/garden.yml): key .services[0][ingresses][0][port] must be a string
+    at validate (/snapshot/dist/build/src/config/common.js:0)
+    at Object.validateWithPath (/snapshot/dist/build/src/config/common.js:0)
+    at Garden.<anonymous> (/snapshot/dist/build/src/garden.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/garden.js:0)
+Error Details:
+value:
+  hotReload:
+    sync:
+      - target: /go/src/app
+  services:
+    - name: links
+      ports:
+        - name: http
+          containerPort: 8080
+      ingresses:
+        - path: /
+          port: 8080
+      env:
+        REPOSITORY_ADDRESS: ':8080'
+  build:
+    dependencies: []
+context: module links (links/garden.yml)
+errorDescription: "key \e[4m.services[0][ingresses][0][port]\e[24m must be a string"
+errorDetails:
+  - message: "key \e[4m.services[0][ingresses][0][port]\e[24m must be a string"
+    path:
+      - services
+      - 0
+      - ingresses
+      - 0
+      - port
+    type: string.base
+    context:
+      value: 8080
+      key: port
+      label: port
+
+
+[2019-07-24T03:09:16.720Z] Error: Error validating module links (links/garden.yml): key .services[0][ingresses][0][port] must be a string
+    at validate (/snapshot/dist/build/src/config/common.js:0)
+    at Object.validateWithPath (/snapshot/dist/build/src/config/common.js:0)
+    at Garden.<anonymous> (/snapshot/dist/build/src/garden.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/garden.js:0)
+Error Details:
+value:
+  hotReload:
+    sync:
+      - target: /go/src/app
+  services:
+    - name: links
+      ports:
+        - name: http
+          containerPort: 8080
+      ingresses:
+        - path: /
+          port: 8080
+      env:
+        REPOSITORY_ADDRESS: ':8080'
+  build:
+    dependencies: []
+context: module links (links/garden.yml)
+errorDescription: "key \e[4m.services[0][ingresses][0][port]\e[24m must be a string"
+errorDetails:
+  - message: "key \e[4m.services[0][ingresses][0][port]\e[24m must be a string"
+    path:
+      - services
+      - 0
+      - ingresses
+      - 0
+      - port
+    type: string.base
+    context:
+      value: 8080
+      key: port
+      label: port
+
+
+[2019-07-24T03:09:51.540Z] Error: Error validating module links (links/garden.yml): key .services[0][ingresses][0][port] must be a string
+    at validate (/snapshot/dist/build/src/config/common.js:0)
+    at Object.validateWithPath (/snapshot/dist/build/src/config/common.js:0)
+    at Garden.<anonymous> (/snapshot/dist/build/src/garden.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/garden.js:0)
+Error Details:
+value:
+  hotReload:
+    sync:
+      - target: /go/src/app
+  services:
+    - name: links
+      ports:
+        - name: http
+          containerPort: 8080
+      ingresses:
+        - path: /
+          port: 8080
+      env:
+        REPOSITORY_ADDRESS: ':8080'
+  build:
+    dependencies: []
+context: module links (links/garden.yml)
+errorDescription: "key \e[4m.services[0][ingresses][0][port]\e[24m must be a string"
+errorDetails:
+  - message: "key \e[4m.services[0][ingresses][0][port]\e[24m must be a string"
+    path:
+      - services
+      - 0
+      - ingresses
+      - 0
+      - port
+    type: string.base
+    context:
+      value: 8080
+      key: port
+      label: port
+
+
+[2019-07-24T03:29:52.389Z] Error: Error deploying links: BackOff - Back-off restarting failed container
+
+━━━ Events ━━━
+Pod links-748b54b578-chdwf: Scheduled - Successfully assigned workshop/links-748b54b578-chdwf to minikube
+Pod links-748b54b578-chdwf: Pulled - Container image "links:v-fc5aa0d0aa" already present on machine
+Pod links-748b54b578-chdwf: Created - Created container links
+Pod links-748b54b578-chdwf: Started - Started container links
+Pod links-667f898d6b-tv4t9: Scheduled - Successfully assigned workshop/links-667f898d6b-tv4t9 to minikube
+Pod links-748b54b578-chdwf: Killing - Stopping container links
+Pod links-667f898d6b-tv4t9: Pulled - Container image "links:v-781132a636" already present on machine
+Pod links-667f898d6b-tv4t9: Created - Created container links
+Pod links-667f898d6b-tv4t9: Started - Started container links
+Pod links-667f898d6b-tv4t9: BackOff - Back-off restarting failed container
+
+━━━ Pod logs ━━━
+<Showing last 20 lines per pod in this Deployment. Run the following command for complete logs>
+$ kubectl -n workshop --context=minikube logs deployment/links
+
+****** links-667f898d6b-tv4t9 ******
+badger 2019/07/24 03:29:51 INFO: All 0 tables opened in 0s
+2019/07/24 03:29:51 listen tcp: address tcp/8080/db/: unknown port
+
+
+
+****** links-748b54b578-chdwf ******
+Unable to retrieve container logs for docker://80735b79566a3c2126776c8b796ec1c87923060d8e2e13ba6f6b16bad7bcbb38
+    at Object.<anonymous> (/snapshot/dist/build/src/plugins/kubernetes/status/status.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/plugins/kubernetes/status/status.js:0)
+Error Details:
+serviceName: links
+status:
+  state: unhealthy
+  lastMessage: BackOff - Back-off restarting failed container
+  logs: "\e[37m━━━ Events ━━━\e[39m\n\e[94mPod links-748b54b578-chdwf:\e[39m \e[37mScheduled - Successfully assigned workshop/links-748b54b578-chdwf to minikube\e[39m\n\e[94mPod links-748b54b578-chdwf:\e[39m \e[37mPulled - Container image \"links:v-fc5aa0d0aa\" already present on machine\e[39m\n\e[94mPod links-748b54b578-chdwf:\e[39m \e[37mCreated - Created container links\e[39m\n\e[94mPod links-748b54b578-chdwf:\e[39m \e[37mStarted - Started container links\e[39m\n\e[94mPod links-667f898d6b-tv4t9:\e[39m \e[37mScheduled - Successfully assigned workshop/links-667f898d6b-tv4t9 to minikube\e[39m\n\e[94mPod links-748b54b578-chdwf:\e[39m \e[37mKilling - Stopping container links\e[39m\n\e[94mPod links-667f898d6b-tv4t9:\e[39m \e[37mPulled - Container image \"links:v-781132a636\" already present on machine\e[39m\n\e[94mPod links-667f898d6b-tv4t9:\e[39m \e[37mCreated - Created container links\e[39m\n\e[94mPod links-667f898d6b-tv4t9:\e[39m \e[37mStarted - Started container links\e[39m\n\e[94mPod links-667f898d6b-tv4t9:\e[39m \e[33mBackOff - Back-off restarting failed container\e[39m\e[37m\e[39m\n\e[37m\e[39m\n\e[37m━━━ Pod logs ━━━\e[39m\n\e[37m\e[39m\e[90m<Showing last 20 lines per pod in this Deployment. Run the following command for complete logs>\e[39m\n\e[90m$ kubectl -n workshop --context=minikube logs deployment/links\e[39m\n\e[94m\e[39m\n\e[94m****** links-667f898d6b-tv4t9 ******\e[39m\n\e[94m\e[39mbadger 2019/07/24 03:29:51 INFO: All 0 tables opened in 0s\n2019/07/24 03:29:51 listen tcp: address tcp/8080/db/: unknown port\n\n\n\e[94m\e[39m\n\e[94m****** links-748b54b578-chdwf ******\e[39m\n\e[94m\e[39mUnable to retrieve container logs for docker://80735b79566a3c2126776c8b796ec1c87923060d8e2e13ba6f6b16bad7bcbb38"
+  resource:
+    kind: Deployment
+    apiVersion: extensions/v1beta1
+    metadata:
+      name: links
+      namespace: workshop
+      selfLink: /apis/extensions/v1beta1/namespaces/workshop/deployments/links
+      uid: fb341a8a-adc0-11e9-91d1-0800272bb346
+      resourceVersion: '9354'
+      generation: 7
+      creationTimestamp: '2019-07-24T03:13:17Z'
+      labels:
+        module: links
+        service: links
+      annotations:
+        deployment.kubernetes.io/revision: '7'
+        garden.io/configured.replicas: '1'
+        garden.io/generated: 'true'
+        garden.io/version: v-781132a636
+        kubectl.kubernetes.io/last-applied-configuration: >
+          {"apiVersion":"extensions/v1beta1","kind":"Deployment","metadata":{"annotations":{"garden.io/configured.replicas":"1","garden.io/generated":"true","garden.io/version":"v-781132a636"},"labels":{"module":"links","service":"links"},"name":"links","namespace":"workshop"},"spec":{"replicas":1,"revisionHistoryLimit":3,"selector":{"matchLabels":{"service":"links"}},"strategy":{"rollingUpdate":{"maxSurge":1,"maxUnavailable":1},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"module":"links","service":"links"}},"spec":{"containers":[{"env":[{"name":"GARDEN_VERSION","value":"v-781132a636"},{"name":"REPOSITORY_ADDRESS","value":":8080/db/"},{"name":"POD_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}},{"name":"POD_NAMESPACE","valueFrom":{"fieldRef":{"fieldPath":"metadata.namespace"}}},{"name":"POD_IP","valueFrom":{"fieldRef":{"fieldPath":"status.podIP"}}},{"name":"POD_SERVICE_ACCOUNT","valueFrom":{"fieldRef":{"fieldPath":"spec.serviceAccountName"}}}],"image":"links:v-781132a636","imagePullPolicy":"IfNotPresent","name":"links","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"limits":{"cpu":"1","memory":"1Gi"},"requests":{"cpu":"10m","memory":"64Mi"}}}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","terminationGracePeriodSeconds":5}}}}
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          service: links
+      template:
+        metadata:
+          creationTimestamp: null
+          labels:
+            module: links
+            service: links
+        spec:
+          containers:
+            - name: links
+              image: 'links:v-781132a636'
+              ports:
+                - name: http
+                  containerPort: 8080
+                  protocol: TCP
+              env:
+                - name: GARDEN_VERSION
+                  value: v-781132a636
+                - name: REPOSITORY_ADDRESS
+                  value: ':8080/db/'
+                - name: POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: metadata.name
+                - name: POD_NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: metadata.namespace
+                - name: POD_IP
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: status.podIP
+                - name: POD_SERVICE_ACCOUNT
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: spec.serviceAccountName
+              resources:
+                limits:
+                  cpu: '1'
+                  memory: 1Gi
+                requests:
+                  cpu: 10m
+                  memory: 64Mi
+              terminationMessagePath: /dev/termination-log
+              terminationMessagePolicy: File
+              imagePullPolicy: IfNotPresent
+          restartPolicy: Always
+          terminationGracePeriodSeconds: 5
+          dnsPolicy: ClusterFirst
+          securityContext: {}
+          schedulerName: default-scheduler
+      strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxUnavailable: 1
+          maxSurge: 1
+      revisionHistoryLimit: 3
+      progressDeadlineSeconds: 2147483647
+    status:
+      observedGeneration: 7
+      replicas: 1
+      updatedReplicas: 1
+      unavailableReplicas: 1
+      conditions:
+        - type: Available
+          status: 'True'
+          lastUpdateTime: '2019-07-24T03:13:17Z'
+          lastTransitionTime: '2019-07-24T03:13:17Z'
+          reason: MinimumReplicasAvailable
+          message: Deployment has minimum availability.
+
+
+[2019-07-24T03:45:54.798Z] Error: Got error from Kubernetes API - container "web" in pod "web-7dcbc88d96-q2qww" is terminated
+    at wrapError (/snapshot/dist/build/src/plugins/kubernetes/api.js:0)
+    at wrapApi.Proxy.get.output.then.catch (/snapshot/dist/build/src/plugins/kubernetes/api.js:0)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+Error Details:
+body:
+  kind: Status
+  apiVersion: v1
+  metadata: {}
+  status: Failure
+  message: container "web" in pod "web-7dcbc88d96-q2qww" is terminated
+  reason: BadRequest
+  code: 400
+request:
+  method: GET
+  useQuerystring: false
+  readable: true
+  writable: true
+  explicitMethod: true
+  proxy: null
+  tunnel: true
+  setHost: true
+  port: '8443'
+  host: 192.168.99.100
+  path: >-
+    /api/v1/namespaces/workshop/pods/web-7dcbc88d96-q2qww/log?container=web&follow=false&limitBytes=5000&previous=false&tailLines=20
+  href: >-
+    https://192.168.99.100:8443/api/v1/namespaces/workshop/pods/web-7dcbc88d96-q2qww/log?container=web&follow=false&limitBytes=5000&previous=false&tailLines=20
+  ntick: true
+  originalHost: '192.168.99.100:8443'
+  originalHostHeaderName: host
+
+
+[2019-07-24T04:35:41.252Z] Error: Unable to run docker command: Command failed with code 2: docker build -t links:v-6dd24fd4be /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/build/links
+
+The command '/bin/sh -c go build main.go' returned a non-zero code: 2
+
+Here are the last 100 lines of the output:
+
+ go: finding golang.org/x/text v0.3.2
+go: finding google.golang.org/genproto v0.0.0-20190716160619-c506a9f90610
+go: finding golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7
+go: finding golang.org/x/net v0.0.0-20190628185345-da137c7871d7
+go: finding google.golang.org/grpc v1.22.0
+go: finding github.com/golang/protobuf v1.2.0
+go: finding golang.org/x/sys v0.0.0-20181107165924-66b7b1311ac8
+go: finding google.golang.org/grpc v1.19.0
+go: finding google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8
+go: finding gopkg.in/yaml.v2 v2.0.0-20170812160011-eb3733d160e7
+go: finding github.com/google/go-cmp v0.2.0
+go: finding github.com/BurntSushi/toml v0.3.1
+go: finding github.com/dustin/go-humanize v1.0.0
+go: finding cloud.google.com/go v0.26.0
+go: finding golang.org/x/sys v0.0.0-20180830151530-49385e6e1522
+go: finding honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099
+go: finding github.com/golang/mock v1.1.1
+go: finding google.golang.org/appengine v1.1.0
+go: finding github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2
+go: finding golang.org/x/net v0.0.0-20180826012351-8a410e7b638d
+go: finding github.com/spf13/cobra v0.0.5
+go: finding golang.org/x/tools v0.0.0-20190524140312-2c0ae7006135
+go: finding golang.org/x/text v0.3.0
+go: finding github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9
+go: finding golang.org/x/exp v0.0.0-20190121172915-509febef88a4
+go: finding golang.org/x/sys v0.0.0-20190626221950-04f50cda93cb
+go: finding github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af
+go: finding golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a
+go: finding golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2
+go: finding golang.org/x/tools v0.0.0-20190226205152-f727befe758c
+go: finding gopkg.in/yaml.v2 v2.2.2
+go: finding github.com/ghodss/yaml v1.0.0
+go: finding github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+go: finding golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be
+go: finding golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f
+go: finding github.com/cpuguy83/go-md2man v1.0.10
+go: finding golang.org/x/net v0.0.0-20190311183353-d8887717615a
+go: finding github.com/kr/pretty v0.1.0
+go: finding gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127
+go: finding github.com/client9/misspell v0.3.4
+go: finding honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc
+go: finding golang.org/x/net v0.0.0-20190620200207-3b0461eec859
+go: finding golang.org/x/net v0.0.0-20181220203305-927f97764cc3
+go: finding golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e
+go: finding golang.org/x/tools v0.0.0-20190114222345-bf090417da8b
+go: finding golang.org/x/sync v0.0.0-20190423024810-112230192c58
+go: finding github.com/golang/protobuf v1.3.1
+go: finding golang.org/x/lint v0.0.0-20190227174305-5b3e6a55c961
+go: finding gopkg.in/resty.v1 v1.12.0
+go: finding gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405
+go: finding golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3
+go: finding github.com/spf13/pflag v1.0.3
+go: finding github.com/inconshreveable/mousetrap v1.0.0
+go: finding golang.org/x/sync v0.0.0-20181108010431-42b317875d0f
+go: finding github.com/mitchellh/go-homedir v1.1.0
+go: finding github.com/spf13/viper v1.3.2
+go: finding github.com/kr/text v0.1.0
+go: finding golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3
+go: finding golang.org/x/tools v0.0.0-20190311212946-11955173bddd
+go: finding golang.org/x/net v0.0.0-20190213061140-3a22650c66bd
+go: finding github.com/stretchr/testify v1.3.0
+go: finding github.com/russross/blackfriday v1.5.2
+go: finding google.golang.org/appengine v1.4.0
+go: finding github.com/stretchr/testify v1.2.2
+go: finding github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77
+go: finding github.com/magiconair/properties v1.8.0
+go: finding github.com/coreos/etcd v3.3.10+incompatible
+go: finding github.com/ugorji/go/codec v0.0.0-20181204163529-d75b2dcb6bc8
+go: finding github.com/armon/consul-api v0.0.0-20180202201655-eb2c6b5be1b6
+go: finding github.com/mitchellh/mapstructure v1.1.2
+go: finding github.com/spf13/jwalterweatherman v1.0.0
+go: finding github.com/coreos/go-semver v0.2.0
+go: finding github.com/kr/pty v1.1.1
+go: finding github.com/coreos/go-etcd v2.0.0+incompatible
+go: finding golang.org/x/sys v0.0.0-20181205085412-a5c9d58dba9a
+go: finding golang.org/x/crypto v0.0.0-20181203042331-505ab145d0a9
+go: finding github.com/spf13/cast v1.3.0
+go: finding github.com/hashicorp/hcl v1.0.0
+go: finding github.com/stretchr/objx v0.1.0
+go: finding github.com/pmezard/go-difflib v1.0.0
+go: finding golang.org/x/net v0.0.0-20180724234803-3673e40ba225
+go: finding github.com/spf13/afero v1.1.2
+go: finding github.com/fsnotify/fsnotify v1.4.7
+go: finding github.com/davecgh/go-spew v1.1.0
+go: finding github.com/pelletier/go-toml v1.2.0
+go: finding github.com/davecgh/go-spew v1.1.1
+go: downloading github.com/campoy/links v0.0.0-20190723190411-947394a475c7
+go: downloading github.com/gorilla/mux v1.7.3
+go: downloading github.com/kelseyhightower/envconfig v1.4.0
+go: downloading github.com/dgraph-io/badger v1.6.0
+go: downloading github.com/pkg/errors v0.8.1
+go: downloading github.com/dustin/go-humanize v1.0.0
+go: downloading golang.org/x/net v0.0.0-20190628185345-da137c7871d7
+go: downloading github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2
+go: downloading github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9
+go: downloading github.com/golang/protobuf v1.3.2
+go: downloading golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7
+# command-line-arguments
+./main.go:42:20: undefined: fmt
+note: module requires Go 1.12
+    at Object.<anonymous> (/snapshot/dist/build/src/plugins/container/helpers.js:0)
+    at Generator.throw (<anonymous>)
+    at rejected (/snapshot/dist/build/src/plugins/container/helpers.js:0)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+Error Details:
+err:
+  detail:
+    cmd: docker
+    args:
+      - build
+      - '-t'
+      - 'links:v-6dd24fd4be'
+      - >-
+        /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/build/links
+    opts:
+      cwd: >-
+        /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/build/links
+    result:
+      code: 2
+      output: "Sending build context to Docker daemon  24.06kB\r\r\nStep 1/8 : FROM golang:1.11.9-alpine3.9\n ---> 64ba145fa582\nStep 2/8 : WORKDIR /go/src/app\n ---> Using cache\n ---> aa425cb56dd4\nStep 3/8 : RUN apk add --no-cache git gcc musl-dev\n ---> Using cache\n ---> aaa81b15d4e3\nStep 4/8 : ENV GO111MODULE=on\n ---> Using cache\n ---> 8250002011b8\nStep 5/8 : EXPOSE 8080\n ---> Using cache\n ---> 68d407d387cb\nStep 6/8 : COPY main.go go.mod ./\n ---> 2dfa6aa0b6e5\nStep 7/8 : RUN go build main.go\n ---> Running in e4f4e051f5df\n\e[91mgo: finding github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: finding github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: finding github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: finding github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: finding github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: finding github.com/grpc-ecosystem/grpc-gateway v1.9.5\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.2\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20190716160619-c506a9f90610\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.22.0\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.2.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181107165924-66b7b1311ac8\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.19.0\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.0.0-20170812160011-eb3733d160e7\n\e[0m\e[91mgo: finding github.com/google/go-cmp v0.2.0\n\e[0m\e[91mgo: finding github.com/BurntSushi/toml v0.3.1\n\e[0m\e[91mgo: finding github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: finding cloud.google.com/go v0.26.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20180830151530-49385e6e1522\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099\n\e[0m\e[91mgo: finding github.com/golang/mock v1.1.1\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.1.0\n\e[0m\e[91mgo: finding github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180826012351-8a410e7b638d\n\e[0m\e[91mgo: finding github.com/spf13/cobra v0.0.5\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190524140312-2c0ae7006135\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.0\n\e[0m\e[91mgo: finding github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: finding golang.org/x/exp v0.0.0-20190121172915-509febef88a4\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190626221950-04f50cda93cb\n\e[0m\e[91mgo: finding github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190226205152-f727befe758c\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.2.2\n\e[0m\e[91mgo: finding github.com/ghodss/yaml v1.0.0\n\e[0m\e[91mgo: finding github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b\n\e[0m\e[91mgo: finding golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f\n\e[0m\e[91mgo: finding github.com/cpuguy83/go-md2man v1.0.10\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190311183353-d8887717615a\n\e[0m\e[91mgo: finding github.com/kr/pretty v0.1.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127\n\e[0m\e[91mgo: finding github.com/client9/misspell v0.3.4\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190620200207-3b0461eec859\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20181220203305-927f97764cc3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190114222345-bf090417da8b\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20190423024810-112230192c58\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.1\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190227174305-5b3e6a55c961\n\e[0m\e[91mgo: finding gopkg.in/resty.v1 v1.12.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3\n\e[0m\e[91mgo: finding github.com/spf13/pflag v1.0.3\n\e[0m\e[91mgo: finding github.com/inconshreveable/mousetrap v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20181108010431-42b317875d0f\n\e[0m\e[91mgo: finding github.com/mitchellh/go-homedir v1.1.0\n\e[0m\e[91mgo: finding github.com/spf13/viper v1.3.2\n\e[0m\e[91mgo: finding github.com/kr/text v0.1.0\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190311212946-11955173bddd\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190213061140-3a22650c66bd\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.3.0\n\e[0m\e[91mgo: finding github.com/russross/blackfriday v1.5.2\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.4.0\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.2.2\n\e[0m\e[91mgo: finding github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77\n\e[0m\e[91mgo: finding github.com/magiconair/properties v1.8.0\n\e[0m\e[91mgo: finding github.com/coreos/etcd v3.3.10+incompatible\n\e[0m\e[91mgo: finding github.com/ugorji/go/codec v0.0.0-20181204163529-d75b2dcb6bc8\n\e[0m\e[91mgo: finding github.com/armon/consul-api v0.0.0-20180202201655-eb2c6b5be1b6\n\e[0m\e[91mgo: finding github.com/mitchellh/mapstructure v1.1.2\n\e[0m\e[91mgo: finding github.com/spf13/jwalterweatherman v1.0.0\n\e[0m\e[91mgo: finding github.com/coreos/go-semver v0.2.0\n\e[0m\e[91mgo: finding github.com/kr/pty v1.1.1\n\e[0m\e[91mgo: finding github.com/coreos/go-etcd v2.0.0+incompatible\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181205085412-a5c9d58dba9a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20181203042331-505ab145d0a9\n\e[0m\e[91mgo: finding github.com/spf13/cast v1.3.0\n\e[0m\e[91mgo: finding github.com/hashicorp/hcl v1.0.0\n\e[0m\e[91mgo: finding github.com/stretchr/objx v0.1.0\n\e[0m\e[91mgo: finding github.com/pmezard/go-difflib v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180724234803-3673e40ba225\n\e[0m\e[91mgo: finding github.com/spf13/afero v1.1.2\n\e[0m\e[91mgo: finding github.com/fsnotify/fsnotify v1.4.7\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.0\n\e[0m\e[91mgo: finding github.com/pelletier/go-toml v1.2.0\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.1\n\e[0m\e[91mgo: downloading github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: downloading github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: downloading github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: downloading github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: downloading github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: downloading github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: downloading golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: downloading github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: downloading github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: downloading github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: downloading golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91m# command-line-arguments\n./main.go:42:20: undefined: fmt\nnote: module requires Go 1.12\e[0m"
+      stdout: "Sending build context to Docker daemon  24.06kB\r\r\nStep 1/8 : FROM golang:1.11.9-alpine3.9\n ---> 64ba145fa582\nStep 2/8 : WORKDIR /go/src/app\n ---> Using cache\n ---> aa425cb56dd4\nStep 3/8 : RUN apk add --no-cache git gcc musl-dev\n ---> Using cache\n ---> aaa81b15d4e3\nStep 4/8 : ENV GO111MODULE=on\n ---> Using cache\n ---> 8250002011b8\nStep 5/8 : EXPOSE 8080\n ---> Using cache\n ---> 68d407d387cb\nStep 6/8 : COPY main.go go.mod ./\n ---> 2dfa6aa0b6e5\nStep 7/8 : RUN go build main.go\n ---> Running in e4f4e051f5df\n\e[91mgo: finding github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: finding github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: finding github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: finding github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: finding github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: finding github.com/grpc-ecosystem/grpc-gateway v1.9.5\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.2\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20190716160619-c506a9f90610\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.22.0\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.2.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181107165924-66b7b1311ac8\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.19.0\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.0.0-20170812160011-eb3733d160e7\n\e[0m\e[91mgo: finding github.com/google/go-cmp v0.2.0\n\e[0m\e[91mgo: finding github.com/BurntSushi/toml v0.3.1\n\e[0m\e[91mgo: finding github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: finding cloud.google.com/go v0.26.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20180830151530-49385e6e1522\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099\n\e[0m\e[91mgo: finding github.com/golang/mock v1.1.1\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.1.0\n\e[0m\e[91mgo: finding github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180826012351-8a410e7b638d\n\e[0m\e[91mgo: finding github.com/spf13/cobra v0.0.5\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190524140312-2c0ae7006135\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.0\n\e[0m\e[91mgo: finding github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: finding golang.org/x/exp v0.0.0-20190121172915-509febef88a4\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190626221950-04f50cda93cb\n\e[0m\e[91mgo: finding github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190226205152-f727befe758c\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.2.2\n\e[0m\e[91mgo: finding github.com/ghodss/yaml v1.0.0\n\e[0m\e[91mgo: finding github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b\n\e[0m\e[91mgo: finding golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f\n\e[0m\e[91mgo: finding github.com/cpuguy83/go-md2man v1.0.10\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190311183353-d8887717615a\n\e[0m\e[91mgo: finding github.com/kr/pretty v0.1.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127\n\e[0m\e[91mgo: finding github.com/client9/misspell v0.3.4\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190620200207-3b0461eec859\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20181220203305-927f97764cc3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190114222345-bf090417da8b\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20190423024810-112230192c58\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.1\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190227174305-5b3e6a55c961\n\e[0m\e[91mgo: finding gopkg.in/resty.v1 v1.12.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3\n\e[0m\e[91mgo: finding github.com/spf13/pflag v1.0.3\n\e[0m\e[91mgo: finding github.com/inconshreveable/mousetrap v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20181108010431-42b317875d0f\n\e[0m\e[91mgo: finding github.com/mitchellh/go-homedir v1.1.0\n\e[0m\e[91mgo: finding github.com/spf13/viper v1.3.2\n\e[0m\e[91mgo: finding github.com/kr/text v0.1.0\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190311212946-11955173bddd\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190213061140-3a22650c66bd\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.3.0\n\e[0m\e[91mgo: finding github.com/russross/blackfriday v1.5.2\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.4.0\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.2.2\n\e[0m\e[91mgo: finding github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77\n\e[0m\e[91mgo: finding github.com/magiconair/properties v1.8.0\n\e[0m\e[91mgo: finding github.com/coreos/etcd v3.3.10+incompatible\n\e[0m\e[91mgo: finding github.com/ugorji/go/codec v0.0.0-20181204163529-d75b2dcb6bc8\n\e[0m\e[91mgo: finding github.com/armon/consul-api v0.0.0-20180202201655-eb2c6b5be1b6\n\e[0m\e[91mgo: finding github.com/mitchellh/mapstructure v1.1.2\n\e[0m\e[91mgo: finding github.com/spf13/jwalterweatherman v1.0.0\n\e[0m\e[91mgo: finding github.com/coreos/go-semver v0.2.0\n\e[0m\e[91mgo: finding github.com/kr/pty v1.1.1\n\e[0m\e[91mgo: finding github.com/coreos/go-etcd v2.0.0+incompatible\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181205085412-a5c9d58dba9a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20181203042331-505ab145d0a9\n\e[0m\e[91mgo: finding github.com/spf13/cast v1.3.0\n\e[0m\e[91mgo: finding github.com/hashicorp/hcl v1.0.0\n\e[0m\e[91mgo: finding github.com/stretchr/objx v0.1.0\n\e[0m\e[91mgo: finding github.com/pmezard/go-difflib v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180724234803-3673e40ba225\n\e[0m\e[91mgo: finding github.com/spf13/afero v1.1.2\n\e[0m\e[91mgo: finding github.com/fsnotify/fsnotify v1.4.7\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.0\n\e[0m\e[91mgo: finding github.com/pelletier/go-toml v1.2.0\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.1\n\e[0m\e[91mgo: downloading github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: downloading github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: downloading github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: downloading github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: downloading github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: downloading github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: downloading golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: downloading github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: downloading github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: downloading github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: downloading golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91m# command-line-arguments\n./main.go:42:20: undefined: fmt\nnote: module requires Go 1.12\e[0m"
+      stderr: |
+        The command '/bin/sh -c go build main.go' returned a non-zero code: 2
+      proc:
+        _events: {}
+        _eventsCount: 2
+        _closesNeeded: 3
+        _closesGot: 3
+        connected: false
+        signalCode: null
+        exitCode: 2
+        killed: false
+        spawnfile: docker
+        _handle: null
+        spawnargs:
+          - docker
+          - build
+          - '-t'
+          - 'links:v-6dd24fd4be'
+          - >-
+            /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/build/links
+        pid: 11216
+        stdin:
+          connecting: false
+          _hadError: false
+          _handle: null
+          _parent: null
+          _host: null
+          _readableState:
+            objectMode: false
+            highWaterMark: 16384
+            buffer:
+              head: null
+              tail: null
+              length: 0
+            length: 0
+            pipes: null
+            pipesCount: 0
+            flowing: null
+            ended: false
+            endEmitted: false
+            reading: false
+            sync: true
+            needReadable: false
+            emittedReadable: false
+            readableListening: false
+            resumeScheduled: false
+            emitClose: false
+            destroyed: true
+            defaultEncoding: utf8
+            awaitDrain: 0
+            readingMore: false
+            decoder: null
+            encoding: null
+          readable: false
+          _events: {}
+          _eventsCount: 1
+          _writableState:
+            objectMode: false
+            highWaterMark: 16384
+            finalCalled: false
+            needDrain: false
+            ending: false
+            ended: false
+            finished: false
+            destroyed: true
+            decodeStrings: false
+            defaultEncoding: utf8
+            length: 0
+            writing: false
+            corked: 0
+            sync: true
+            bufferProcessing: false
+            writecb: null
+            writelen: 0
+            bufferedRequest: null
+            lastBufferedRequest: null
+            pendingcb: 0
+            prefinished: false
+            errorEmitted: false
+            emitClose: false
+            bufferedRequestCount: 0
+            corkedRequestsFree:
+              next: null
+              entry: null
+          writable: false
+          allowHalfOpen: false
+          _sockname: null
+          _pendingData: null
+          _pendingEncoding: ''
+          server: null
+          _server: null
+        stdout:
+          connecting: false
+          _hadError: false
+          _handle: null
+          _parent: null
+          _host: null
+          _readableState:
+            objectMode: false
+            highWaterMark: 16384
+            buffer:
+              head: null
+              tail: null
+              length: 0
+            length: 0
+            pipes: null
+            pipesCount: 0
+            flowing: true
+            ended: true
+            endEmitted: true
+            reading: false
+            sync: false
+            needReadable: false
+            emittedReadable: false
+            readableListening: false
+            resumeScheduled: false
+            emitClose: false
+            destroyed: true
+            defaultEncoding: utf8
+            awaitDrain: 0
+            readingMore: false
+            decoder: null
+            encoding: null
+          readable: false
+          _events: {}
+          _eventsCount: 3
+          _writableState:
+            objectMode: false
+            highWaterMark: 16384
+            finalCalled: false
+            needDrain: false
+            ending: false
+            ended: false
+            finished: false
+            destroyed: true
+            decodeStrings: false
+            defaultEncoding: utf8
+            length: 0
+            writing: false
+            corked: 0
+            sync: true
+            bufferProcessing: false
+            writecb: null
+            writelen: 0
+            bufferedRequest: null
+            lastBufferedRequest: null
+            pendingcb: 0
+            prefinished: false
+            errorEmitted: false
+            emitClose: false
+            bufferedRequestCount: 0
+            corkedRequestsFree:
+              next: null
+              entry: null
+          writable: false
+          allowHalfOpen: false
+          _sockname: null
+          _pendingData: null
+          _pendingEncoding: ''
+          server: null
+          _server: null
+        stderr:
+          connecting: false
+          _hadError: false
+          _handle: null
+          _parent: null
+          _host: null
+          _readableState:
+            objectMode: false
+            highWaterMark: 16384
+            buffer:
+              head: null
+              tail: null
+              length: 0
+            length: 0
+            pipes: null
+            pipesCount: 0
+            flowing: true
+            ended: true
+            endEmitted: true
+            reading: false
+            sync: false
+            needReadable: false
+            emittedReadable: false
+            readableListening: false
+            resumeScheduled: false
+            emitClose: false
+            destroyed: true
+            defaultEncoding: utf8
+            awaitDrain: 0
+            readingMore: false
+            decoder: null
+            encoding: null
+          readable: false
+          _events: {}
+          _eventsCount: 3
+          _writableState:
+            objectMode: false
+            highWaterMark: 16384
+            finalCalled: false
+            needDrain: false
+            ending: false
+            ended: false
+            finished: false
+            destroyed: true
+            decodeStrings: false
+            defaultEncoding: utf8
+            length: 0
+            writing: false
+            corked: 0
+            sync: true
+            bufferProcessing: false
+            writecb: null
+            writelen: 0
+            bufferedRequest: null
+            lastBufferedRequest: null
+            pendingcb: 0
+            prefinished: false
+            errorEmitted: false
+            emitClose: false
+            bufferedRequestCount: 0
+            corkedRequestsFree:
+              next: null
+              entry: null
+          writable: false
+          allowHalfOpen: false
+          _sockname: null
+          _pendingData: null
+          _pendingEncoding: ''
+          server: null
+          _server: null
+        stdio:
+          - ~err~detail~result~proc~stdin
+          - ~err~detail~result~proc~stdout
+          - ~err~detail~result~proc~stderr
+    code: 2
+    output: "Sending build context to Docker daemon  24.06kB\r\r\nStep 1/8 : FROM golang:1.11.9-alpine3.9\n ---> 64ba145fa582\nStep 2/8 : WORKDIR /go/src/app\n ---> Using cache\n ---> aa425cb56dd4\nStep 3/8 : RUN apk add --no-cache git gcc musl-dev\n ---> Using cache\n ---> aaa81b15d4e3\nStep 4/8 : ENV GO111MODULE=on\n ---> Using cache\n ---> 8250002011b8\nStep 5/8 : EXPOSE 8080\n ---> Using cache\n ---> 68d407d387cb\nStep 6/8 : COPY main.go go.mod ./\n ---> 2dfa6aa0b6e5\nStep 7/8 : RUN go build main.go\n ---> Running in e4f4e051f5df\n\e[91mgo: finding github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: finding github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: finding github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: finding github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: finding github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: finding github.com/grpc-ecosystem/grpc-gateway v1.9.5\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.2\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20190716160619-c506a9f90610\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.22.0\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.2.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181107165924-66b7b1311ac8\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.19.0\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.0.0-20170812160011-eb3733d160e7\n\e[0m\e[91mgo: finding github.com/google/go-cmp v0.2.0\n\e[0m\e[91mgo: finding github.com/BurntSushi/toml v0.3.1\n\e[0m\e[91mgo: finding github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: finding cloud.google.com/go v0.26.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20180830151530-49385e6e1522\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099\n\e[0m\e[91mgo: finding github.com/golang/mock v1.1.1\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.1.0\n\e[0m\e[91mgo: finding github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180826012351-8a410e7b638d\n\e[0m\e[91mgo: finding github.com/spf13/cobra v0.0.5\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190524140312-2c0ae7006135\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.0\n\e[0m\e[91mgo: finding github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: finding golang.org/x/exp v0.0.0-20190121172915-509febef88a4\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190626221950-04f50cda93cb\n\e[0m\e[91mgo: finding github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190226205152-f727befe758c\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.2.2\n\e[0m\e[91mgo: finding github.com/ghodss/yaml v1.0.0\n\e[0m\e[91mgo: finding github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b\n\e[0m\e[91mgo: finding golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f\n\e[0m\e[91mgo: finding github.com/cpuguy83/go-md2man v1.0.10\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190311183353-d8887717615a\n\e[0m\e[91mgo: finding github.com/kr/pretty v0.1.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127\n\e[0m\e[91mgo: finding github.com/client9/misspell v0.3.4\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190620200207-3b0461eec859\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20181220203305-927f97764cc3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190114222345-bf090417da8b\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20190423024810-112230192c58\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.1\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190227174305-5b3e6a55c961\n\e[0m\e[91mgo: finding gopkg.in/resty.v1 v1.12.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3\n\e[0m\e[91mgo: finding github.com/spf13/pflag v1.0.3\n\e[0m\e[91mgo: finding github.com/inconshreveable/mousetrap v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20181108010431-42b317875d0f\n\e[0m\e[91mgo: finding github.com/mitchellh/go-homedir v1.1.0\n\e[0m\e[91mgo: finding github.com/spf13/viper v1.3.2\n\e[0m\e[91mgo: finding github.com/kr/text v0.1.0\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190311212946-11955173bddd\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190213061140-3a22650c66bd\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.3.0\n\e[0m\e[91mgo: finding github.com/russross/blackfriday v1.5.2\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.4.0\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.2.2\n\e[0m\e[91mgo: finding github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77\n\e[0m\e[91mgo: finding github.com/magiconair/properties v1.8.0\n\e[0m\e[91mgo: finding github.com/coreos/etcd v3.3.10+incompatible\n\e[0m\e[91mgo: finding github.com/ugorji/go/codec v0.0.0-20181204163529-d75b2dcb6bc8\n\e[0m\e[91mgo: finding github.com/armon/consul-api v0.0.0-20180202201655-eb2c6b5be1b6\n\e[0m\e[91mgo: finding github.com/mitchellh/mapstructure v1.1.2\n\e[0m\e[91mgo: finding github.com/spf13/jwalterweatherman v1.0.0\n\e[0m\e[91mgo: finding github.com/coreos/go-semver v0.2.0\n\e[0m\e[91mgo: finding github.com/kr/pty v1.1.1\n\e[0m\e[91mgo: finding github.com/coreos/go-etcd v2.0.0+incompatible\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181205085412-a5c9d58dba9a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20181203042331-505ab145d0a9\n\e[0m\e[91mgo: finding github.com/spf13/cast v1.3.0\n\e[0m\e[91mgo: finding github.com/hashicorp/hcl v1.0.0\n\e[0m\e[91mgo: finding github.com/stretchr/objx v0.1.0\n\e[0m\e[91mgo: finding github.com/pmezard/go-difflib v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180724234803-3673e40ba225\n\e[0m\e[91mgo: finding github.com/spf13/afero v1.1.2\n\e[0m\e[91mgo: finding github.com/fsnotify/fsnotify v1.4.7\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.0\n\e[0m\e[91mgo: finding github.com/pelletier/go-toml v1.2.0\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.1\n\e[0m\e[91mgo: downloading github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: downloading github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: downloading github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: downloading github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: downloading github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: downloading github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: downloading golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: downloading github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: downloading github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: downloading github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: downloading golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91m# command-line-arguments\n./main.go:42:20: undefined: fmt\nnote: module requires Go 1.12\e[0m"
+    stdout: "Sending build context to Docker daemon  24.06kB\r\r\nStep 1/8 : FROM golang:1.11.9-alpine3.9\n ---> 64ba145fa582\nStep 2/8 : WORKDIR /go/src/app\n ---> Using cache\n ---> aa425cb56dd4\nStep 3/8 : RUN apk add --no-cache git gcc musl-dev\n ---> Using cache\n ---> aaa81b15d4e3\nStep 4/8 : ENV GO111MODULE=on\n ---> Using cache\n ---> 8250002011b8\nStep 5/8 : EXPOSE 8080\n ---> Using cache\n ---> 68d407d387cb\nStep 6/8 : COPY main.go go.mod ./\n ---> 2dfa6aa0b6e5\nStep 7/8 : RUN go build main.go\n ---> Running in e4f4e051f5df\n\e[91mgo: finding github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: finding github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: finding github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: finding github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: finding github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: finding github.com/grpc-ecosystem/grpc-gateway v1.9.5\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.2\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20190716160619-c506a9f90610\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.22.0\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.2.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181107165924-66b7b1311ac8\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.19.0\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.0.0-20170812160011-eb3733d160e7\n\e[0m\e[91mgo: finding github.com/google/go-cmp v0.2.0\n\e[0m\e[91mgo: finding github.com/BurntSushi/toml v0.3.1\n\e[0m\e[91mgo: finding github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: finding cloud.google.com/go v0.26.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20180830151530-49385e6e1522\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099\n\e[0m\e[91mgo: finding github.com/golang/mock v1.1.1\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.1.0\n\e[0m\e[91mgo: finding github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180826012351-8a410e7b638d\n\e[0m\e[91mgo: finding github.com/spf13/cobra v0.0.5\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190524140312-2c0ae7006135\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.0\n\e[0m\e[91mgo: finding github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: finding golang.org/x/exp v0.0.0-20190121172915-509febef88a4\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190626221950-04f50cda93cb\n\e[0m\e[91mgo: finding github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190226205152-f727befe758c\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.2.2\n\e[0m\e[91mgo: finding github.com/ghodss/yaml v1.0.0\n\e[0m\e[91mgo: finding github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b\n\e[0m\e[91mgo: finding golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f\n\e[0m\e[91mgo: finding github.com/cpuguy83/go-md2man v1.0.10\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190311183353-d8887717615a\n\e[0m\e[91mgo: finding github.com/kr/pretty v0.1.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127\n\e[0m\e[91mgo: finding github.com/client9/misspell v0.3.4\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190620200207-3b0461eec859\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20181220203305-927f97764cc3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190114222345-bf090417da8b\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20190423024810-112230192c58\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.1\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190227174305-5b3e6a55c961\n\e[0m\e[91mgo: finding gopkg.in/resty.v1 v1.12.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3\n\e[0m\e[91mgo: finding github.com/spf13/pflag v1.0.3\n\e[0m\e[91mgo: finding github.com/inconshreveable/mousetrap v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20181108010431-42b317875d0f\n\e[0m\e[91mgo: finding github.com/mitchellh/go-homedir v1.1.0\n\e[0m\e[91mgo: finding github.com/spf13/viper v1.3.2\n\e[0m\e[91mgo: finding github.com/kr/text v0.1.0\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190311212946-11955173bddd\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190213061140-3a22650c66bd\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.3.0\n\e[0m\e[91mgo: finding github.com/russross/blackfriday v1.5.2\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.4.0\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.2.2\n\e[0m\e[91mgo: finding github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77\n\e[0m\e[91mgo: finding github.com/magiconair/properties v1.8.0\n\e[0m\e[91mgo: finding github.com/coreos/etcd v3.3.10+incompatible\n\e[0m\e[91mgo: finding github.com/ugorji/go/codec v0.0.0-20181204163529-d75b2dcb6bc8\n\e[0m\e[91mgo: finding github.com/armon/consul-api v0.0.0-20180202201655-eb2c6b5be1b6\n\e[0m\e[91mgo: finding github.com/mitchellh/mapstructure v1.1.2\n\e[0m\e[91mgo: finding github.com/spf13/jwalterweatherman v1.0.0\n\e[0m\e[91mgo: finding github.com/coreos/go-semver v0.2.0\n\e[0m\e[91mgo: finding github.com/kr/pty v1.1.1\n\e[0m\e[91mgo: finding github.com/coreos/go-etcd v2.0.0+incompatible\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181205085412-a5c9d58dba9a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20181203042331-505ab145d0a9\n\e[0m\e[91mgo: finding github.com/spf13/cast v1.3.0\n\e[0m\e[91mgo: finding github.com/hashicorp/hcl v1.0.0\n\e[0m\e[91mgo: finding github.com/stretchr/objx v0.1.0\n\e[0m\e[91mgo: finding github.com/pmezard/go-difflib v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180724234803-3673e40ba225\n\e[0m\e[91mgo: finding github.com/spf13/afero v1.1.2\n\e[0m\e[91mgo: finding github.com/fsnotify/fsnotify v1.4.7\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.0\n\e[0m\e[91mgo: finding github.com/pelletier/go-toml v1.2.0\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.1\n\e[0m\e[91mgo: downloading github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: downloading github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: downloading github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: downloading github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: downloading github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: downloading github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: downloading golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: downloading github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: downloading github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: downloading github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: downloading golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91m# command-line-arguments\n./main.go:42:20: undefined: fmt\nnote: module requires Go 1.12\e[0m"
+    stderr: |
+      The command '/bin/sh -c go build main.go' returned a non-zero code: 2
+    proc: ~err~detail~result~proc
+  type: runtime
+args:
+  - build
+  - '-t'
+  - 'links:v-6dd24fd4be'
+  - >-
+    /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/build/links
+cwd: >-
+  /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/build/links
+

@@ -1,0 +1,19 @@
+kind: Module
+name: web
+description: This is the web serice.
+type: container
+hotReload:
+  sync:
+    - target: /go/src/app
+services:
+  - name: web
+    ports:
+      - name: http
+        containerPort: 8090
+    ingresses:
+      - path: /
+        port: http
+    env:
+      WEB_ADDRESS: ":8090"
+      WEB_REPOSITORY: "http://garden.local/db/"
+      WEB_ROUTER: "http://garden.local/router/"

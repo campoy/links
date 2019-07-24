@@ -1,0 +1,2772 @@
+
+[2019-07-24T00:41:23.629Z] Getting status...
+
+[2019-07-24T00:41:27.604Z] Preparing environment...
+
+[2019-07-24T00:41:27.616Z] Configuring...
+
+[2019-07-24T00:41:27.822Z] Installing to workshop...
+
+[2019-07-24T00:41:27.832Z] Applying Tiller RBAC resources...
+
+[2019-07-24T00:41:28.379Z] Waiting for resources to be ready...
+
+[2019-07-24T00:41:30.530Z] Service deployed
+
+[2019-07-24T00:41:30.589Z] Deploying Tiller...
+
+[2019-07-24T00:41:32.081Z] Waiting for resources to be ready...
+
+[2019-07-24T00:41:34.186Z] Deployment/tiller-deploy: Started container tiller
+
+[2019-07-24T00:41:50.566Z] Getting status...
+
+[2019-07-24T00:41:54.000Z] Preparing environment...
+
+[2019-07-24T00:41:54.010Z] Configuring...
+
+[2019-07-24T00:41:55.290Z] Installing to garden-system...
+
+[2019-07-24T00:41:55.300Z] Applying Tiller RBAC resources...
+
+[2019-07-24T00:41:55.579Z] Waiting for resources to be ready...
+
+[2019-07-24T00:41:57.713Z] Service deployed
+
+[2019-07-24T00:41:57.773Z] Deploying Tiller...
+
+[2019-07-24T00:41:59.300Z] Waiting for resources to be ready...
+
+[2019-07-24T00:42:01.395Z] Deployment/tiller-deploy: Started container tiller
+
+[2019-07-24T00:42:10.699Z] Service deployed
+
+[2019-07-24T00:42:10.711Z] Deploying Tiller... → Done (took 15.4 sec)
+
+[2019-07-24T00:42:11.028Z] Staging build...
+
+[2019-07-24T00:42:11.063Z] Getting build status...
+
+[2019-07-24T00:42:11.099Z] Building version v-677d41527f...
+
+[2019-07-24T00:42:12.208Z] Building version v-677d41527f... → Done (took 1.2 sec)
+
+[2019-07-24T00:42:12.300Z] Checking status...
+
+[2019-07-24T00:42:13.721Z] Deploying version v-677d41527f...
+
+[2019-07-24T00:42:14.704Z] Deploying version v-677d41527f...
+
+[2019-07-24T00:42:14.737Z] Error: Command failed: /home/ellen/.garden/tools/helm/cc4f4840be03cb72/linux-amd64/helm --tiller-namespace garden-system --kube-context minikube install /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/kubernetes.garden/build/kubernetes-dashboard/kubernetes-dashboard --name kubernetes-dashboard --namespace garden-system --values /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/kubernetes.garden/build/kubernetes-dashboard/kubernetes-dashboard/garden-values.yml
+Error: release kubernetes-dashboard failed: clusterrolebindings.rbac.authorization.k8s.io "kubernetes-dashboard" already exists
+
+
+    at makeError (/snapshot/dist/node_modules/execa/index.js:174:9)
+    at module.exports.Promise.all.then.arr (/snapshot/dist/node_modules/execa/index.js:278:16)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+Error Details:
+code: 1
+stdout: ''
+stderr: >
+  Error: release kubernetes-dashboard failed:
+  clusterrolebindings.rbac.authorization.k8s.io "kubernetes-dashboard" already
+  exists
+failed: true
+signal: null
+cmd: >-
+  /home/ellen/.garden/tools/helm/cc4f4840be03cb72/linux-amd64/helm
+  --tiller-namespace garden-system --kube-context minikube install
+  /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/kubernetes.garden/build/kubernetes-dashboard/kubernetes-dashboard
+  --name kubernetes-dashboard --namespace garden-system --values
+  /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/kubernetes.garden/build/kubernetes-dashboard/kubernetes-dashboard/garden-values.yml
+timedOut: false
+killed: false
+
+
+[2019-07-24T00:42:14.842Z] Error: local-kubernetes: 1 errors occurred when configuring environment
+    at Object.<anonymous> (/snapshot/dist/build/src/plugins/kubernetes/system.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/plugins/kubernetes/system.js:0)
+Error Details:
+results:
+  taskResults:
+    build.kubernetes-dashboard:
+      type: build
+      key: build.kubernetes-dashboard
+      name: kubernetes-dashboard
+      description: building kubernetes-dashboard
+      output:
+        fresh: true
+      dependencyResults: {}
+    deploy.kubernetes-dashboard:
+      type: deploy
+      description: >-
+        deploying service kubernetes-dashboard (from module
+        kubernetes-dashboard)
+      key: deploy.kubernetes-dashboard
+      name: kubernetes-dashboard
+      error:
+        code: 1
+        stdout: ''
+        stderr: >
+          Error: release kubernetes-dashboard failed:
+          clusterrolebindings.rbac.authorization.k8s.io "kubernetes-dashboard"
+          already exists
+        failed: true
+        signal: null
+        cmd: >-
+          /home/ellen/.garden/tools/helm/cc4f4840be03cb72/linux-amd64/helm
+          --tiller-namespace garden-system --kube-context minikube install
+          /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/kubernetes.garden/build/kubernetes-dashboard/kubernetes-dashboard
+          --name kubernetes-dashboard --namespace garden-system --values
+          /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/kubernetes.garden/build/kubernetes-dashboard/kubernetes-dashboard/garden-values.yml
+        timedOut: false
+        killed: false
+  restartRequired: false
+
+
+[2019-07-24T00:42:14.857Z] 
+See error.log for detailed error message
+
+[2019-07-24T00:42:14.969Z] Preparing environment...
+
+[2019-07-24T00:55:54.943Z] Getting status...
+
+[2019-07-24T00:55:59.285Z] Preparing environment...
+
+[2019-07-24T00:55:59.294Z] Configuring...
+
+[2019-07-24T00:55:59.500Z] Installing to workshop...
+
+[2019-07-24T00:55:59.510Z] Applying Tiller RBAC resources...
+
+[2019-07-24T00:56:00.137Z] Waiting for resources to be ready...
+
+[2019-07-24T00:56:02.347Z] Service deployed
+
+[2019-07-24T00:56:02.410Z] Deploying Tiller...
+
+[2019-07-24T00:56:03.947Z] Waiting for resources to be ready...
+
+[2019-07-24T00:56:06.099Z] Deployment/tiller-deploy: Pulling image "gcr.io/kubernetes-helm/tiller:v2.14.1"
+
+[2019-07-24T00:57:02.158Z] Service deployed
+
+[2019-07-24T00:57:02.168Z] Deploying Tiller... → Done (took 62.7 sec)
+
+[2019-07-24T00:57:03.815Z] Installing to garden-system...
+
+[2019-07-24T00:57:03.824Z] Applying Tiller RBAC resources...
+
+[2019-07-24T00:57:04.064Z] Waiting for resources to be ready...
+
+[2019-07-24T00:57:06.198Z] Service deployed
+
+[2019-07-24T00:57:06.257Z] Deploying Tiller...
+
+[2019-07-24T00:57:07.765Z] Waiting for resources to be ready...
+
+[2019-07-24T00:57:09.877Z] Deployment/tiller-deploy: Started container tiller
+
+[2019-07-24T00:57:15.574Z] Service deployed
+
+[2019-07-24T00:57:15.584Z] Deploying Tiller... → Done (took 11.8 sec)
+
+[2019-07-24T00:57:15.953Z] Staging build...
+
+[2019-07-24T00:57:15.986Z] Getting build status...
+
+[2019-07-24T00:57:16.027Z] Building version v-677d41527f...
+
+[2019-07-24T00:57:17.127Z] Building version v-677d41527f... → Done (took 1.2 sec)
+
+[2019-07-24T00:57:17.223Z] Checking status...
+
+[2019-07-24T00:57:18.510Z] Deploying version v-677d41527f...
+
+[2019-07-24T00:57:19.927Z] Waiting for resources to be ready...
+
+[2019-07-24T00:57:22.148Z] Service deployed
+
+[2019-07-24T00:57:22.163Z] Deploying version v-677d41527f... → Done (took 4.9 sec)
+
+[2019-07-24T00:57:22.246Z] Configuring... → Ready
+
+[2019-07-24T00:57:22.267Z] Preparing environment... → Ready
+
+[2019-07-24T00:57:22.448Z] 
+Processing...
+
+[2019-07-24T00:57:22.498Z] Staging build...
+
+[2019-07-24T00:57:22.573Z] Getting build status...
+
+[2019-07-24T00:57:22.950Z] Building version v-b1ceb49407...
+
+[2019-07-24T00:57:22.993Z] Building web:v-b1ceb49407...
+
+[2019-07-24T01:02:10.423Z] Building web:v-b1ceb49407... → Done (took 287.9 sec)
+
+[2019-07-24T01:02:10.529Z] Checking status...
+
+[2019-07-24T01:02:10.693Z] Deploying version v-b1ceb49407...
+
+[2019-07-24T01:02:12.496Z] Waiting for resources to be ready...
+
+[2019-07-24T01:02:14.628Z] Service deployed
+
+[2019-07-24T01:02:14.947Z] Deploying version v-b1ceb49407... → Done (took 4.4 sec)
+
+[2019-07-24T01:02:14.962Z] → Ingress: http://garden.local
+
+[2019-07-24T01:02:15.042Z] 
+Waiting for code changes...
+
+[2019-07-24T01:09:29.987Z] Error: Could not parse garden.yml in directory /home/ellen/go/src/github.com/campoy/links/microservices-rest/web as valid YAML
+    at Object.<anonymous> (/snapshot/dist/build/src/config/base.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/config/base.js:0)
+Error Details:
+name: YAMLException
+reason: end of the stream or a document separator is expected
+mark:
+  name: null
+  buffer: "kind: Module\nname: web\ndescription: This is the web serice.\ntype: container\nhotReload:\n  sync:\n    - target: /go/src/app\nservices:\n  - name: web\n    ports:\n      - name: http\n        containerPort: 8090\n    ingresses:\n      - path: /\n        port: http\n- env:\n    WEB_ADDRESS: \":8090\"\n\0"
+  position: 253
+  line: 15
+  column: 0
+message: |-
+  end of the stream or a document separator is expected at line 16, column 1:
+      - env:
+      ^
+
+
+[2019-07-24T01:09:43.492Z] Error: Error validating module web (web/garden.yml): key .services[1][name] is required
+    at validate (/snapshot/dist/build/src/config/common.js:0)
+    at Object.validateWithPath (/snapshot/dist/build/src/config/common.js:0)
+    at Garden.<anonymous> (/snapshot/dist/build/src/garden.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/garden.js:0)
+Error Details:
+value:
+  hotReload:
+    sync:
+      - target: /go/src/app
+  services:
+    - name: web
+      ports:
+        - name: http
+          containerPort: 8090
+      ingresses:
+        - path: /
+          port: http
+    - env:
+        WEB_ADDRESS: ':8090'
+  build:
+    dependencies: []
+context: module web (web/garden.yml)
+errorDescription: "key \e[4m.services[1][name]\e[24m is required"
+errorDetails:
+  - message: "key \e[4m.services[1][name]\e[24m is required"
+    path:
+      - services
+      - 1
+      - name
+    type: any.required
+    context:
+      key: name
+      label: name
+
+
+[2019-07-24T01:09:43.532Z] Error: Error validating module web (web/garden.yml): key .services[1][name] is required
+    at validate (/snapshot/dist/build/src/config/common.js:0)
+    at Object.validateWithPath (/snapshot/dist/build/src/config/common.js:0)
+    at Garden.<anonymous> (/snapshot/dist/build/src/garden.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/garden.js:0)
+Error Details:
+value:
+  hotReload:
+    sync:
+      - target: /go/src/app
+  services:
+    - name: web
+      ports:
+        - name: http
+          containerPort: 8090
+      ingresses:
+        - path: /
+          port: http
+    - env:
+        WEB_ADDRESS: ':8090'
+  build:
+    dependencies: []
+context: module web (web/garden.yml)
+errorDescription: "key \e[4m.services[1][name]\e[24m is required"
+errorDetails:
+  - message: "key \e[4m.services[1][name]\e[24m is required"
+    path:
+      - services
+      - 1
+      - name
+    type: any.required
+    context:
+      key: name
+      label: name
+
+
+[2019-07-24T01:10:34.024Z] Error: Error validating module web (web/garden.yml): key .services[1][name] is required
+    at validate (/snapshot/dist/build/src/config/common.js:0)
+    at Object.validateWithPath (/snapshot/dist/build/src/config/common.js:0)
+    at Garden.<anonymous> (/snapshot/dist/build/src/garden.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/garden.js:0)
+Error Details:
+value:
+  hotReload:
+    sync:
+      - target: /go/src/app
+  services:
+    - name: web
+      ports:
+        - name: http
+          containerPort: 8090
+      ingresses:
+        - path: /
+          port: http
+    - env:
+        WEB_ADDRESS: ':8090'
+  build:
+    dependencies: []
+context: module web (web/garden.yml)
+errorDescription: "key \e[4m.services[1][name]\e[24m is required"
+errorDetails:
+  - message: "key \e[4m.services[1][name]\e[24m is required"
+    path:
+      - services
+      - 1
+      - name
+    type: any.required
+    context:
+      key: name
+      label: name
+
+
+[2019-07-24T01:10:34.054Z] Error: Error validating module web (web/garden.yml): key .services[1][name] is required
+    at validate (/snapshot/dist/build/src/config/common.js:0)
+    at Object.validateWithPath (/snapshot/dist/build/src/config/common.js:0)
+    at Garden.<anonymous> (/snapshot/dist/build/src/garden.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/garden.js:0)
+Error Details:
+value:
+  hotReload:
+    sync:
+      - target: /go/src/app
+  services:
+    - name: web
+      ports:
+        - name: http
+          containerPort: 8090
+      ingresses:
+        - path: /
+          port: http
+    - env:
+        WEB_ADDRESS: ':8090'
+  build:
+    dependencies: []
+context: module web (web/garden.yml)
+errorDescription: "key \e[4m.services[1][name]\e[24m is required"
+errorDetails:
+  - message: "key \e[4m.services[1][name]\e[24m is required"
+    path:
+      - services
+      - 1
+      - name
+    type: any.required
+    context:
+      key: name
+      label: name
+
+
+[2019-07-24T01:13:00.699Z] Module configuration changed, reloading...
+
+[2019-07-24T01:13:02.645Z] Getting status...
+
+[2019-07-24T01:13:07.470Z] Getting status... → Ready
+
+[2019-07-24T01:13:07.707Z] 
+Processing...
+
+[2019-07-24T01:13:07.776Z] Staging build...
+
+[2019-07-24T01:13:07.822Z] Getting build status...
+
+[2019-07-24T01:13:07.966Z] Building version v-617cc61ceb...
+
+[2019-07-24T01:13:08.021Z] Building web:v-617cc61ceb...
+
+[2019-07-24T01:13:08.357Z] Building web:v-617cc61ceb... → Done (took 0.6 sec)
+
+[2019-07-24T01:13:08.482Z] Checking status...
+
+[2019-07-24T01:13:08.823Z] Deploying version v-617cc61ceb...
+
+[2019-07-24T01:13:10.480Z] Waiting for resources to be ready...
+
+[2019-07-24T01:13:12.635Z] Service deployed
+
+[2019-07-24T01:13:12.923Z] Deploying version v-617cc61ceb... → Done (took 4.4 sec)
+
+[2019-07-24T01:13:12.943Z] → Ingress: http://garden.local
+
+[2019-07-24T01:13:13.051Z] 
+Waiting for code changes...
+
+[2019-07-24T01:13:37.023Z] 
+Processing...
+
+[2019-07-24T01:13:37.106Z] Staging build...
+
+[2019-07-24T01:13:37.166Z] Building version v-e3d7d8b9d5...
+
+[2019-07-24T01:13:37.228Z] Building web:v-e3d7d8b9d5...
+
+[2019-07-24T01:13:48.403Z] Getting status...
+
+[2019-07-24T01:13:52.961Z] Getting status... → Ready
+
+[2019-07-24T01:13:53.087Z] 
+Processing...
+
+[2019-07-24T01:13:53.133Z] Staging build...
+
+[2019-07-24T01:13:53.164Z] Getting build status...
+
+[2019-07-24T01:13:53.300Z] Building version v-e3d7d8b9d5...
+
+[2019-07-24T01:13:53.345Z] Building web:v-e3d7d8b9d5...
+
+[2019-07-24T01:16:09.840Z] Building web:v-e3d7d8b9d5... → Done (took 136.7 sec)
+
+[2019-07-24T01:16:09.924Z] Checking status...
+
+[2019-07-24T01:16:10.168Z] Deploying version v-e3d7d8b9d5...
+
+[2019-07-24T01:16:11.776Z] Waiting for resources to be ready...
+
+[2019-07-24T01:16:13.944Z] Deployment/web: Pulling image "eugenmayer/rsync"
+
+[2019-07-24T01:16:27.563Z] Service deployed
+
+[2019-07-24T01:16:27.812Z] Deploying version v-e3d7d8b9d5... → Done (took 17.9 sec)
+
+[2019-07-24T01:16:27.825Z] → Ingress: http://garden.local
+
+[2019-07-24T01:16:27.888Z] 
+Waiting for code changes...
+
+[2019-07-24T01:17:00.817Z] 
+Processing...
+
+[2019-07-24T01:17:00.862Z] Hot reloading...
+
+[2019-07-24T01:17:02.895Z] Hot reloading... → Done (took 2032 ms)
+
+[2019-07-24T01:17:02.972Z] 
+Waiting for code changes...
+
+[2019-07-24T01:17:15.498Z] 
+Processing...
+
+[2019-07-24T01:17:15.546Z] Hot reloading...
+
+[2019-07-24T01:17:16.009Z] Hot reloading... → Done (took 440 ms)
+
+[2019-07-24T01:17:16.104Z] 
+Waiting for code changes...
+
+[2019-07-24T01:17:41.885Z] 
+Processing...
+
+[2019-07-24T01:17:41.938Z] Hot reloading...
+
+[2019-07-24T01:17:42.409Z] Hot reloading... → Done (took 459 ms)
+
+[2019-07-24T01:17:42.490Z] 
+Waiting for code changes...
+
+[2019-07-24T01:17:42.563Z] 
+Processing...
+
+[2019-07-24T01:17:42.601Z] 
+Waiting for code changes...
+
+[2019-07-24T01:19:29.365Z] Error: ENOENT: no such file or directory, open '/home/ellen/go/src/github.com/campoy/links/microservices-rest/web/main'
+
+
+[2019-07-24T01:20:11.277Z] Getting status...
+
+[2019-07-24T01:20:15.779Z] Getting status... → Ready
+
+[2019-07-24T01:20:15.898Z] 
+Processing...
+
+[2019-07-24T01:20:15.940Z] Staging build...
+
+[2019-07-24T01:20:16.020Z] Getting build status...
+
+[2019-07-24T01:20:16.156Z] Building version v-f761180b03...
+
+[2019-07-24T01:20:16.189Z] Building web:v-f761180b03...
+
+[2019-07-24T01:20:16.491Z] Building web:v-f761180b03... → Done (took 0.6 sec)
+
+[2019-07-24T01:20:16.572Z] Checking status...
+
+[2019-07-24T01:20:16.802Z] Deploying version v-f761180b03...
+
+[2019-07-24T01:20:18.287Z] Waiting for resources to be ready...
+
+[2019-07-24T01:20:20.440Z] Service deployed
+
+[2019-07-24T01:20:20.643Z] Deploying version v-f761180b03... → Done (took 4.1 sec)
+
+[2019-07-24T01:20:20.661Z] → Ingress: http://garden.local
+
+[2019-07-24T01:20:20.725Z] 
+Waiting for code changes...
+
+[2019-07-24T01:20:49.456Z] Getting status...
+
+[2019-07-24T01:20:53.815Z] Getting status... → Ready
+
+[2019-07-24T01:20:53.942Z] 
+Processing...
+
+[2019-07-24T01:20:53.983Z] Staging build...
+
+[2019-07-24T01:20:54.019Z] Getting build status...
+
+[2019-07-24T01:20:54.172Z] Getting build status... → Done (took 0.2 sec)
+
+[2019-07-24T01:20:54.247Z] Checking status...
+
+[2019-07-24T01:20:54.450Z] Checking status... → Version v-f761180b03 already deployed
+
+[2019-07-24T01:20:54.462Z] → Ingress: http://garden.local
+
+[2019-07-24T01:20:54.524Z] 
+Waiting for code changes...
+
+[2019-07-24T01:21:25.382Z] 
+Processing...
+
+[2019-07-24T01:21:25.476Z] Staging build...
+
+[2019-07-24T01:21:25.515Z] Building version v-a79445c4d6...
+
+[2019-07-24T01:21:25.551Z] Building web:v-a79445c4d6...
+
+[2019-07-24T01:23:48.950Z] Building web:v-a79445c4d6... → Done (took 143.5 sec)
+
+[2019-07-24T01:23:49.045Z] Checking status...
+
+[2019-07-24T01:23:49.302Z] Deploying version v-a79445c4d6...
+
+[2019-07-24T01:23:50.824Z] Waiting for resources to be ready...
+
+[2019-07-24T01:23:53.020Z] Service deployed
+
+[2019-07-24T01:23:53.244Z] Deploying version v-a79445c4d6... → Done (took 4.2 sec)
+
+[2019-07-24T01:23:53.256Z] → Ingress: http://garden.local
+
+[2019-07-24T01:23:53.338Z] 
+Waiting for code changes...
+
+[2019-07-24T01:25:43.324Z] 
+Processing...
+
+[2019-07-24T01:25:43.382Z] Staging build...
+
+[2019-07-24T01:25:43.425Z] Building version v-f761180b03...
+
+[2019-07-24T01:25:43.477Z] Building web:v-f761180b03...
+
+[2019-07-24T01:25:43.777Z] Building web:v-f761180b03... → Done (took 0.4 sec)
+
+[2019-07-24T01:25:43.875Z] Checking status...
+
+[2019-07-24T01:25:44.185Z] Deploying version v-f761180b03...
+
+[2019-07-24T01:25:45.746Z] Waiting for resources to be ready...
+
+[2019-07-24T01:25:47.900Z] Service deployed
+
+[2019-07-24T01:25:48.132Z] Deploying version v-f761180b03... → Done (took 4.3 sec)
+
+[2019-07-24T01:25:48.144Z] → Ingress: http://garden.local
+
+[2019-07-24T01:25:48.221Z] 
+Waiting for code changes...
+
+[2019-07-24T02:56:32.819Z] 
+Processing...
+
+[2019-07-24T02:56:32.881Z] Staging build...
+
+[2019-07-24T02:56:32.942Z] Building version v-02e1a5a355...
+
+[2019-07-24T02:56:32.988Z] Building web:v-02e1a5a355...
+
+[2019-07-24T03:06:34.577Z] Getting status...
+
+[2019-07-24T03:06:39.555Z] Getting status... → Ready
+
+[2019-07-24T03:06:39.681Z] 
+Processing...
+
+[2019-07-24T03:06:39.723Z] Staging build...
+
+[2019-07-24T03:06:39.826Z] Getting build status...
+
+[2019-07-24T03:06:40.273Z] Building version v-4322972f4c...
+
+[2019-07-24T03:06:40.305Z] Building web:v-4322972f4c...
+
+[2019-07-24T03:06:53.374Z] Getting status...
+
+[2019-07-24T03:06:57.734Z] Getting status... → Ready
+
+[2019-07-24T03:06:57.859Z] 
+Processing...
+
+[2019-07-24T03:06:57.901Z] Staging build...
+
+[2019-07-24T03:06:57.938Z] Getting build status...
+
+[2019-07-24T03:06:58.083Z] Building version v-4322972f4c...
+
+[2019-07-24T03:06:58.114Z] Building web:v-4322972f4c...
+
+[2019-07-24T03:07:09.867Z] Building web:v-4322972f4c... → Done (took 12 sec)
+
+[2019-07-24T03:07:09.940Z] Checking status...
+
+[2019-07-24T03:07:10.161Z] Deploying version v-4322972f4c...
+
+[2019-07-24T03:07:11.670Z] Waiting for resources to be ready...
+
+[2019-07-24T03:07:13.865Z] Service deployed
+
+[2019-07-24T03:07:14.066Z] Deploying version v-4322972f4c... → Done (took 4.1 sec)
+
+[2019-07-24T03:07:14.078Z] → Ingress: http://garden.local
+
+[2019-07-24T03:07:14.147Z] 
+Waiting for code changes...
+
+[2019-07-24T03:07:54.821Z] Garden config added at /home/ellen/go/src/github.com/campoy/links/microservices-rest/links/garden.yml, reloading...
+
+[2019-07-24T03:07:57.008Z] Getting status...
+
+[2019-07-24T03:08:01.438Z] Getting status... → Ready
+
+[2019-07-24T03:08:01.582Z] 
+Processing...
+
+[2019-07-24T03:08:01.629Z] Staging build...
+
+[2019-07-24T03:08:01.668Z] Getting build status...
+
+[2019-07-24T03:08:01.778Z] Getting build status... → Done (took 0.1 sec)
+
+[2019-07-24T03:08:01.864Z] Checking status...
+
+[2019-07-24T03:08:02.107Z] Checking status... → Version v-4322972f4c already deployed
+
+[2019-07-24T03:08:02.120Z] → Ingress: http://garden.local
+
+[2019-07-24T03:08:02.197Z] 
+Waiting for code changes...
+
+[2019-07-24T03:09:16.641Z] Error: Error validating module links (links/garden.yml): key .services[0][ingresses][0][port] must be a string
+    at validate (/snapshot/dist/build/src/config/common.js:0)
+    at Object.validateWithPath (/snapshot/dist/build/src/config/common.js:0)
+    at Garden.<anonymous> (/snapshot/dist/build/src/garden.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/garden.js:0)
+Error Details:
+value:
+  hotReload:
+    sync:
+      - target: /go/src/app
+  services:
+    - name: links
+      ports:
+        - name: http
+          containerPort: 8080
+      ingresses:
+        - path: /
+          port: 8080
+      env:
+        REPOSITORY_ADDRESS: ':8080'
+  build:
+    dependencies: []
+context: module links (links/garden.yml)
+errorDescription: "key \e[4m.services[0][ingresses][0][port]\e[24m must be a string"
+errorDetails:
+  - message: "key \e[4m.services[0][ingresses][0][port]\e[24m must be a string"
+    path:
+      - services
+      - 0
+      - ingresses
+      - 0
+      - port
+    type: string.base
+    context:
+      value: 8080
+      key: port
+      label: port
+
+
+[2019-07-24T03:09:16.721Z] Error: Error validating module links (links/garden.yml): key .services[0][ingresses][0][port] must be a string
+    at validate (/snapshot/dist/build/src/config/common.js:0)
+    at Object.validateWithPath (/snapshot/dist/build/src/config/common.js:0)
+    at Garden.<anonymous> (/snapshot/dist/build/src/garden.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/garden.js:0)
+Error Details:
+value:
+  hotReload:
+    sync:
+      - target: /go/src/app
+  services:
+    - name: links
+      ports:
+        - name: http
+          containerPort: 8080
+      ingresses:
+        - path: /
+          port: 8080
+      env:
+        REPOSITORY_ADDRESS: ':8080'
+  build:
+    dependencies: []
+context: module links (links/garden.yml)
+errorDescription: "key \e[4m.services[0][ingresses][0][port]\e[24m must be a string"
+errorDetails:
+  - message: "key \e[4m.services[0][ingresses][0][port]\e[24m must be a string"
+    path:
+      - services
+      - 0
+      - ingresses
+      - 0
+      - port
+    type: string.base
+    context:
+      value: 8080
+      key: port
+      label: port
+
+
+[2019-07-24T03:09:51.540Z] Error: Error validating module links (links/garden.yml): key .services[0][ingresses][0][port] must be a string
+    at validate (/snapshot/dist/build/src/config/common.js:0)
+    at Object.validateWithPath (/snapshot/dist/build/src/config/common.js:0)
+    at Garden.<anonymous> (/snapshot/dist/build/src/garden.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/garden.js:0)
+Error Details:
+value:
+  hotReload:
+    sync:
+      - target: /go/src/app
+  services:
+    - name: links
+      ports:
+        - name: http
+          containerPort: 8080
+      ingresses:
+        - path: /
+          port: 8080
+      env:
+        REPOSITORY_ADDRESS: ':8080'
+  build:
+    dependencies: []
+context: module links (links/garden.yml)
+errorDescription: "key \e[4m.services[0][ingresses][0][port]\e[24m must be a string"
+errorDetails:
+  - message: "key \e[4m.services[0][ingresses][0][port]\e[24m must be a string"
+    path:
+      - services
+      - 0
+      - ingresses
+      - 0
+      - port
+    type: string.base
+    context:
+      value: 8080
+      key: port
+      label: port
+
+
+[2019-07-24T03:10:11.239Z] Garden config at /home/ellen/go/src/github.com/campoy/links/microservices-rest/links/garden.yml removed, reloading...
+
+[2019-07-24T03:10:13.096Z] Garden config at /home/ellen/go/src/github.com/campoy/links/microservices-rest/links/garden.yml removed, reloading...
+
+[2019-07-24T03:10:13.523Z] Getting status...
+
+[2019-07-24T03:10:18.613Z] Getting status... → Ready
+
+[2019-07-24T03:10:18.851Z] 
+Processing...
+
+[2019-07-24T03:10:18.955Z] Staging build...
+
+[2019-07-24T03:10:18.969Z] Staging build...
+
+[2019-07-24T03:10:19.034Z] Getting build status...
+
+[2019-07-24T03:10:19.090Z] Getting build status...
+
+[2019-07-24T03:10:19.172Z] Getting build status... → Done (took 0.2 sec)
+
+[2019-07-24T03:10:19.267Z] Building version v-895baef10e...
+
+[2019-07-24T03:10:19.318Z] Building links:v-895baef10e...
+
+[2019-07-24T03:10:19.407Z] Checking status...
+
+[2019-07-24T03:10:19.743Z] Checking status... → Version v-4322972f4c already deployed
+
+[2019-07-24T03:10:19.763Z] → Ingress: http://garden.local
+
+[2019-07-24T03:13:17.148Z] Building links:v-895baef10e... → Done (took 178.2 sec)
+
+[2019-07-24T03:13:17.273Z] Checking status...
+
+[2019-07-24T03:13:17.462Z] Deploying version v-895baef10e...
+
+[2019-07-24T03:13:19.015Z] Waiting for resources to be ready...
+
+[2019-07-24T03:13:21.227Z] Service deployed
+
+[2019-07-24T03:13:21.514Z] Deploying version v-895baef10e... → Done (took 4.2 sec)
+
+[2019-07-24T03:13:21.531Z] → Ingress: http://garden.local
+
+[2019-07-24T03:13:21.626Z] 
+Waiting for code changes...
+
+[2019-07-24T03:15:14.161Z] 
+Processing...
+
+[2019-07-24T03:15:14.273Z] Staging build...
+
+[2019-07-24T03:15:14.335Z] Building version v-ac8605c075...
+
+[2019-07-24T03:15:14.414Z] Building links:v-ac8605c075...
+
+[2019-07-24T03:16:04.495Z] Module configuration changed, reloading...
+
+[2019-07-24T03:16:06.842Z] Getting status...
+
+[2019-07-24T03:16:13.000Z] Getting status... → Ready
+
+[2019-07-24T03:16:13.362Z] 
+Processing...
+
+[2019-07-24T03:16:13.515Z] Staging build...
+
+[2019-07-24T03:16:13.542Z] Staging build...
+
+[2019-07-24T03:16:13.665Z] Getting build status...
+
+[2019-07-24T03:16:13.778Z] Getting build status...
+
+[2019-07-24T03:16:13.960Z] Building version v-29fce36e3d...
+
+[2019-07-24T03:16:14.069Z] Getting build status... → Done (took 0.5 sec)
+
+[2019-07-24T03:16:14.143Z] Building links:v-29fce36e3d...
+
+[2019-07-24T03:16:14.255Z] Checking status...
+
+[2019-07-24T03:16:14.732Z] Checking status... → Version v-4322972f4c already deployed
+
+[2019-07-24T03:16:14.750Z] → Ingress: http://garden.local
+
+[2019-07-24T03:17:58.149Z] Building links:v-ac8605c075... → Done (took 163.9 sec)
+
+[2019-07-24T03:17:58.364Z] Checking status...
+
+[2019-07-24T03:17:58.872Z] Deploying version v-ac8605c075...
+
+[2019-07-24T03:18:00.754Z] Waiting for resources to be ready...
+
+[2019-07-24T03:18:03.020Z] Service deployed
+
+[2019-07-24T03:18:03.351Z] Deploying version v-ac8605c075... → Done (took 5 sec)
+
+[2019-07-24T03:18:03.374Z] → Ingress: http://garden.local
+
+[2019-07-24T03:18:03.491Z] 
+Waiting for code changes...
+
+[2019-07-24T03:18:03.596Z] 
+Processing...
+
+[2019-07-24T03:18:03.648Z] 
+Waiting for code changes...
+
+[2019-07-24T03:18:03.779Z] 
+Processing...
+
+[2019-07-24T03:18:03.871Z] Staging build...
+
+[2019-07-24T03:18:03.940Z] Building version v-8148c3c39e...
+
+[2019-07-24T03:18:04.002Z] Building links:v-8148c3c39e...
+
+[2019-07-24T03:18:04.132Z] Building links:v-8148c3c39e... → Done (took 0.3 sec)
+
+[2019-07-24T03:18:04.248Z] 
+Waiting for code changes...
+
+[2019-07-24T03:18:04.368Z] 
+Processing...
+
+[2019-07-24T03:18:04.422Z] 
+Waiting for code changes...
+
+[2019-07-24T03:18:50.960Z] Building links:v-29fce36e3d... → Done (took 157.4 sec)
+
+[2019-07-24T03:18:51.102Z] Checking status...
+
+[2019-07-24T03:18:51.546Z] Deploying version v-29fce36e3d...
+
+[2019-07-24T03:18:53.089Z] Waiting for resources to be ready...
+
+[2019-07-24T03:18:55.353Z] Service deployed
+
+[2019-07-24T03:18:55.695Z] Deploying version v-29fce36e3d... → Done (took 4.6 sec)
+
+[2019-07-24T03:18:55.714Z] → Ingress: http://garden.local/db
+
+[2019-07-24T03:18:55.848Z] 
+Waiting for code changes...
+
+[2019-07-24T03:21:37.162Z] Module configuration changed, reloading...
+
+[2019-07-24T03:21:39.710Z] Getting status...
+
+[2019-07-24T03:21:44.848Z] Getting status... → Ready
+
+[2019-07-24T03:21:45.236Z] 
+Processing...
+
+[2019-07-24T03:21:45.390Z] Staging build...
+
+[2019-07-24T03:21:45.411Z] Staging build...
+
+[2019-07-24T03:21:45.500Z] Getting build status...
+
+[2019-07-24T03:21:45.583Z] Getting build status...
+
+[2019-07-24T03:21:45.657Z] Building version v-fc5aa0d0aa...
+
+[2019-07-24T03:21:45.736Z] Building links:v-fc5aa0d0aa...
+
+[2019-07-24T03:21:45.835Z] Getting build status... → Done (took 0.4 sec)
+
+[2019-07-24T03:21:45.964Z] Building links:v-fc5aa0d0aa... → Done (took 0.6 sec)
+
+[2019-07-24T03:21:46.104Z] Checking status...
+
+[2019-07-24T03:21:46.146Z] Checking status...
+
+[2019-07-24T03:21:46.868Z] Checking status... → Version v-4322972f4c already deployed
+
+[2019-07-24T03:21:46.890Z] → Ingress: http://garden.local
+
+[2019-07-24T03:21:47.045Z] Deploying version v-fc5aa0d0aa...
+
+[2019-07-24T03:21:48.575Z] Waiting for resources to be ready...
+
+[2019-07-24T03:21:50.793Z] Service deployed
+
+[2019-07-24T03:21:51.198Z] Deploying version v-fc5aa0d0aa... → Done (took 5.1 sec)
+
+[2019-07-24T03:21:51.220Z] → Ingress: http://garden.local
+
+[2019-07-24T03:21:51.347Z] 
+Waiting for code changes...
+
+[2019-07-24T03:23:09.442Z] Module configuration changed, reloading...
+
+[2019-07-24T03:23:11.705Z] Module configuration changed, reloading...
+
+[2019-07-24T03:23:12.098Z] Getting status...
+
+[2019-07-24T03:23:17.350Z] Getting status... → Ready
+
+[2019-07-24T03:23:17.726Z] 
+Processing...
+
+[2019-07-24T03:23:17.894Z] Staging build...
+
+[2019-07-24T03:23:17.921Z] Staging build...
+
+[2019-07-24T03:23:18.017Z] Getting build status...
+
+[2019-07-24T03:23:18.109Z] Getting build status...
+
+[2019-07-24T03:23:18.197Z] Building version v-2d47b2f93a...
+
+[2019-07-24T03:23:18.318Z] Building links:v-2d47b2f93a...
+
+[2019-07-24T03:23:18.431Z] Getting build status... → Done (took 0.5 sec)
+
+[2019-07-24T03:23:18.577Z] Building links:v-2d47b2f93a... → Done (took 0.7 sec)
+
+[2019-07-24T03:23:18.739Z] Checking status...
+
+[2019-07-24T03:23:18.785Z] Checking status...
+
+[2019-07-24T03:23:19.652Z] Checking status... → Version v-4322972f4c already deployed
+
+[2019-07-24T03:23:19.675Z] → Ingress: http://garden.local
+
+[2019-07-24T03:23:19.770Z] Deploying version v-2d47b2f93a...
+
+[2019-07-24T03:23:21.361Z] Waiting for resources to be ready...
+
+[2019-07-24T03:23:23.578Z] Service deployed
+
+[2019-07-24T03:23:23.972Z] Deploying version v-2d47b2f93a... → Done (took 5.2 sec)
+
+[2019-07-24T03:23:23.996Z] → Ingress: http://garden.local/db
+
+[2019-07-24T03:23:24.133Z] 
+Waiting for code changes...
+
+[2019-07-24T03:24:20.753Z] Running command sh in service links 
+
+[2019-07-24T03:24:53.115Z] Running command sh in service web 
+
+[2019-07-24T03:25:59.133Z] Module configuration changed, reloading...
+
+[2019-07-24T03:26:01.799Z] Getting status...
+
+[2019-07-24T03:26:07.877Z] Getting status... → Ready
+
+[2019-07-24T03:26:08.362Z] 
+Processing...
+
+[2019-07-24T03:26:08.553Z] Staging build...
+
+[2019-07-24T03:26:08.585Z] Staging build...
+
+[2019-07-24T03:26:08.686Z] Getting build status...
+
+[2019-07-24T03:26:08.785Z] Getting build status...
+
+[2019-07-24T03:26:08.889Z] Getting build status... → Done (took 0.3 sec)
+
+[2019-07-24T03:26:09.088Z] Checking status...
+
+[2019-07-24T03:26:09.138Z] Getting build status... → Done (took 0.6 sec)
+
+[2019-07-24T03:26:09.432Z] Checking status...
+
+[2019-07-24T03:26:10.311Z] Deploying version v-fc5aa0d0aa...
+
+[2019-07-24T03:26:10.467Z] Checking status... → Version v-4322972f4c already deployed
+
+[2019-07-24T03:26:10.496Z] → Ingress: http://garden.local
+
+[2019-07-24T03:26:12.090Z] Waiting for resources to be ready...
+
+[2019-07-24T03:26:14.380Z] Service deployed
+
+[2019-07-24T03:26:14.874Z] Deploying version v-fc5aa0d0aa... → Done (took 5.8 sec)
+
+[2019-07-24T03:26:14.904Z] → Ingress: http://garden.local
+
+[2019-07-24T03:26:15.108Z] 
+Waiting for code changes...
+
+[2019-07-24T03:29:36.270Z] Module configuration changed, reloading...
+
+[2019-07-24T03:29:38.728Z] Module configuration changed, reloading...
+
+[2019-07-24T03:29:39.155Z] Getting status...
+
+[2019-07-24T03:29:45.501Z] Getting status... → Ready
+
+[2019-07-24T03:29:45.944Z] 
+Processing...
+
+[2019-07-24T03:29:46.145Z] Staging build...
+
+[2019-07-24T03:29:46.174Z] Staging build...
+
+[2019-07-24T03:29:46.282Z] Getting build status...
+
+[2019-07-24T03:29:46.390Z] Getting build status...
+
+[2019-07-24T03:29:46.481Z] Building version v-781132a636...
+
+[2019-07-24T03:29:46.585Z] Building links:v-781132a636...
+
+[2019-07-24T03:29:46.702Z] Getting build status... → Done (took 0.5 sec)
+
+[2019-07-24T03:29:46.866Z] Building links:v-781132a636... → Done (took 0.7 sec)
+
+[2019-07-24T03:29:47.050Z] Checking status...
+
+[2019-07-24T03:29:47.105Z] Checking status...
+
+[2019-07-24T03:29:48.249Z] Checking status... → Version v-4322972f4c already deployed
+
+[2019-07-24T03:29:48.278Z] → Ingress: http://garden.local
+
+[2019-07-24T03:29:48.392Z] Deploying version v-781132a636...
+
+[2019-07-24T03:29:49.986Z] Waiting for resources to be ready...
+
+[2019-07-24T03:29:52.322Z] Deploying version v-781132a636...
+
+[2019-07-24T03:29:52.395Z] Error: Error deploying links: BackOff - Back-off restarting failed container
+
+━━━ Events ━━━
+Pod links-748b54b578-chdwf: Scheduled - Successfully assigned workshop/links-748b54b578-chdwf to minikube
+Pod links-748b54b578-chdwf: Pulled - Container image "links:v-fc5aa0d0aa" already present on machine
+Pod links-748b54b578-chdwf: Created - Created container links
+Pod links-748b54b578-chdwf: Started - Started container links
+Pod links-667f898d6b-tv4t9: Scheduled - Successfully assigned workshop/links-667f898d6b-tv4t9 to minikube
+Pod links-748b54b578-chdwf: Killing - Stopping container links
+Pod links-667f898d6b-tv4t9: Pulled - Container image "links:v-781132a636" already present on machine
+Pod links-667f898d6b-tv4t9: Created - Created container links
+Pod links-667f898d6b-tv4t9: Started - Started container links
+Pod links-667f898d6b-tv4t9: BackOff - Back-off restarting failed container
+
+━━━ Pod logs ━━━
+<Showing last 20 lines per pod in this Deployment. Run the following command for complete logs>
+$ kubectl -n workshop --context=minikube logs deployment/links
+
+****** links-667f898d6b-tv4t9 ******
+badger 2019/07/24 03:29:51 INFO: All 0 tables opened in 0s
+2019/07/24 03:29:51 listen tcp: address tcp/8080/db/: unknown port
+
+
+
+****** links-748b54b578-chdwf ******
+Unable to retrieve container logs for docker://80735b79566a3c2126776c8b796ec1c87923060d8e2e13ba6f6b16bad7bcbb38
+    at Object.<anonymous> (/snapshot/dist/build/src/plugins/kubernetes/status/status.js:0)
+    at Generator.next (<anonymous>)
+    at fulfilled (/snapshot/dist/build/src/plugins/kubernetes/status/status.js:0)
+Error Details:
+serviceName: links
+status:
+  state: unhealthy
+  lastMessage: BackOff - Back-off restarting failed container
+  logs: "\e[37m━━━ Events ━━━\e[39m\n\e[94mPod links-748b54b578-chdwf:\e[39m \e[37mScheduled - Successfully assigned workshop/links-748b54b578-chdwf to minikube\e[39m\n\e[94mPod links-748b54b578-chdwf:\e[39m \e[37mPulled - Container image \"links:v-fc5aa0d0aa\" already present on machine\e[39m\n\e[94mPod links-748b54b578-chdwf:\e[39m \e[37mCreated - Created container links\e[39m\n\e[94mPod links-748b54b578-chdwf:\e[39m \e[37mStarted - Started container links\e[39m\n\e[94mPod links-667f898d6b-tv4t9:\e[39m \e[37mScheduled - Successfully assigned workshop/links-667f898d6b-tv4t9 to minikube\e[39m\n\e[94mPod links-748b54b578-chdwf:\e[39m \e[37mKilling - Stopping container links\e[39m\n\e[94mPod links-667f898d6b-tv4t9:\e[39m \e[37mPulled - Container image \"links:v-781132a636\" already present on machine\e[39m\n\e[94mPod links-667f898d6b-tv4t9:\e[39m \e[37mCreated - Created container links\e[39m\n\e[94mPod links-667f898d6b-tv4t9:\e[39m \e[37mStarted - Started container links\e[39m\n\e[94mPod links-667f898d6b-tv4t9:\e[39m \e[33mBackOff - Back-off restarting failed container\e[39m\e[37m\e[39m\n\e[37m\e[39m\n\e[37m━━━ Pod logs ━━━\e[39m\n\e[37m\e[39m\e[90m<Showing last 20 lines per pod in this Deployment. Run the following command for complete logs>\e[39m\n\e[90m$ kubectl -n workshop --context=minikube logs deployment/links\e[39m\n\e[94m\e[39m\n\e[94m****** links-667f898d6b-tv4t9 ******\e[39m\n\e[94m\e[39mbadger 2019/07/24 03:29:51 INFO: All 0 tables opened in 0s\n2019/07/24 03:29:51 listen tcp: address tcp/8080/db/: unknown port\n\n\n\e[94m\e[39m\n\e[94m****** links-748b54b578-chdwf ******\e[39m\n\e[94m\e[39mUnable to retrieve container logs for docker://80735b79566a3c2126776c8b796ec1c87923060d8e2e13ba6f6b16bad7bcbb38"
+  resource:
+    kind: Deployment
+    apiVersion: extensions/v1beta1
+    metadata:
+      name: links
+      namespace: workshop
+      selfLink: /apis/extensions/v1beta1/namespaces/workshop/deployments/links
+      uid: fb341a8a-adc0-11e9-91d1-0800272bb346
+      resourceVersion: '9354'
+      generation: 7
+      creationTimestamp: '2019-07-24T03:13:17Z'
+      labels:
+        module: links
+        service: links
+      annotations:
+        deployment.kubernetes.io/revision: '7'
+        garden.io/configured.replicas: '1'
+        garden.io/generated: 'true'
+        garden.io/version: v-781132a636
+        kubectl.kubernetes.io/last-applied-configuration: >
+          {"apiVersion":"extensions/v1beta1","kind":"Deployment","metadata":{"annotations":{"garden.io/configured.replicas":"1","garden.io/generated":"true","garden.io/version":"v-781132a636"},"labels":{"module":"links","service":"links"},"name":"links","namespace":"workshop"},"spec":{"replicas":1,"revisionHistoryLimit":3,"selector":{"matchLabels":{"service":"links"}},"strategy":{"rollingUpdate":{"maxSurge":1,"maxUnavailable":1},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"module":"links","service":"links"}},"spec":{"containers":[{"env":[{"name":"GARDEN_VERSION","value":"v-781132a636"},{"name":"REPOSITORY_ADDRESS","value":":8080/db/"},{"name":"POD_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}},{"name":"POD_NAMESPACE","valueFrom":{"fieldRef":{"fieldPath":"metadata.namespace"}}},{"name":"POD_IP","valueFrom":{"fieldRef":{"fieldPath":"status.podIP"}}},{"name":"POD_SERVICE_ACCOUNT","valueFrom":{"fieldRef":{"fieldPath":"spec.serviceAccountName"}}}],"image":"links:v-781132a636","imagePullPolicy":"IfNotPresent","name":"links","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"limits":{"cpu":"1","memory":"1Gi"},"requests":{"cpu":"10m","memory":"64Mi"}}}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","terminationGracePeriodSeconds":5}}}}
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          service: links
+      template:
+        metadata:
+          creationTimestamp: null
+          labels:
+            module: links
+            service: links
+        spec:
+          containers:
+            - name: links
+              image: 'links:v-781132a636'
+              ports:
+                - name: http
+                  containerPort: 8080
+                  protocol: TCP
+              env:
+                - name: GARDEN_VERSION
+                  value: v-781132a636
+                - name: REPOSITORY_ADDRESS
+                  value: ':8080/db/'
+                - name: POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: metadata.name
+                - name: POD_NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: metadata.namespace
+                - name: POD_IP
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: status.podIP
+                - name: POD_SERVICE_ACCOUNT
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: spec.serviceAccountName
+              resources:
+                limits:
+                  cpu: '1'
+                  memory: 1Gi
+                requests:
+                  cpu: 10m
+                  memory: 64Mi
+              terminationMessagePath: /dev/termination-log
+              terminationMessagePolicy: File
+              imagePullPolicy: IfNotPresent
+          restartPolicy: Always
+          terminationGracePeriodSeconds: 5
+          dnsPolicy: ClusterFirst
+          securityContext: {}
+          schedulerName: default-scheduler
+      strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxUnavailable: 1
+          maxSurge: 1
+      revisionHistoryLimit: 3
+      progressDeadlineSeconds: 2147483647
+    status:
+      observedGeneration: 7
+      replicas: 1
+      updatedReplicas: 1
+      unavailableReplicas: 1
+      conditions:
+        - type: Available
+          status: 'True'
+          lastUpdateTime: '2019-07-24T03:13:17Z'
+          lastTransitionTime: '2019-07-24T03:13:17Z'
+          reason: MinimumReplicasAvailable
+          message: Deployment has minimum availability.
+
+
+[2019-07-24T03:29:52.572Z] 
+Waiting for code changes...
+
+[2019-07-24T03:32:40.967Z] Module configuration changed, reloading...
+
+[2019-07-24T03:32:43.493Z] Module configuration changed, reloading...
+
+[2019-07-24T03:32:43.890Z] Getting status...
+
+[2019-07-24T03:32:50.084Z] Getting status... → Ready
+
+[2019-07-24T03:32:50.662Z] 
+Processing...
+
+[2019-07-24T03:32:50.892Z] Staging build...
+
+[2019-07-24T03:32:50.924Z] Staging build...
+
+[2019-07-24T03:32:51.065Z] Getting build status...
+
+[2019-07-24T03:32:51.188Z] Getting build status...
+
+[2019-07-24T03:32:51.327Z] Getting build status... → Done (took 0.4 sec)
+
+[2019-07-24T03:32:51.605Z] Checking status...
+
+[2019-07-24T03:32:51.641Z] Building version v-35e66e5cfd...
+
+[2019-07-24T03:32:51.737Z] Building links:v-35e66e5cfd...
+
+[2019-07-24T03:32:52.075Z] Building links:v-35e66e5cfd... → Done (took 1.2 sec)
+
+[2019-07-24T03:32:52.303Z] Checking status...
+
+[2019-07-24T03:32:52.922Z] Checking status... → Version v-4322972f4c already deployed
+
+[2019-07-24T03:32:52.964Z] → Ingress: http://garden.local
+
+[2019-07-24T03:32:53.381Z] Deploying version v-35e66e5cfd...
+
+[2019-07-24T03:32:54.999Z] Waiting for resources to be ready...
+
+[2019-07-24T03:32:57.285Z] Service deployed
+
+[2019-07-24T03:32:57.829Z] Deploying version v-35e66e5cfd... → Done (took 5.5 sec)
+
+[2019-07-24T03:32:57.870Z] → Ingress: http://garden.local/db
+
+[2019-07-24T03:32:58.084Z] 
+Waiting for code changes...
+
+[2019-07-24T03:36:21.587Z] Module configuration changed, reloading...
+
+[2019-07-24T03:36:24.679Z] Getting status...
+
+[2019-07-24T03:36:31.245Z] Getting status... → Ready
+
+[2019-07-24T03:36:31.880Z] 
+Processing...
+
+[2019-07-24T03:36:32.131Z] Staging build...
+
+[2019-07-24T03:36:32.166Z] Staging build...
+
+[2019-07-24T03:36:32.312Z] Getting build status...
+
+[2019-07-24T03:36:32.458Z] Getting build status...
+
+[2019-07-24T03:36:32.575Z] Building version v-53200b898d...
+
+[2019-07-24T03:36:32.699Z] Building links:v-53200b898d...
+
+[2019-07-24T03:36:32.814Z] Getting build status... → Done (took 0.6 sec)
+
+[2019-07-24T03:36:33.023Z] Building links:v-53200b898d... → Done (took 0.9 sec)
+
+[2019-07-24T03:36:33.264Z] Checking status...
+
+[2019-07-24T03:36:33.335Z] Checking status...
+
+[2019-07-24T03:36:34.727Z] Checking status... → Version v-4322972f4c already deployed
+
+[2019-07-24T03:36:34.764Z] → Ingress: http://garden.local
+
+[2019-07-24T03:36:34.950Z] Deploying version v-53200b898d...
+
+[2019-07-24T03:36:36.637Z] Waiting for resources to be ready...
+
+[2019-07-24T03:36:38.929Z] Service deployed
+
+[2019-07-24T03:36:39.518Z] Deploying version v-53200b898d... → Done (took 6.2 sec)
+
+[2019-07-24T03:36:39.556Z] → Ingress: http://garden.local/db
+
+[2019-07-24T03:36:39.765Z] 
+Waiting for code changes...
+
+[2019-07-24T03:36:55.182Z] Running command sh in service web 
+
+[2019-07-24T03:40:37.358Z] Module configuration changed, reloading...
+
+[2019-07-24T03:40:40.698Z] Getting status...
+
+[2019-07-24T03:40:47.625Z] Getting status... → Ready
+
+[2019-07-24T03:40:48.257Z] 
+Processing...
+
+[2019-07-24T03:40:48.518Z] Staging build...
+
+[2019-07-24T03:40:48.553Z] Staging build...
+
+[2019-07-24T03:40:48.694Z] Getting build status...
+
+[2019-07-24T03:40:48.826Z] Getting build status...
+
+[2019-07-24T03:40:48.949Z] Building version v-d1ff7936b9...
+
+[2019-07-24T03:40:49.085Z] Building web:v-d1ff7936b9...
+
+[2019-07-24T03:40:49.224Z] Getting build status... → Done (took 0.7 sec)
+
+[2019-07-24T03:40:49.562Z] Checking status...
+
+[2019-07-24T03:40:50.431Z] Checking status... → Version v-53200b898d already deployed
+
+[2019-07-24T03:40:50.467Z] → Ingress: http://garden.local/db
+
+[2019-07-24T03:41:01.885Z] Building web:v-d1ff7936b9... → Done (took 13.3 sec)
+
+[2019-07-24T03:41:02.145Z] Checking status...
+
+[2019-07-24T03:41:02.935Z] Deploying version v-d1ff7936b9...
+
+[2019-07-24T03:41:04.568Z] Waiting for resources to be ready...
+
+[2019-07-24T03:41:06.892Z] Service deployed
+
+[2019-07-24T03:41:07.521Z] Deploying version v-d1ff7936b9... → Done (took 5.4 sec)
+
+[2019-07-24T03:41:07.560Z] → Ingress: http://garden.local
+
+[2019-07-24T03:41:07.781Z] 
+Waiting for code changes...
+
+[2019-07-24T03:44:13.828Z] Module configuration changed, reloading...
+
+[2019-07-24T03:44:17.770Z] Getting status...
+
+[2019-07-24T03:44:24.914Z] Getting status... → Ready
+
+[2019-07-24T03:44:25.536Z] 
+Processing...
+
+[2019-07-24T03:44:25.812Z] Staging build...
+
+[2019-07-24T03:44:25.850Z] Staging build...
+
+[2019-07-24T03:44:25.999Z] Getting build status...
+
+[2019-07-24T03:44:26.144Z] Getting build status...
+
+[2019-07-24T03:44:26.311Z] Getting build status... → Done (took 0.5 sec)
+
+[2019-07-24T03:44:26.592Z] Building version v-b87cefde3e...
+
+[2019-07-24T03:44:26.707Z] Building web:v-b87cefde3e...
+
+[2019-07-24T03:44:26.835Z] Checking status...
+
+[2019-07-24T03:44:27.769Z] Checking status... → Version v-53200b898d already deployed
+
+[2019-07-24T03:44:27.837Z] → Ingress: http://garden.local/db
+
+[2019-07-24T03:44:39.045Z] Building web:v-b87cefde3e... → Done (took 13.2 sec)
+
+[2019-07-24T03:44:39.314Z] Checking status...
+
+[2019-07-24T03:44:40.085Z] Deploying version v-b87cefde3e...
+
+[2019-07-24T03:44:41.649Z] Waiting for resources to be ready...
+
+[2019-07-24T03:44:44.028Z] Service deployed
+
+[2019-07-24T03:44:44.734Z] Deploying version v-b87cefde3e... → Done (took 5.4 sec)
+
+[2019-07-24T03:44:44.775Z] → Ingress: http://garden.local
+
+[2019-07-24T03:44:45.040Z] 
+Waiting for code changes...
+
+[2019-07-24T03:45:18.747Z] Module configuration changed, reloading...
+
+[2019-07-24T03:45:22.102Z] Getting status...
+
+[2019-07-24T03:45:34.463Z] Getting status... → Ready
+
+[2019-07-24T03:45:35.152Z] 
+Processing...
+
+[2019-07-24T03:45:35.495Z] Staging build...
+
+[2019-07-24T03:45:35.540Z] Staging build...
+
+[2019-07-24T03:45:35.714Z] Getting build status...
+
+[2019-07-24T03:45:35.908Z] Getting build status...
+
+[2019-07-24T03:45:36.088Z] Getting build status... → Done (took 0.6 sec)
+
+[2019-07-24T03:45:36.356Z] Building version v-342ac9734c...
+
+[2019-07-24T03:45:36.488Z] Building web:v-342ac9734c...
+
+[2019-07-24T03:45:36.612Z] Checking status...
+
+[2019-07-24T03:45:37.635Z] Checking status... → Version v-53200b898d already deployed
+
+[2019-07-24T03:45:37.711Z] → Ingress: http://garden.local/db
+
+[2019-07-24T03:45:49.365Z] Building web:v-342ac9734c... → Done (took 13.8 sec)
+
+[2019-07-24T03:45:49.646Z] Checking status...
+
+[2019-07-24T03:45:50.574Z] Deploying version v-342ac9734c...
+
+[2019-07-24T03:45:52.215Z] Waiting for resources to be ready...
+
+[2019-07-24T03:45:54.681Z] Deploying version v-342ac9734c...
+
+[2019-07-24T03:45:54.799Z] Error: Got error from Kubernetes API - container "web" in pod "web-7dcbc88d96-q2qww" is terminated
+    at wrapError (/snapshot/dist/build/src/plugins/kubernetes/api.js:0)
+    at wrapApi.Proxy.get.output.then.catch (/snapshot/dist/build/src/plugins/kubernetes/api.js:0)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+Error Details:
+body:
+  kind: Status
+  apiVersion: v1
+  metadata: {}
+  status: Failure
+  message: container "web" in pod "web-7dcbc88d96-q2qww" is terminated
+  reason: BadRequest
+  code: 400
+request:
+  method: GET
+  useQuerystring: false
+  readable: true
+  writable: true
+  explicitMethod: true
+  proxy: null
+  tunnel: true
+  setHost: true
+  port: '8443'
+  host: 192.168.99.100
+  path: >-
+    /api/v1/namespaces/workshop/pods/web-7dcbc88d96-q2qww/log?container=web&follow=false&limitBytes=5000&previous=false&tailLines=20
+  href: >-
+    https://192.168.99.100:8443/api/v1/namespaces/workshop/pods/web-7dcbc88d96-q2qww/log?container=web&follow=false&limitBytes=5000&previous=false&tailLines=20
+  ntick: true
+  originalHost: '192.168.99.100:8443'
+  originalHostHeaderName: host
+
+
+[2019-07-24T03:45:55.054Z] 
+Waiting for code changes...
+
+[2019-07-24T03:46:09.041Z] Module configuration changed, reloading...
+
+[2019-07-24T03:46:12.781Z] Getting status...
+
+[2019-07-24T03:46:20.235Z] Getting status... → Ready
+
+[2019-07-24T03:46:20.943Z] 
+Processing...
+
+[2019-07-24T03:46:21.266Z] Staging build...
+
+[2019-07-24T03:46:21.309Z] Staging build...
+
+[2019-07-24T03:46:21.479Z] Getting build status...
+
+[2019-07-24T03:46:21.655Z] Getting build status...
+
+[2019-07-24T03:46:21.894Z] Getting build status... → Done (took 0.6 sec)
+
+[2019-07-24T03:46:22.237Z] Building version v-38b72a6a9a...
+
+[2019-07-24T03:46:22.377Z] Building web:v-38b72a6a9a...
+
+[2019-07-24T03:46:22.544Z] Checking status...
+
+[2019-07-24T03:46:23.673Z] Checking status... → Version v-53200b898d already deployed
+
+[2019-07-24T03:46:23.721Z] → Ingress: http://garden.local/db
+
+[2019-07-24T03:46:34.574Z] Building web:v-38b72a6a9a... → Done (took 13.2 sec)
+
+[2019-07-24T03:46:34.976Z] Checking status...
+
+[2019-07-24T03:46:35.898Z] Deploying version v-38b72a6a9a...
+
+[2019-07-24T03:46:37.558Z] Waiting for resources to be ready...
+
+[2019-07-24T03:46:39.981Z] Service deployed
+
+[2019-07-24T03:46:40.713Z] Deploying version v-38b72a6a9a... → Done (took 5.8 sec)
+
+[2019-07-24T03:46:40.760Z] → Ingress: http://garden.local/web
+
+[2019-07-24T03:46:41.027Z] 
+Waiting for code changes...
+
+[2019-07-24T03:47:02.873Z] Module configuration changed, reloading...
+
+[2019-07-24T03:47:06.135Z] Module configuration changed, reloading...
+
+[2019-07-24T03:47:06.571Z] Getting status...
+
+[2019-07-24T03:47:15.377Z] Getting status... → Ready
+
+[2019-07-24T03:47:16.160Z] 
+Processing...
+
+[2019-07-24T03:47:16.496Z] Staging build...
+
+[2019-07-24T03:47:16.557Z] Staging build...
+
+[2019-07-24T03:47:16.736Z] Getting build status...
+
+[2019-07-24T03:47:16.910Z] Getting build status...
+
+[2019-07-24T03:47:17.101Z] Getting build status... → Done (took 0.6 sec)
+
+[2019-07-24T03:47:17.403Z] Building version v-4ca03f6fc5...
+
+[2019-07-24T03:47:17.548Z] Building web:v-4ca03f6fc5...
+
+[2019-07-24T03:47:17.687Z] Checking status...
+
+[2019-07-24T03:47:18.830Z] Checking status... → Version v-53200b898d already deployed
+
+[2019-07-24T03:47:18.899Z] → Ingress: http://garden.local/db
+
+[2019-07-24T03:47:30.351Z] Building web:v-4ca03f6fc5... → Done (took 13.8 sec)
+
+[2019-07-24T03:47:30.682Z] Checking status...
+
+[2019-07-24T03:47:31.658Z] Deploying version v-4ca03f6fc5...
+
+[2019-07-24T03:47:33.324Z] Waiting for resources to be ready...
+
+[2019-07-24T03:47:35.710Z] Service deployed
+
+[2019-07-24T03:47:36.487Z] Deploying version v-4ca03f6fc5... → Done (took 5.8 sec)
+
+[2019-07-24T03:47:36.539Z] → Ingress: http://garden.local/web
+
+[2019-07-24T03:47:36.825Z] 
+Waiting for code changes...
+
+[2019-07-24T03:48:16.891Z] Garden config added at /home/ellen/go/src/github.com/campoy/links/microservices-rest/router/garden.yml, reloading...
+
+[2019-07-24T03:48:20.912Z] Getting status...
+
+[2019-07-24T03:48:30.722Z] Getting status... → Ready
+
+[2019-07-24T03:48:31.515Z] 
+Processing...
+
+[2019-07-24T03:48:31.873Z] Staging build...
+
+[2019-07-24T03:48:31.925Z] Staging build...
+
+[2019-07-24T03:48:32.113Z] Getting build status...
+
+[2019-07-24T03:48:32.315Z] Getting build status...
+
+[2019-07-24T03:48:32.464Z] Building version v-4771dd55b8...
+
+[2019-07-24T03:48:32.640Z] Building links:v-4771dd55b8...
+
+[2019-07-24T03:48:32.794Z] Getting build status... → Done (took 0.9 sec)
+
+[2019-07-24T03:48:33.075Z] Building links:v-4771dd55b8... → Done (took 1.2 sec)
+
+[2019-07-24T03:48:33.418Z] Checking status...
+
+[2019-07-24T03:48:33.524Z] Checking status...
+
+[2019-07-24T03:48:35.289Z] Checking status... → Version v-4ca03f6fc5 already deployed
+
+[2019-07-24T03:48:35.338Z] → Ingress: http://garden.local/web
+
+[2019-07-24T03:48:35.706Z] Deploying version v-4771dd55b8...
+
+[2019-07-24T03:48:37.444Z] Waiting for resources to be ready...
+
+[2019-07-24T03:48:39.917Z] Service deployed
+
+[2019-07-24T03:48:40.774Z] Deploying version v-4771dd55b8... → Done (took 7.2 sec)
+
+[2019-07-24T03:48:40.822Z] → Ingress: http://garden.local/db
+
+[2019-07-24T03:48:41.116Z] 
+Waiting for code changes...
+
+[2019-07-24T03:48:59.347Z] Running command sh in service web 
+
+[2019-07-24T03:50:00.065Z] Garden config at /home/ellen/go/src/github.com/campoy/links/microservices-rest/router/garden.yml removed, reloading...
+
+[2019-07-24T03:50:03.471Z] Garden config at /home/ellen/go/src/github.com/campoy/links/microservices-rest/router/garden.yml removed, reloading...
+
+[2019-07-24T03:50:03.990Z] Getting status...
+
+[2019-07-24T03:50:12.137Z] Getting status... → Ready
+
+[2019-07-24T03:50:13.368Z] 
+Processing...
+
+[2019-07-24T03:50:13.929Z] Staging build...
+
+[2019-07-24T03:50:13.979Z] Staging build...
+
+[2019-07-24T03:50:14.031Z] Staging build...
+
+[2019-07-24T03:50:14.300Z] Getting build status...
+
+[2019-07-24T03:50:14.460Z] Getting build status...
+
+[2019-07-24T03:50:14.672Z] Getting build status...
+
+[2019-07-24T03:50:14.838Z] Building version v-4ec57c4116...
+
+[2019-07-24T03:50:15.069Z] Getting build status... → Done (took 1.1 sec)
+
+[2019-07-24T03:50:15.397Z] Building router:v-4ec57c4116...
+
+[2019-07-24T03:50:15.544Z] Getting build status... → Done (took 1.5 sec)
+
+[2019-07-24T03:50:15.996Z] Checking status...
+
+[2019-07-24T03:50:16.114Z] Checking status...
+
+[2019-07-24T03:50:18.129Z] Checking status... → Version v-4771dd55b8 already deployed
+
+[2019-07-24T03:50:18.185Z] → Ingress: http://garden.local/db
+
+[2019-07-24T03:50:18.241Z] Checking status... → Version v-4ca03f6fc5 already deployed
+
+[2019-07-24T03:50:18.297Z] → Ingress: http://garden.local/web
+
+[2019-07-24T03:53:49.446Z] Building router:v-4ec57c4116... → Done (took 215.4 sec)
+
+[2019-07-24T03:53:49.901Z] Checking status...
+
+[2019-07-24T03:53:50.633Z] Deploying version v-4ec57c4116...
+
+[2019-07-24T03:53:52.777Z] Waiting for resources to be ready...
+
+[2019-07-24T03:53:55.260Z] Service deployed
+
+[2019-07-24T03:53:56.336Z] Deploying version v-4ec57c4116... → Done (took 6.4 sec)
+
+[2019-07-24T03:53:56.405Z] → Ingress: http://garden.local/db
+
+[2019-07-24T03:53:56.746Z] 
+Waiting for code changes...
+
+[2019-07-24T03:55:17.533Z] Module configuration changed, reloading...
+
+[2019-07-24T03:55:20.990Z] Module configuration changed, reloading...
+
+[2019-07-24T03:55:21.044Z] Module configuration changed, reloading...
+
+[2019-07-24T03:55:21.111Z] Module configuration changed, reloading...
+
+[2019-07-24T03:55:21.662Z] Getting status...
+
+[2019-07-24T03:55:30.221Z] Getting status... → Ready
+
+[2019-07-24T03:55:31.395Z] 
+Processing...
+
+[2019-07-24T03:55:31.960Z] Staging build...
+
+[2019-07-24T03:55:32.031Z] Staging build...
+
+[2019-07-24T03:55:32.086Z] Staging build...
+
+[2019-07-24T03:55:32.381Z] Getting build status...
+
+[2019-07-24T03:55:32.587Z] Getting build status...
+
+[2019-07-24T03:55:32.862Z] Getting build status...
+
+[2019-07-24T03:55:33.042Z] Building version v-ac523a7b97...
+
+[2019-07-24T03:55:33.263Z] Getting build status... → Done (took 1.3 sec)
+
+[2019-07-24T03:55:33.639Z] Building router:v-ac523a7b97...
+
+[2019-07-24T03:55:33.801Z] Getting build status... → Done (took 1.7 sec)
+
+[2019-07-24T03:55:34.129Z] Building router:v-ac523a7b97... → Done (took 2.1 sec)
+
+[2019-07-24T03:55:34.516Z] Checking status...
+
+[2019-07-24T03:55:34.625Z] Checking status...
+
+[2019-07-24T03:55:34.740Z] Checking status...
+
+[2019-07-24T03:55:37.697Z] Checking status... → Version v-4771dd55b8 already deployed
+
+[2019-07-24T03:55:37.756Z] → Ingress: http://garden.local/db
+
+[2019-07-24T03:55:38.149Z] Checking status... → Version v-4ca03f6fc5 already deployed
+
+[2019-07-24T03:55:38.207Z] → Ingress: http://garden.local/web
+
+[2019-07-24T03:55:38.430Z] Deploying version v-ac523a7b97...
+
+[2019-07-24T03:55:40.139Z] Waiting for resources to be ready...
+
+[2019-07-24T03:55:42.616Z] Service deployed
+
+[2019-07-24T03:55:43.608Z] Deploying version v-ac523a7b97... → Done (took 8.9 sec)
+
+[2019-07-24T03:55:43.663Z] → Ingress: http://garden.local/router
+
+[2019-07-24T03:55:44.003Z] 
+Waiting for code changes...
+
+[2019-07-24T03:56:26.384Z] Module configuration changed, reloading...
+
+[2019-07-24T03:56:30.561Z] Getting status...
+
+[2019-07-24T03:56:39.786Z] Getting status... → Ready
+
+[2019-07-24T03:56:40.980Z] 
+Processing...
+
+[2019-07-24T03:56:41.687Z] Staging build...
+
+[2019-07-24T03:56:41.748Z] Staging build...
+
+[2019-07-24T03:56:41.805Z] Staging build...
+
+[2019-07-24T03:56:42.103Z] Getting build status...
+
+[2019-07-24T03:56:42.289Z] Getting build status...
+
+[2019-07-24T03:56:42.532Z] Getting build status...
+
+[2019-07-24T03:56:42.770Z] Getting build status... → Done (took 1 sec)
+
+[2019-07-24T03:56:43.051Z] Getting build status... → Done (took 1.4 sec)
+
+[2019-07-24T03:56:43.603Z] Building version v-f2471db658...
+
+[2019-07-24T03:56:43.769Z] Building web:v-f2471db658...
+
+[2019-07-24T03:56:43.951Z] Checking status...
+
+[2019-07-24T03:56:44.110Z] Checking status...
+
+[2019-07-24T03:56:47.151Z] Checking status... → Version v-4771dd55b8 already deployed
+
+[2019-07-24T03:56:47.257Z] → Ingress: http://garden.local/db
+
+[2019-07-24T03:56:47.581Z] Checking status... → Version v-ac523a7b97 already deployed
+
+[2019-07-24T03:56:47.682Z] → Ingress: http://garden.local/router
+
+[2019-07-24T03:56:57.489Z] Building web:v-f2471db658... → Done (took 15.7 sec)
+
+[2019-07-24T03:56:57.901Z] Checking status...
+
+[2019-07-24T03:56:59.105Z] Deploying version v-f2471db658...
+
+[2019-07-24T03:57:00.864Z] Waiting for resources to be ready...
+
+[2019-07-24T03:57:03.322Z] Service deployed
+
+[2019-07-24T03:57:04.301Z] Deploying version v-f2471db658... → Done (took 6.4 sec)
+
+[2019-07-24T03:57:04.360Z] → Ingress: http://garden.local/web
+
+[2019-07-24T03:57:04.716Z] 
+Waiting for code changes...
+
+[2019-07-24T03:57:56.779Z] Module configuration changed, reloading...
+
+[2019-07-24T03:58:01.454Z] Getting status...
+
+[2019-07-24T03:58:10.343Z] Getting status... → Ready
+
+[2019-07-24T03:58:11.573Z] 
+Processing...
+
+[2019-07-24T03:58:12.212Z] Staging build...
+
+[2019-07-24T03:58:12.270Z] Staging build...
+
+[2019-07-24T03:58:12.332Z] Staging build...
+
+[2019-07-24T03:58:12.625Z] Getting build status...
+
+[2019-07-24T03:58:12.809Z] Getting build status...
+
+[2019-07-24T03:58:13.091Z] Getting build status...
+
+[2019-07-24T03:58:13.364Z] Getting build status... → Done (took 1.1 sec)
+
+[2019-07-24T03:58:13.708Z] Getting build status... → Done (took 1.5 sec)
+
+[2019-07-24T03:58:14.379Z] Building version v-de21f18713...
+
+[2019-07-24T03:58:14.611Z] Building web:v-de21f18713...
+
+[2019-07-24T03:58:14.783Z] Checking status...
+
+[2019-07-24T03:58:14.951Z] Checking status...
+
+[2019-07-24T03:58:17.684Z] Checking status... → Version v-ac523a7b97 already deployed
+
+[2019-07-24T03:58:17.786Z] → Ingress: http://garden.local/router
+
+[2019-07-24T03:58:18.129Z] Checking status... → Version v-4771dd55b8 already deployed
+
+[2019-07-24T03:58:18.189Z] → Ingress: http://garden.local/db
+
+[2019-07-24T03:58:27.082Z] Building web:v-de21f18713... → Done (took 14.8 sec)
+
+[2019-07-24T03:58:27.521Z] Checking status...
+
+[2019-07-24T03:58:28.763Z] Deploying version v-de21f18713...
+
+[2019-07-24T03:58:30.477Z] Waiting for resources to be ready...
+
+[2019-07-24T03:58:32.930Z] Service deployed
+
+[2019-07-24T03:58:33.975Z] Deploying version v-de21f18713... → Done (took 6.5 sec)
+
+[2019-07-24T03:58:34.039Z] → Ingress: http://garden.local
+
+[2019-07-24T03:58:34.402Z] 
+Waiting for code changes...
+
+[2019-07-24T04:01:26.618Z] Module configuration changed, reloading...
+
+[2019-07-24T04:01:31.370Z] Getting status...
+
+[2019-07-24T04:01:40.850Z] Getting status... → Ready
+
+[2019-07-24T04:01:42.118Z] 
+Processing...
+
+[2019-07-24T04:01:42.777Z] Staging build...
+
+[2019-07-24T04:01:42.840Z] Staging build...
+
+[2019-07-24T04:01:42.904Z] Staging build...
+
+[2019-07-24T04:01:43.241Z] Getting build status...
+
+[2019-07-24T04:01:43.371Z] Getting build status...
+
+[2019-07-24T04:01:43.771Z] Getting build status...
+
+[2019-07-24T04:01:43.971Z] Building version v-090bc7831d...
+
+[2019-07-24T04:01:44.225Z] Getting build status... → Done (took 1.4 sec)
+
+[2019-07-24T04:01:44.645Z] Building web:v-090bc7831d...
+
+[2019-07-24T04:01:44.827Z] Getting build status... → Done (took 2 sec)
+
+[2019-07-24T04:01:45.447Z] Checking status...
+
+[2019-07-24T04:01:45.633Z] Checking status...
+
+[2019-07-24T04:01:48.491Z] Checking status... → Version v-ac523a7b97 already deployed
+
+[2019-07-24T04:01:48.563Z] → Ingress: http://garden.local/router
+
+[2019-07-24T04:01:48.818Z] Checking status... → Version v-4771dd55b8 already deployed
+
+[2019-07-24T04:01:48.882Z] → Ingress: http://garden.local/db
+
+[2019-07-24T04:01:57.363Z] Building web:v-090bc7831d... → Done (took 14.5 sec)
+
+[2019-07-24T04:01:57.839Z] Checking status...
+
+[2019-07-24T04:01:59.112Z] Deploying version v-090bc7831d...
+
+[2019-07-24T04:02:00.848Z] Waiting for resources to be ready...
+
+[2019-07-24T04:02:03.427Z] Service deployed
+
+[2019-07-24T04:02:04.488Z] Deploying version v-090bc7831d... → Done (took 6.6 sec)
+
+[2019-07-24T04:02:04.557Z] → Ingress: http://garden.local
+
+[2019-07-24T04:02:04.969Z] 
+Waiting for code changes...
+
+[2019-07-24T04:04:34.944Z] Module configuration changed, reloading...
+
+[2019-07-24T04:04:35.046Z] Module configuration changed, reloading...
+
+[2019-07-24T04:04:39.318Z] Module configuration changed, reloading...
+
+[2019-07-24T04:04:39.835Z] Getting status...
+
+[2019-07-24T04:04:49.659Z] Getting status... → Ready
+
+[2019-07-24T04:04:51.105Z] 
+Processing...
+
+[2019-07-24T04:04:51.798Z] Staging build...
+
+[2019-07-24T04:04:51.868Z] Staging build...
+
+[2019-07-24T04:04:51.934Z] Staging build...
+
+[2019-07-24T04:04:52.286Z] Getting build status...
+
+[2019-07-24T04:04:52.557Z] Getting build status...
+
+[2019-07-24T04:04:52.856Z] Getting build status...
+
+[2019-07-24T04:04:53.071Z] Building version v-7f59e95164...
+
+[2019-07-24T04:04:53.277Z] Building version v-ab6c2ab810...
+
+[2019-07-24T04:04:53.533Z] Building web:v-7f59e95164...
+
+[2019-07-24T04:04:53.661Z] Building router:v-ab6c2ab810...
+
+[2019-07-24T04:04:53.909Z] Getting build status... → Done (took 2.1 sec)
+
+[2019-07-24T04:04:54.487Z] Building router:v-ab6c2ab810... → Done (took 2.6 sec)
+
+[2019-07-24T04:04:55.161Z] Checking status...
+
+[2019-07-24T04:04:55.323Z] Checking status...
+
+[2019-07-24T04:04:58.752Z] Deploying version v-ab6c2ab810...
+
+[2019-07-24T04:04:59.363Z] Checking status... → Version v-4771dd55b8 already deployed
+
+[2019-07-24T04:04:59.476Z] → Ingress: http://garden.local/db
+
+[2019-07-24T04:05:01.519Z] Waiting for resources to be ready...
+
+[2019-07-24T04:05:04.338Z] Service deployed
+
+[2019-07-24T04:05:05.932Z] Deploying version v-ab6c2ab810... → Done (took 10.6 sec)
+
+[2019-07-24T04:05:06.047Z] → Ingress: http://garden.local/router
+
+[2019-07-24T04:05:08.850Z] Building web:v-7f59e95164... → Done (took 16.9 sec)
+
+[2019-07-24T04:05:09.325Z] Checking status...
+
+[2019-07-24T04:05:10.807Z] Deploying version v-7f59e95164...
+
+[2019-07-24T04:05:12.539Z] Waiting for resources to be ready...
+
+[2019-07-24T04:05:15.402Z] Service deployed
+
+[2019-07-24T04:05:16.758Z] Deploying version v-7f59e95164... → Done (took 7.4 sec)
+
+[2019-07-24T04:05:16.830Z] → Ingress: http://garden.local
+
+[2019-07-24T04:05:17.252Z] 
+Waiting for code changes...
+
+[2019-07-24T04:12:27.055Z] 
+Processing...
+
+[2019-07-24T04:12:27.404Z] Staging build...
+
+[2019-07-24T04:12:27.578Z] Building version v-bec5183ac7...
+
+[2019-07-24T04:12:27.808Z] Building links:v-bec5183ac7...
+
+[2019-07-24T04:12:28.015Z] Building links:v-bec5183ac7... → Done (took 0.6 sec)
+
+[2019-07-24T04:12:28.501Z] Checking status...
+
+[2019-07-24T04:12:29.893Z] Deploying version v-bec5183ac7...
+
+[2019-07-24T04:12:31.589Z] Waiting for resources to be ready...
+
+[2019-07-24T04:12:34.224Z] Service deployed
+
+[2019-07-24T04:12:35.613Z] Deploying version v-bec5183ac7... → Done (took 7.1 sec)
+
+[2019-07-24T04:12:35.683Z] → Ingress: http://garden.local/db
+
+[2019-07-24T04:12:36.113Z] 
+Waiting for code changes...
+
+[2019-07-24T04:12:36.534Z] 
+Processing...
+
+[2019-07-24T04:12:36.742Z] 
+Waiting for code changes...
+
+[2019-07-24T04:12:49.327Z] 
+Processing...
+
+[2019-07-24T04:12:49.702Z] Staging build...
+
+[2019-07-24T04:12:49.863Z] Building version v-6b9a4c7d2c...
+
+[2019-07-24T04:12:50.078Z] Building links:v-6b9a4c7d2c...
+
+[2019-07-24T04:12:50.289Z] Building links:v-6b9a4c7d2c... → Done (took 0.6 sec)
+
+[2019-07-24T04:12:50.787Z] Checking status...
+
+[2019-07-24T04:12:52.313Z] Deploying version v-6b9a4c7d2c...
+
+[2019-07-24T04:12:54.117Z] Waiting for resources to be ready...
+
+[2019-07-24T04:12:56.709Z] Service deployed
+
+[2019-07-24T04:12:58.048Z] Deploying version v-6b9a4c7d2c... → Done (took 7.3 sec)
+
+[2019-07-24T04:12:58.125Z] → Ingress: http://garden.local/db
+
+[2019-07-24T04:12:58.595Z] 
+Waiting for code changes...
+
+[2019-07-24T04:19:03.883Z] 
+Processing...
+
+[2019-07-24T04:19:04.274Z] Staging build...
+
+[2019-07-24T04:19:04.448Z] Building version v-133df943f7...
+
+[2019-07-24T04:19:04.737Z] Building links:v-133df943f7...
+
+[2019-07-24T04:19:04.959Z] Building links:v-133df943f7... → Done (took 0.6 sec)
+
+[2019-07-24T04:19:05.507Z] Checking status...
+
+[2019-07-24T04:19:07.000Z] Deploying version v-133df943f7...
+
+[2019-07-24T04:19:08.698Z] Waiting for resources to be ready...
+
+[2019-07-24T04:19:11.275Z] Service deployed
+
+[2019-07-24T04:19:12.499Z] Deploying version v-133df943f7... → Done (took 7 sec)
+
+[2019-07-24T04:19:12.574Z] → Ingress: http://garden.local/db
+
+[2019-07-24T04:19:13.009Z] 
+Waiting for code changes...
+
+[2019-07-24T04:20:57.365Z] 
+Processing...
+
+[2019-07-24T04:20:57.677Z] Staging build...
+
+[2019-07-24T04:20:57.898Z] Building version v-627ff38402...
+
+[2019-07-24T04:20:58.120Z] Building links:v-627ff38402...
+
+[2019-07-24T04:20:58.306Z] Building links:v-627ff38402... → Done (took 0.6 sec)
+
+[2019-07-24T04:20:58.822Z] Checking status...
+
+[2019-07-24T04:21:00.331Z] Deploying version v-627ff38402...
+
+[2019-07-24T04:21:02.196Z] Waiting for resources to be ready...
+
+[2019-07-24T04:21:04.812Z] Service deployed
+
+[2019-07-24T04:21:06.112Z] Deploying version v-627ff38402... → Done (took 7.3 sec)
+
+[2019-07-24T04:21:06.189Z] → Ingress: http://garden.local/db
+
+[2019-07-24T04:21:06.644Z] 
+Waiting for code changes...
+
+[2019-07-24T04:22:07.930Z] 
+Processing...
+
+[2019-07-24T04:22:08.268Z] Staging build...
+
+[2019-07-24T04:22:08.439Z] Building version v-53cc950e95...
+
+[2019-07-24T04:22:08.734Z] Building router:v-53cc950e95...
+
+[2019-07-24T04:24:35.748Z] Building router:v-53cc950e95... → Done (took 147.5 sec)
+
+[2019-07-24T04:24:36.451Z] Checking status...
+
+[2019-07-24T04:24:38.110Z] Deploying version v-53cc950e95...
+
+[2019-07-24T04:24:39.900Z] Waiting for resources to be ready...
+
+[2019-07-24T04:24:42.543Z] Service deployed
+
+[2019-07-24T04:24:43.754Z] Deploying version v-53cc950e95... → Done (took 7.3 sec)
+
+[2019-07-24T04:24:43.827Z] → Ingress: http://garden.local/router
+
+[2019-07-24T04:24:44.268Z] 
+Waiting for code changes...
+
+[2019-07-24T04:24:44.803Z] 
+Processing...
+
+[2019-07-24T04:24:45.142Z] Staging build...
+
+[2019-07-24T04:24:45.314Z] Building version v-ab6c2ab810...
+
+[2019-07-24T04:24:45.564Z] Building router:v-ab6c2ab810...
+
+[2019-07-24T04:27:16.479Z] Building router:v-ab6c2ab810... → Done (took 151.3 sec)
+
+[2019-07-24T04:27:16.985Z] 
+Waiting for code changes...
+
+[2019-07-24T04:27:17.508Z] 
+Processing...
+
+[2019-07-24T04:27:17.735Z] 
+Waiting for code changes...
+
+[2019-07-24T04:27:18.185Z] 
+Processing...
+
+[2019-07-24T04:27:18.415Z] 
+Waiting for code changes...
+
+[2019-07-24T04:27:19.145Z] 
+Processing...
+
+[2019-07-24T04:27:19.452Z] Staging build...
+
+[2019-07-24T04:27:19.635Z] Building version v-e7a5e37450...
+
+[2019-07-24T04:27:19.865Z] Building links:v-e7a5e37450...
+
+[2019-07-24T04:27:20.119Z] Building links:v-e7a5e37450... → Done (took 0.7 sec)
+
+[2019-07-24T04:27:20.695Z] Checking status...
+
+[2019-07-24T04:27:22.232Z] Deploying version v-e7a5e37450...
+
+[2019-07-24T04:27:24.689Z] Waiting for resources to be ready...
+
+[2019-07-24T04:27:27.253Z] Service deployed
+
+[2019-07-24T04:27:28.487Z] Deploying version v-e7a5e37450... → Done (took 7.8 sec)
+
+[2019-07-24T04:27:28.585Z] → Ingress: http://garden.local/db
+
+[2019-07-24T04:27:29.062Z] 
+Waiting for code changes...
+
+[2019-07-24T04:27:29.597Z] 
+Processing...
+
+[2019-07-24T04:27:29.831Z] 
+Waiting for code changes...
+
+[2019-07-24T04:27:30.276Z] 
+Processing...
+
+[2019-07-24T04:27:30.502Z] 
+Waiting for code changes...
+
+[2019-07-24T04:27:30.955Z] 
+Processing...
+
+[2019-07-24T04:27:31.177Z] 
+Waiting for code changes...
+
+[2019-07-24T04:27:31.633Z] 
+Processing...
+
+[2019-07-24T04:27:31.861Z] 
+Waiting for code changes...
+
+[2019-07-24T04:33:26.272Z] 
+Processing...
+
+[2019-07-24T04:33:26.600Z] Staging build...
+
+[2019-07-24T04:33:26.846Z] Building version v-6dd24fd4be...
+
+[2019-07-24T04:33:27.084Z] Building links:v-6dd24fd4be...
+
+[2019-07-24T04:35:41.021Z] Building links:v-6dd24fd4be...
+
+[2019-07-24T04:35:41.256Z] Error: Unable to run docker command: Command failed with code 2: docker build -t links:v-6dd24fd4be /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/build/links
+
+The command '/bin/sh -c go build main.go' returned a non-zero code: 2
+
+Here are the last 100 lines of the output:
+
+ go: finding golang.org/x/text v0.3.2
+go: finding google.golang.org/genproto v0.0.0-20190716160619-c506a9f90610
+go: finding golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7
+go: finding golang.org/x/net v0.0.0-20190628185345-da137c7871d7
+go: finding google.golang.org/grpc v1.22.0
+go: finding github.com/golang/protobuf v1.2.0
+go: finding golang.org/x/sys v0.0.0-20181107165924-66b7b1311ac8
+go: finding google.golang.org/grpc v1.19.0
+go: finding google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8
+go: finding gopkg.in/yaml.v2 v2.0.0-20170812160011-eb3733d160e7
+go: finding github.com/google/go-cmp v0.2.0
+go: finding github.com/BurntSushi/toml v0.3.1
+go: finding github.com/dustin/go-humanize v1.0.0
+go: finding cloud.google.com/go v0.26.0
+go: finding golang.org/x/sys v0.0.0-20180830151530-49385e6e1522
+go: finding honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099
+go: finding github.com/golang/mock v1.1.1
+go: finding google.golang.org/appengine v1.1.0
+go: finding github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2
+go: finding golang.org/x/net v0.0.0-20180826012351-8a410e7b638d
+go: finding github.com/spf13/cobra v0.0.5
+go: finding golang.org/x/tools v0.0.0-20190524140312-2c0ae7006135
+go: finding golang.org/x/text v0.3.0
+go: finding github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9
+go: finding golang.org/x/exp v0.0.0-20190121172915-509febef88a4
+go: finding golang.org/x/sys v0.0.0-20190626221950-04f50cda93cb
+go: finding github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af
+go: finding golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a
+go: finding golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2
+go: finding golang.org/x/tools v0.0.0-20190226205152-f727befe758c
+go: finding gopkg.in/yaml.v2 v2.2.2
+go: finding github.com/ghodss/yaml v1.0.0
+go: finding github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+go: finding golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be
+go: finding golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f
+go: finding github.com/cpuguy83/go-md2man v1.0.10
+go: finding golang.org/x/net v0.0.0-20190311183353-d8887717615a
+go: finding github.com/kr/pretty v0.1.0
+go: finding gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127
+go: finding github.com/client9/misspell v0.3.4
+go: finding honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc
+go: finding golang.org/x/net v0.0.0-20190620200207-3b0461eec859
+go: finding golang.org/x/net v0.0.0-20181220203305-927f97764cc3
+go: finding golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e
+go: finding golang.org/x/tools v0.0.0-20190114222345-bf090417da8b
+go: finding golang.org/x/sync v0.0.0-20190423024810-112230192c58
+go: finding github.com/golang/protobuf v1.3.1
+go: finding golang.org/x/lint v0.0.0-20190227174305-5b3e6a55c961
+go: finding gopkg.in/resty.v1 v1.12.0
+go: finding gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405
+go: finding golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3
+go: finding github.com/spf13/pflag v1.0.3
+go: finding github.com/inconshreveable/mousetrap v1.0.0
+go: finding golang.org/x/sync v0.0.0-20181108010431-42b317875d0f
+go: finding github.com/mitchellh/go-homedir v1.1.0
+go: finding github.com/spf13/viper v1.3.2
+go: finding github.com/kr/text v0.1.0
+go: finding golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3
+go: finding golang.org/x/tools v0.0.0-20190311212946-11955173bddd
+go: finding golang.org/x/net v0.0.0-20190213061140-3a22650c66bd
+go: finding github.com/stretchr/testify v1.3.0
+go: finding github.com/russross/blackfriday v1.5.2
+go: finding google.golang.org/appengine v1.4.0
+go: finding github.com/stretchr/testify v1.2.2
+go: finding github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77
+go: finding github.com/magiconair/properties v1.8.0
+go: finding github.com/coreos/etcd v3.3.10+incompatible
+go: finding github.com/ugorji/go/codec v0.0.0-20181204163529-d75b2dcb6bc8
+go: finding github.com/armon/consul-api v0.0.0-20180202201655-eb2c6b5be1b6
+go: finding github.com/mitchellh/mapstructure v1.1.2
+go: finding github.com/spf13/jwalterweatherman v1.0.0
+go: finding github.com/coreos/go-semver v0.2.0
+go: finding github.com/kr/pty v1.1.1
+go: finding github.com/coreos/go-etcd v2.0.0+incompatible
+go: finding golang.org/x/sys v0.0.0-20181205085412-a5c9d58dba9a
+go: finding golang.org/x/crypto v0.0.0-20181203042331-505ab145d0a9
+go: finding github.com/spf13/cast v1.3.0
+go: finding github.com/hashicorp/hcl v1.0.0
+go: finding github.com/stretchr/objx v0.1.0
+go: finding github.com/pmezard/go-difflib v1.0.0
+go: finding golang.org/x/net v0.0.0-20180724234803-3673e40ba225
+go: finding github.com/spf13/afero v1.1.2
+go: finding github.com/fsnotify/fsnotify v1.4.7
+go: finding github.com/davecgh/go-spew v1.1.0
+go: finding github.com/pelletier/go-toml v1.2.0
+go: finding github.com/davecgh/go-spew v1.1.1
+go: downloading github.com/campoy/links v0.0.0-20190723190411-947394a475c7
+go: downloading github.com/gorilla/mux v1.7.3
+go: downloading github.com/kelseyhightower/envconfig v1.4.0
+go: downloading github.com/dgraph-io/badger v1.6.0
+go: downloading github.com/pkg/errors v0.8.1
+go: downloading github.com/dustin/go-humanize v1.0.0
+go: downloading golang.org/x/net v0.0.0-20190628185345-da137c7871d7
+go: downloading github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2
+go: downloading github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9
+go: downloading github.com/golang/protobuf v1.3.2
+go: downloading golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7
+# command-line-arguments
+./main.go:42:20: undefined: fmt
+note: module requires Go 1.12
+    at Object.<anonymous> (/snapshot/dist/build/src/plugins/container/helpers.js:0)
+    at Generator.throw (<anonymous>)
+    at rejected (/snapshot/dist/build/src/plugins/container/helpers.js:0)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+Error Details:
+err:
+  detail:
+    cmd: docker
+    args:
+      - build
+      - '-t'
+      - 'links:v-6dd24fd4be'
+      - >-
+        /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/build/links
+    opts:
+      cwd: >-
+        /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/build/links
+    result:
+      code: 2
+      output: "Sending build context to Docker daemon  24.06kB\r\r\nStep 1/8 : FROM golang:1.11.9-alpine3.9\n ---> 64ba145fa582\nStep 2/8 : WORKDIR /go/src/app\n ---> Using cache\n ---> aa425cb56dd4\nStep 3/8 : RUN apk add --no-cache git gcc musl-dev\n ---> Using cache\n ---> aaa81b15d4e3\nStep 4/8 : ENV GO111MODULE=on\n ---> Using cache\n ---> 8250002011b8\nStep 5/8 : EXPOSE 8080\n ---> Using cache\n ---> 68d407d387cb\nStep 6/8 : COPY main.go go.mod ./\n ---> 2dfa6aa0b6e5\nStep 7/8 : RUN go build main.go\n ---> Running in e4f4e051f5df\n\e[91mgo: finding github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: finding github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: finding github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: finding github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: finding github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: finding github.com/grpc-ecosystem/grpc-gateway v1.9.5\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.2\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20190716160619-c506a9f90610\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.22.0\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.2.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181107165924-66b7b1311ac8\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.19.0\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.0.0-20170812160011-eb3733d160e7\n\e[0m\e[91mgo: finding github.com/google/go-cmp v0.2.0\n\e[0m\e[91mgo: finding github.com/BurntSushi/toml v0.3.1\n\e[0m\e[91mgo: finding github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: finding cloud.google.com/go v0.26.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20180830151530-49385e6e1522\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099\n\e[0m\e[91mgo: finding github.com/golang/mock v1.1.1\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.1.0\n\e[0m\e[91mgo: finding github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180826012351-8a410e7b638d\n\e[0m\e[91mgo: finding github.com/spf13/cobra v0.0.5\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190524140312-2c0ae7006135\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.0\n\e[0m\e[91mgo: finding github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: finding golang.org/x/exp v0.0.0-20190121172915-509febef88a4\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190626221950-04f50cda93cb\n\e[0m\e[91mgo: finding github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190226205152-f727befe758c\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.2.2\n\e[0m\e[91mgo: finding github.com/ghodss/yaml v1.0.0\n\e[0m\e[91mgo: finding github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b\n\e[0m\e[91mgo: finding golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f\n\e[0m\e[91mgo: finding github.com/cpuguy83/go-md2man v1.0.10\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190311183353-d8887717615a\n\e[0m\e[91mgo: finding github.com/kr/pretty v0.1.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127\n\e[0m\e[91mgo: finding github.com/client9/misspell v0.3.4\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190620200207-3b0461eec859\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20181220203305-927f97764cc3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190114222345-bf090417da8b\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20190423024810-112230192c58\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.1\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190227174305-5b3e6a55c961\n\e[0m\e[91mgo: finding gopkg.in/resty.v1 v1.12.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3\n\e[0m\e[91mgo: finding github.com/spf13/pflag v1.0.3\n\e[0m\e[91mgo: finding github.com/inconshreveable/mousetrap v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20181108010431-42b317875d0f\n\e[0m\e[91mgo: finding github.com/mitchellh/go-homedir v1.1.0\n\e[0m\e[91mgo: finding github.com/spf13/viper v1.3.2\n\e[0m\e[91mgo: finding github.com/kr/text v0.1.0\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190311212946-11955173bddd\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190213061140-3a22650c66bd\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.3.0\n\e[0m\e[91mgo: finding github.com/russross/blackfriday v1.5.2\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.4.0\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.2.2\n\e[0m\e[91mgo: finding github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77\n\e[0m\e[91mgo: finding github.com/magiconair/properties v1.8.0\n\e[0m\e[91mgo: finding github.com/coreos/etcd v3.3.10+incompatible\n\e[0m\e[91mgo: finding github.com/ugorji/go/codec v0.0.0-20181204163529-d75b2dcb6bc8\n\e[0m\e[91mgo: finding github.com/armon/consul-api v0.0.0-20180202201655-eb2c6b5be1b6\n\e[0m\e[91mgo: finding github.com/mitchellh/mapstructure v1.1.2\n\e[0m\e[91mgo: finding github.com/spf13/jwalterweatherman v1.0.0\n\e[0m\e[91mgo: finding github.com/coreos/go-semver v0.2.0\n\e[0m\e[91mgo: finding github.com/kr/pty v1.1.1\n\e[0m\e[91mgo: finding github.com/coreos/go-etcd v2.0.0+incompatible\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181205085412-a5c9d58dba9a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20181203042331-505ab145d0a9\n\e[0m\e[91mgo: finding github.com/spf13/cast v1.3.0\n\e[0m\e[91mgo: finding github.com/hashicorp/hcl v1.0.0\n\e[0m\e[91mgo: finding github.com/stretchr/objx v0.1.0\n\e[0m\e[91mgo: finding github.com/pmezard/go-difflib v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180724234803-3673e40ba225\n\e[0m\e[91mgo: finding github.com/spf13/afero v1.1.2\n\e[0m\e[91mgo: finding github.com/fsnotify/fsnotify v1.4.7\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.0\n\e[0m\e[91mgo: finding github.com/pelletier/go-toml v1.2.0\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.1\n\e[0m\e[91mgo: downloading github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: downloading github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: downloading github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: downloading github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: downloading github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: downloading github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: downloading golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: downloading github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: downloading github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: downloading github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: downloading golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91m# command-line-arguments\n./main.go:42:20: undefined: fmt\nnote: module requires Go 1.12\e[0m"
+      stdout: "Sending build context to Docker daemon  24.06kB\r\r\nStep 1/8 : FROM golang:1.11.9-alpine3.9\n ---> 64ba145fa582\nStep 2/8 : WORKDIR /go/src/app\n ---> Using cache\n ---> aa425cb56dd4\nStep 3/8 : RUN apk add --no-cache git gcc musl-dev\n ---> Using cache\n ---> aaa81b15d4e3\nStep 4/8 : ENV GO111MODULE=on\n ---> Using cache\n ---> 8250002011b8\nStep 5/8 : EXPOSE 8080\n ---> Using cache\n ---> 68d407d387cb\nStep 6/8 : COPY main.go go.mod ./\n ---> 2dfa6aa0b6e5\nStep 7/8 : RUN go build main.go\n ---> Running in e4f4e051f5df\n\e[91mgo: finding github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: finding github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: finding github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: finding github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: finding github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: finding github.com/grpc-ecosystem/grpc-gateway v1.9.5\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.2\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20190716160619-c506a9f90610\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.22.0\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.2.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181107165924-66b7b1311ac8\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.19.0\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.0.0-20170812160011-eb3733d160e7\n\e[0m\e[91mgo: finding github.com/google/go-cmp v0.2.0\n\e[0m\e[91mgo: finding github.com/BurntSushi/toml v0.3.1\n\e[0m\e[91mgo: finding github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: finding cloud.google.com/go v0.26.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20180830151530-49385e6e1522\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099\n\e[0m\e[91mgo: finding github.com/golang/mock v1.1.1\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.1.0\n\e[0m\e[91mgo: finding github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180826012351-8a410e7b638d\n\e[0m\e[91mgo: finding github.com/spf13/cobra v0.0.5\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190524140312-2c0ae7006135\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.0\n\e[0m\e[91mgo: finding github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: finding golang.org/x/exp v0.0.0-20190121172915-509febef88a4\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190626221950-04f50cda93cb\n\e[0m\e[91mgo: finding github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190226205152-f727befe758c\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.2.2\n\e[0m\e[91mgo: finding github.com/ghodss/yaml v1.0.0\n\e[0m\e[91mgo: finding github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b\n\e[0m\e[91mgo: finding golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f\n\e[0m\e[91mgo: finding github.com/cpuguy83/go-md2man v1.0.10\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190311183353-d8887717615a\n\e[0m\e[91mgo: finding github.com/kr/pretty v0.1.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127\n\e[0m\e[91mgo: finding github.com/client9/misspell v0.3.4\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190620200207-3b0461eec859\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20181220203305-927f97764cc3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190114222345-bf090417da8b\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20190423024810-112230192c58\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.1\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190227174305-5b3e6a55c961\n\e[0m\e[91mgo: finding gopkg.in/resty.v1 v1.12.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3\n\e[0m\e[91mgo: finding github.com/spf13/pflag v1.0.3\n\e[0m\e[91mgo: finding github.com/inconshreveable/mousetrap v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20181108010431-42b317875d0f\n\e[0m\e[91mgo: finding github.com/mitchellh/go-homedir v1.1.0\n\e[0m\e[91mgo: finding github.com/spf13/viper v1.3.2\n\e[0m\e[91mgo: finding github.com/kr/text v0.1.0\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190311212946-11955173bddd\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190213061140-3a22650c66bd\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.3.0\n\e[0m\e[91mgo: finding github.com/russross/blackfriday v1.5.2\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.4.0\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.2.2\n\e[0m\e[91mgo: finding github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77\n\e[0m\e[91mgo: finding github.com/magiconair/properties v1.8.0\n\e[0m\e[91mgo: finding github.com/coreos/etcd v3.3.10+incompatible\n\e[0m\e[91mgo: finding github.com/ugorji/go/codec v0.0.0-20181204163529-d75b2dcb6bc8\n\e[0m\e[91mgo: finding github.com/armon/consul-api v0.0.0-20180202201655-eb2c6b5be1b6\n\e[0m\e[91mgo: finding github.com/mitchellh/mapstructure v1.1.2\n\e[0m\e[91mgo: finding github.com/spf13/jwalterweatherman v1.0.0\n\e[0m\e[91mgo: finding github.com/coreos/go-semver v0.2.0\n\e[0m\e[91mgo: finding github.com/kr/pty v1.1.1\n\e[0m\e[91mgo: finding github.com/coreos/go-etcd v2.0.0+incompatible\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181205085412-a5c9d58dba9a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20181203042331-505ab145d0a9\n\e[0m\e[91mgo: finding github.com/spf13/cast v1.3.0\n\e[0m\e[91mgo: finding github.com/hashicorp/hcl v1.0.0\n\e[0m\e[91mgo: finding github.com/stretchr/objx v0.1.0\n\e[0m\e[91mgo: finding github.com/pmezard/go-difflib v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180724234803-3673e40ba225\n\e[0m\e[91mgo: finding github.com/spf13/afero v1.1.2\n\e[0m\e[91mgo: finding github.com/fsnotify/fsnotify v1.4.7\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.0\n\e[0m\e[91mgo: finding github.com/pelletier/go-toml v1.2.0\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.1\n\e[0m\e[91mgo: downloading github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: downloading github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: downloading github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: downloading github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: downloading github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: downloading github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: downloading golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: downloading github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: downloading github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: downloading github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: downloading golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91m# command-line-arguments\n./main.go:42:20: undefined: fmt\nnote: module requires Go 1.12\e[0m"
+      stderr: |
+        The command '/bin/sh -c go build main.go' returned a non-zero code: 2
+      proc:
+        _events: {}
+        _eventsCount: 2
+        _closesNeeded: 3
+        _closesGot: 3
+        connected: false
+        signalCode: null
+        exitCode: 2
+        killed: false
+        spawnfile: docker
+        _handle: null
+        spawnargs:
+          - docker
+          - build
+          - '-t'
+          - 'links:v-6dd24fd4be'
+          - >-
+            /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/build/links
+        pid: 11216
+        stdin:
+          connecting: false
+          _hadError: false
+          _handle: null
+          _parent: null
+          _host: null
+          _readableState:
+            objectMode: false
+            highWaterMark: 16384
+            buffer:
+              head: null
+              tail: null
+              length: 0
+            length: 0
+            pipes: null
+            pipesCount: 0
+            flowing: null
+            ended: false
+            endEmitted: false
+            reading: false
+            sync: true
+            needReadable: false
+            emittedReadable: false
+            readableListening: false
+            resumeScheduled: false
+            emitClose: false
+            destroyed: true
+            defaultEncoding: utf8
+            awaitDrain: 0
+            readingMore: false
+            decoder: null
+            encoding: null
+          readable: false
+          _events: {}
+          _eventsCount: 1
+          _writableState:
+            objectMode: false
+            highWaterMark: 16384
+            finalCalled: false
+            needDrain: false
+            ending: false
+            ended: false
+            finished: false
+            destroyed: true
+            decodeStrings: false
+            defaultEncoding: utf8
+            length: 0
+            writing: false
+            corked: 0
+            sync: true
+            bufferProcessing: false
+            writecb: null
+            writelen: 0
+            bufferedRequest: null
+            lastBufferedRequest: null
+            pendingcb: 0
+            prefinished: false
+            errorEmitted: false
+            emitClose: false
+            bufferedRequestCount: 0
+            corkedRequestsFree:
+              next: null
+              entry: null
+          writable: false
+          allowHalfOpen: false
+          _sockname: null
+          _pendingData: null
+          _pendingEncoding: ''
+          server: null
+          _server: null
+        stdout:
+          connecting: false
+          _hadError: false
+          _handle: null
+          _parent: null
+          _host: null
+          _readableState:
+            objectMode: false
+            highWaterMark: 16384
+            buffer:
+              head: null
+              tail: null
+              length: 0
+            length: 0
+            pipes: null
+            pipesCount: 0
+            flowing: true
+            ended: true
+            endEmitted: true
+            reading: false
+            sync: false
+            needReadable: false
+            emittedReadable: false
+            readableListening: false
+            resumeScheduled: false
+            emitClose: false
+            destroyed: true
+            defaultEncoding: utf8
+            awaitDrain: 0
+            readingMore: false
+            decoder: null
+            encoding: null
+          readable: false
+          _events: {}
+          _eventsCount: 3
+          _writableState:
+            objectMode: false
+            highWaterMark: 16384
+            finalCalled: false
+            needDrain: false
+            ending: false
+            ended: false
+            finished: false
+            destroyed: true
+            decodeStrings: false
+            defaultEncoding: utf8
+            length: 0
+            writing: false
+            corked: 0
+            sync: true
+            bufferProcessing: false
+            writecb: null
+            writelen: 0
+            bufferedRequest: null
+            lastBufferedRequest: null
+            pendingcb: 0
+            prefinished: false
+            errorEmitted: false
+            emitClose: false
+            bufferedRequestCount: 0
+            corkedRequestsFree:
+              next: null
+              entry: null
+          writable: false
+          allowHalfOpen: false
+          _sockname: null
+          _pendingData: null
+          _pendingEncoding: ''
+          server: null
+          _server: null
+        stderr:
+          connecting: false
+          _hadError: false
+          _handle: null
+          _parent: null
+          _host: null
+          _readableState:
+            objectMode: false
+            highWaterMark: 16384
+            buffer:
+              head: null
+              tail: null
+              length: 0
+            length: 0
+            pipes: null
+            pipesCount: 0
+            flowing: true
+            ended: true
+            endEmitted: true
+            reading: false
+            sync: false
+            needReadable: false
+            emittedReadable: false
+            readableListening: false
+            resumeScheduled: false
+            emitClose: false
+            destroyed: true
+            defaultEncoding: utf8
+            awaitDrain: 0
+            readingMore: false
+            decoder: null
+            encoding: null
+          readable: false
+          _events: {}
+          _eventsCount: 3
+          _writableState:
+            objectMode: false
+            highWaterMark: 16384
+            finalCalled: false
+            needDrain: false
+            ending: false
+            ended: false
+            finished: false
+            destroyed: true
+            decodeStrings: false
+            defaultEncoding: utf8
+            length: 0
+            writing: false
+            corked: 0
+            sync: true
+            bufferProcessing: false
+            writecb: null
+            writelen: 0
+            bufferedRequest: null
+            lastBufferedRequest: null
+            pendingcb: 0
+            prefinished: false
+            errorEmitted: false
+            emitClose: false
+            bufferedRequestCount: 0
+            corkedRequestsFree:
+              next: null
+              entry: null
+          writable: false
+          allowHalfOpen: false
+          _sockname: null
+          _pendingData: null
+          _pendingEncoding: ''
+          server: null
+          _server: null
+        stdio:
+          - ~err~detail~result~proc~stdin
+          - ~err~detail~result~proc~stdout
+          - ~err~detail~result~proc~stderr
+    code: 2
+    output: "Sending build context to Docker daemon  24.06kB\r\r\nStep 1/8 : FROM golang:1.11.9-alpine3.9\n ---> 64ba145fa582\nStep 2/8 : WORKDIR /go/src/app\n ---> Using cache\n ---> aa425cb56dd4\nStep 3/8 : RUN apk add --no-cache git gcc musl-dev\n ---> Using cache\n ---> aaa81b15d4e3\nStep 4/8 : ENV GO111MODULE=on\n ---> Using cache\n ---> 8250002011b8\nStep 5/8 : EXPOSE 8080\n ---> Using cache\n ---> 68d407d387cb\nStep 6/8 : COPY main.go go.mod ./\n ---> 2dfa6aa0b6e5\nStep 7/8 : RUN go build main.go\n ---> Running in e4f4e051f5df\n\e[91mgo: finding github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: finding github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: finding github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: finding github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: finding github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: finding github.com/grpc-ecosystem/grpc-gateway v1.9.5\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.2\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20190716160619-c506a9f90610\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.22.0\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.2.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181107165924-66b7b1311ac8\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.19.0\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.0.0-20170812160011-eb3733d160e7\n\e[0m\e[91mgo: finding github.com/google/go-cmp v0.2.0\n\e[0m\e[91mgo: finding github.com/BurntSushi/toml v0.3.1\n\e[0m\e[91mgo: finding github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: finding cloud.google.com/go v0.26.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20180830151530-49385e6e1522\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099\n\e[0m\e[91mgo: finding github.com/golang/mock v1.1.1\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.1.0\n\e[0m\e[91mgo: finding github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180826012351-8a410e7b638d\n\e[0m\e[91mgo: finding github.com/spf13/cobra v0.0.5\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190524140312-2c0ae7006135\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.0\n\e[0m\e[91mgo: finding github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: finding golang.org/x/exp v0.0.0-20190121172915-509febef88a4\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190626221950-04f50cda93cb\n\e[0m\e[91mgo: finding github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190226205152-f727befe758c\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.2.2\n\e[0m\e[91mgo: finding github.com/ghodss/yaml v1.0.0\n\e[0m\e[91mgo: finding github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b\n\e[0m\e[91mgo: finding golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f\n\e[0m\e[91mgo: finding github.com/cpuguy83/go-md2man v1.0.10\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190311183353-d8887717615a\n\e[0m\e[91mgo: finding github.com/kr/pretty v0.1.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127\n\e[0m\e[91mgo: finding github.com/client9/misspell v0.3.4\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190620200207-3b0461eec859\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20181220203305-927f97764cc3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190114222345-bf090417da8b\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20190423024810-112230192c58\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.1\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190227174305-5b3e6a55c961\n\e[0m\e[91mgo: finding gopkg.in/resty.v1 v1.12.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3\n\e[0m\e[91mgo: finding github.com/spf13/pflag v1.0.3\n\e[0m\e[91mgo: finding github.com/inconshreveable/mousetrap v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20181108010431-42b317875d0f\n\e[0m\e[91mgo: finding github.com/mitchellh/go-homedir v1.1.0\n\e[0m\e[91mgo: finding github.com/spf13/viper v1.3.2\n\e[0m\e[91mgo: finding github.com/kr/text v0.1.0\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190311212946-11955173bddd\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190213061140-3a22650c66bd\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.3.0\n\e[0m\e[91mgo: finding github.com/russross/blackfriday v1.5.2\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.4.0\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.2.2\n\e[0m\e[91mgo: finding github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77\n\e[0m\e[91mgo: finding github.com/magiconair/properties v1.8.0\n\e[0m\e[91mgo: finding github.com/coreos/etcd v3.3.10+incompatible\n\e[0m\e[91mgo: finding github.com/ugorji/go/codec v0.0.0-20181204163529-d75b2dcb6bc8\n\e[0m\e[91mgo: finding github.com/armon/consul-api v0.0.0-20180202201655-eb2c6b5be1b6\n\e[0m\e[91mgo: finding github.com/mitchellh/mapstructure v1.1.2\n\e[0m\e[91mgo: finding github.com/spf13/jwalterweatherman v1.0.0\n\e[0m\e[91mgo: finding github.com/coreos/go-semver v0.2.0\n\e[0m\e[91mgo: finding github.com/kr/pty v1.1.1\n\e[0m\e[91mgo: finding github.com/coreos/go-etcd v2.0.0+incompatible\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181205085412-a5c9d58dba9a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20181203042331-505ab145d0a9\n\e[0m\e[91mgo: finding github.com/spf13/cast v1.3.0\n\e[0m\e[91mgo: finding github.com/hashicorp/hcl v1.0.0\n\e[0m\e[91mgo: finding github.com/stretchr/objx v0.1.0\n\e[0m\e[91mgo: finding github.com/pmezard/go-difflib v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180724234803-3673e40ba225\n\e[0m\e[91mgo: finding github.com/spf13/afero v1.1.2\n\e[0m\e[91mgo: finding github.com/fsnotify/fsnotify v1.4.7\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.0\n\e[0m\e[91mgo: finding github.com/pelletier/go-toml v1.2.0\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.1\n\e[0m\e[91mgo: downloading github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: downloading github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: downloading github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: downloading github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: downloading github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: downloading github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: downloading golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: downloading github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: downloading github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: downloading github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: downloading golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91m# command-line-arguments\n./main.go:42:20: undefined: fmt\nnote: module requires Go 1.12\e[0m"
+    stdout: "Sending build context to Docker daemon  24.06kB\r\r\nStep 1/8 : FROM golang:1.11.9-alpine3.9\n ---> 64ba145fa582\nStep 2/8 : WORKDIR /go/src/app\n ---> Using cache\n ---> aa425cb56dd4\nStep 3/8 : RUN apk add --no-cache git gcc musl-dev\n ---> Using cache\n ---> aaa81b15d4e3\nStep 4/8 : ENV GO111MODULE=on\n ---> Using cache\n ---> 8250002011b8\nStep 5/8 : EXPOSE 8080\n ---> Using cache\n ---> 68d407d387cb\nStep 6/8 : COPY main.go go.mod ./\n ---> 2dfa6aa0b6e5\nStep 7/8 : RUN go build main.go\n ---> Running in e4f4e051f5df\n\e[91mgo: finding github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: finding github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: finding github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: finding github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: finding github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: finding github.com/grpc-ecosystem/grpc-gateway v1.9.5\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.2\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20190716160619-c506a9f90610\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.22.0\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.2.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181107165924-66b7b1311ac8\n\e[0m\e[91mgo: finding google.golang.org/grpc v1.19.0\n\e[0m\e[91mgo: finding google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.0.0-20170812160011-eb3733d160e7\n\e[0m\e[91mgo: finding github.com/google/go-cmp v0.2.0\n\e[0m\e[91mgo: finding github.com/BurntSushi/toml v0.3.1\n\e[0m\e[91mgo: finding github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: finding cloud.google.com/go v0.26.0\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20180830151530-49385e6e1522\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099\n\e[0m\e[91mgo: finding github.com/golang/mock v1.1.1\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.1.0\n\e[0m\e[91mgo: finding github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180826012351-8a410e7b638d\n\e[0m\e[91mgo: finding github.com/spf13/cobra v0.0.5\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190524140312-2c0ae7006135\n\e[0m\e[91mgo: finding golang.org/x/text v0.3.0\n\e[0m\e[91mgo: finding github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: finding golang.org/x/exp v0.0.0-20190121172915-509febef88a4\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190626221950-04f50cda93cb\n\e[0m\e[91mgo: finding github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190226205152-f727befe758c\n\e[0m\e[91mgo: finding gopkg.in/yaml.v2 v2.2.2\n\e[0m\e[91mgo: finding github.com/ghodss/yaml v1.0.0\n\e[0m\e[91mgo: finding github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b\n\e[0m\e[91mgo: finding golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f\n\e[0m\e[91mgo: finding github.com/cpuguy83/go-md2man v1.0.10\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190311183353-d8887717615a\n\e[0m\e[91mgo: finding github.com/kr/pretty v0.1.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127\n\e[0m\e[91mgo: finding github.com/client9/misspell v0.3.4\n\e[0m\e[91mgo: finding honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190620200207-3b0461eec859\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20181220203305-927f97764cc3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190114222345-bf090417da8b\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20190423024810-112230192c58\n\e[0m\e[91mgo: finding github.com/golang/protobuf v1.3.1\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190227174305-5b3e6a55c961\n\e[0m\e[91mgo: finding gopkg.in/resty.v1 v1.12.0\n\e[0m\e[91mgo: finding gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3\n\e[0m\e[91mgo: finding github.com/spf13/pflag v1.0.3\n\e[0m\e[91mgo: finding github.com/inconshreveable/mousetrap v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/sync v0.0.0-20181108010431-42b317875d0f\n\e[0m\e[91mgo: finding github.com/mitchellh/go-homedir v1.1.0\n\e[0m\e[91mgo: finding github.com/spf13/viper v1.3.2\n\e[0m\e[91mgo: finding github.com/kr/text v0.1.0\n\e[0m\e[91mgo: finding golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3\n\e[0m\e[91mgo: finding golang.org/x/tools v0.0.0-20190311212946-11955173bddd\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20190213061140-3a22650c66bd\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.3.0\n\e[0m\e[91mgo: finding github.com/russross/blackfriday v1.5.2\n\e[0m\e[91mgo: finding google.golang.org/appengine v1.4.0\n\e[0m\e[91mgo: finding github.com/stretchr/testify v1.2.2\n\e[0m\e[91mgo: finding github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77\n\e[0m\e[91mgo: finding github.com/magiconair/properties v1.8.0\n\e[0m\e[91mgo: finding github.com/coreos/etcd v3.3.10+incompatible\n\e[0m\e[91mgo: finding github.com/ugorji/go/codec v0.0.0-20181204163529-d75b2dcb6bc8\n\e[0m\e[91mgo: finding github.com/armon/consul-api v0.0.0-20180202201655-eb2c6b5be1b6\n\e[0m\e[91mgo: finding github.com/mitchellh/mapstructure v1.1.2\n\e[0m\e[91mgo: finding github.com/spf13/jwalterweatherman v1.0.0\n\e[0m\e[91mgo: finding github.com/coreos/go-semver v0.2.0\n\e[0m\e[91mgo: finding github.com/kr/pty v1.1.1\n\e[0m\e[91mgo: finding github.com/coreos/go-etcd v2.0.0+incompatible\n\e[0m\e[91mgo: finding golang.org/x/sys v0.0.0-20181205085412-a5c9d58dba9a\n\e[0m\e[91mgo: finding golang.org/x/crypto v0.0.0-20181203042331-505ab145d0a9\n\e[0m\e[91mgo: finding github.com/spf13/cast v1.3.0\n\e[0m\e[91mgo: finding github.com/hashicorp/hcl v1.0.0\n\e[0m\e[91mgo: finding github.com/stretchr/objx v0.1.0\n\e[0m\e[91mgo: finding github.com/pmezard/go-difflib v1.0.0\n\e[0m\e[91mgo: finding golang.org/x/net v0.0.0-20180724234803-3673e40ba225\n\e[0m\e[91mgo: finding github.com/spf13/afero v1.1.2\n\e[0m\e[91mgo: finding github.com/fsnotify/fsnotify v1.4.7\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.0\n\e[0m\e[91mgo: finding github.com/pelletier/go-toml v1.2.0\n\e[0m\e[91mgo: finding github.com/davecgh/go-spew v1.1.1\n\e[0m\e[91mgo: downloading github.com/campoy/links v0.0.0-20190723190411-947394a475c7\n\e[0m\e[91mgo: downloading github.com/gorilla/mux v1.7.3\n\e[0m\e[91mgo: downloading github.com/kelseyhightower/envconfig v1.4.0\n\e[0m\e[91mgo: downloading github.com/dgraph-io/badger v1.6.0\n\e[0m\e[91mgo: downloading github.com/pkg/errors v0.8.1\n\e[0m\e[91mgo: downloading github.com/dustin/go-humanize v1.0.0\n\e[0m\e[91mgo: downloading golang.org/x/net v0.0.0-20190628185345-da137c7871d7\n\e[0m\e[91mgo: downloading github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2\n\e[0m\e[91mgo: downloading github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9\n\e[0m\e[91mgo: downloading github.com/golang/protobuf v1.3.2\n\e[0m\e[91mgo: downloading golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7\n\e[0m\e[91m# command-line-arguments\n./main.go:42:20: undefined: fmt\nnote: module requires Go 1.12\e[0m"
+    stderr: |
+      The command '/bin/sh -c go build main.go' returned a non-zero code: 2
+    proc: ~err~detail~result~proc
+  type: runtime
+args:
+  - build
+  - '-t'
+  - 'links:v-6dd24fd4be'
+  - >-
+    /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/build/links
+cwd: >-
+  /home/ellen/go/src/github.com/campoy/links/microservices-rest/.garden/build/links
+
+
+[2019-07-24T04:35:42.293Z] 
+Waiting for code changes...
+
+[2019-07-24T04:36:18.535Z] 
+Processing...
+
+[2019-07-24T04:36:18.929Z] Staging build...
+
+[2019-07-24T04:36:19.124Z] Building version v-efd6599a08...
+
+[2019-07-24T04:36:19.367Z] Building links:v-efd6599a08...
+
+[2019-07-24T04:38:34.342Z] Building links:v-efd6599a08... → Done (took 135.4 sec)
+
+[2019-07-24T04:38:35.038Z] Checking status...
+
+[2019-07-24T04:38:36.770Z] Deploying version v-efd6599a08...
+
+[2019-07-24T04:38:39.251Z] Waiting for resources to be ready...
+
+[2019-07-24T04:38:41.881Z] Service deployed
+
+[2019-07-24T04:38:43.315Z] Deploying version v-efd6599a08... → Done (took 8.3 sec)
+
+[2019-07-24T04:38:43.397Z] → Ingress: http://garden.local/db
+
+[2019-07-24T04:38:43.908Z] 
+Waiting for code changes...
+
+[2019-07-24T04:38:44.399Z] 
+Processing...
+
+[2019-07-24T04:38:44.654Z] 
+Waiting for code changes...
+
+[2019-07-24T04:40:44.554Z] 
+Processing...
+
+[2019-07-24T04:40:44.930Z] Staging build...
+
+[2019-07-24T04:40:45.173Z] Building version v-91a03d2311...
+
+[2019-07-24T04:40:45.426Z] Building links:v-91a03d2311...
+
+[2019-07-24T04:43:14.231Z] Building links:v-91a03d2311... → Done (took 149.2 sec)
+
+[2019-07-24T04:43:14.961Z] Checking status...
+
+[2019-07-24T04:43:16.809Z] Deploying version v-91a03d2311...
+
+[2019-07-24T04:43:19.440Z] Waiting for resources to be ready...
+
+[2019-07-24T04:43:22.208Z] Deployment/links: Created container links
+
+[2019-07-24T04:43:25.415Z] Service deployed
+
+[2019-07-24T04:43:26.793Z] Deploying version v-91a03d2311... → Done (took 11.9 sec)
+
+[2019-07-24T04:43:26.876Z] → Ingress: http://garden.local/db
+
+[2019-07-24T04:43:27.361Z] 
+Waiting for code changes...
+
+[2019-07-24T04:47:50.688Z] 
+Processing...
+
+[2019-07-24T04:47:51.086Z] Staging build...
+
+[2019-07-24T04:47:51.403Z] Building version v-3f0bc9ff3f...
+
+[2019-07-24T04:47:51.713Z] Building links:v-3f0bc9ff3f...
+
+[2019-07-24T04:50:08.815Z] Building links:v-3f0bc9ff3f... → Done (took 137.7 sec)
+
+[2019-07-24T04:50:09.532Z] Checking status...
+
+[2019-07-24T04:50:11.329Z] Deploying version v-3f0bc9ff3f...
+
+[2019-07-24T04:50:13.747Z] Waiting for resources to be ready...
+
+[2019-07-24T04:50:16.456Z] Service deployed
+
+[2019-07-24T04:50:17.917Z] Deploying version v-3f0bc9ff3f... → Done (took 8.4 sec)
+
+[2019-07-24T04:50:18.004Z] → Ingress: http://garden.local/db
+
+[2019-07-24T04:50:18.522Z] 
+Waiting for code changes...
+
+[2019-07-24T04:51:05.972Z] 
+Processing...
+
+[2019-07-24T04:51:06.353Z] Staging build...
+
+[2019-07-24T04:51:06.599Z] Building version v-b07b62e391...
+
+[2019-07-24T04:51:06.851Z] Building router:v-b07b62e391...
+
+[2019-07-24T04:53:31.980Z] Building router:v-b07b62e391... → Done (took 145.5 sec)
+
+[2019-07-24T04:53:32.710Z] Checking status...
+
+[2019-07-24T04:53:34.414Z] Deploying version v-b07b62e391...
+
+[2019-07-24T04:53:37.136Z] Waiting for resources to be ready...
+
+[2019-07-24T04:53:39.838Z] Deployment/router: Created container router
+
+[2019-07-24T04:53:43.092Z] Service deployed
+
+[2019-07-24T04:53:44.523Z] Deploying version v-b07b62e391... → Done (took 11.8 sec)
+
+[2019-07-24T04:53:44.603Z] → Ingress: http://garden.local/router
+
+[2019-07-24T04:53:45.137Z] 
+Waiting for code changes...

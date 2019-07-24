@@ -1,0 +1,17 @@
+kind: Module
+name: links
+description: This is the repository service.
+type: container
+hotReload:
+  sync:
+    - target: /go/src/app
+services:
+  - name: links
+    ports:
+      - name: http
+        containerPort: 8080
+    ingresses:
+      - path: /db
+        port: http
+    env:
+      REPOSITORY_ADDRESS: ":8080"

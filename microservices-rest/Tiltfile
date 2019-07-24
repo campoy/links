@@ -1,0 +1,4 @@
+k8s_yaml(['web/manifest.yml', 'router/manifest.yml', 'links/manifest.yml'])
+docker_build('docker.io/ellenkorbes/web', 'web')
+docker_build('docker.io/ellenkorbes/router', 'router')
+docker_build('docker.io/ellenkorbes/links', 'links')

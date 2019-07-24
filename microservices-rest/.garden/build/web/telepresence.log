@@ -1,0 +1,473 @@
+   0.0 TEL | Telepresence 0.101 launched at Tue Jul 23 19:57:28 2019
+   0.0 TEL |   /usr/bin/telepresence --swap-deployment web --expose 8090 --run ./main
+   0.0 TEL | Platform: linux
+   0.0 TEL | Python 3.6.7 (default, Oct 22 2018, 11:32:17)
+   0.0 TEL | [GCC 8.2.0]
+   0.0 TEL | [1] Running: uname -a
+   0.0   1 | Linux x1 4.17.19-041719-generic #201808240919 SMP Fri Aug 24 13:22:37 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+   0.0 TEL | [1] ran in 0.00 secs.
+   0.0 TEL | BEGIN SPAN main.py:40(main)
+   0.0 TEL | BEGIN SPAN startup.py:74(__init__)
+   0.0 TEL | Found kubectl -> /home/ellen/bin/kubectl
+   0.0 TEL | [2] Capturing: kubectl version --short
+   0.1 TEL | [2] captured in 0.07 secs.
+   0.1 TEL | [3] Capturing: kubectl config current-context
+   0.1 TEL | [3] captured in 0.05 secs.
+   0.1 TEL | [4] Capturing: kubectl config view -o json
+   0.2 TEL | [4] captured in 0.05 secs.
+   0.2 TEL | [5] Capturing: kubectl --context minikube get ns default
+   0.3 TEL | [5] captured in 0.07 secs.
+   0.3 TEL | Command: kubectl 1.15.0
+   0.3 TEL | Context: minikube, namespace: default, version: 1.14.0
+   0.3 TEL | Looks like we're in a local VM, e.g. minikube.
+   0.3 TEL | END SPAN startup.py:74(__init__)    0.2s
+   0.3 TEL | Found ssh -> /usr/bin/ssh
+   0.3 TEL | [6] Capturing: ssh -V
+   0.3 TEL | [6] captured in 0.00 secs.
+   0.3 TEL | Found ./main -> ./main
+   0.3 TEL | Found sshuttle-telepresence -> /usr/libexec/sshuttle-telepresence
+   0.3 TEL | Found conntrack -> /usr/sbin/conntrack
+   0.3 TEL | Found iptables -> /sbin/iptables
+   0.3 TEL | Found sudo -> /usr/bin/sudo
+   0.3 TEL | [7] Running: sudo -n echo -n
+   0.3   7 | sudo: a password is required
+   0.3 TEL | [7] exit 1 in 0.01 secs.
+   0.3 >>> | How Telepresence uses sudo: https://www.telepresence.io/reference/install#dependencies
+   0.3 >>> | Invoking sudo. Please enter your sudo password.
+   0.3 TEL | [8] Running: sudo echo -n
+   2.8 TEL | [8] ran in 2.54 secs.
+   2.8 TEL | [9] Capturing: sudo iptables --list
+   2.9 TEL | [9] captured in 0.05 secs.
+   2.9 >>> | Starting proxy with method 'vpn-tcp', which has the following limitations: All processes are affected, only one telepresence can run per machine, and you can't use other VPNs. You may need to add cloud hosts and headless services with --also-proxy. For a full list of method limitations see https://telepresence.io/reference/methods.html
+   2.9 TEL | Found sshfs -> /usr/bin/sshfs
+   2.9 TEL | Found fusermount -> /bin/fusermount
+   2.9 >>> | Volumes are rooted at $TELEPRESENCE_ROOT. See https://telepresence.io/howto/volumes.html for details.
+   2.9 TEL | [10] Running: kubectl --context minikube --namespace default get pods telepresence-connectivity-check --ignore-not-found
+   3.0 TEL | [10] ran in 0.09 secs.
+   3.4 TEL | Scout info: {'latest_version': '0.101', 'application': 'telepresence', 'notices': []}
+   3.4 TEL | BEGIN SPAN deployment.py:179(supplant_deployment)
+   3.4 >>> | Starting network proxy to cluster by swapping out Deployment web with a proxy
+   3.4 TEL | BEGIN SPAN remote.py:78(get_deployment_json)
+   3.4 TEL | [11] Capturing: kubectl --context minikube --namespace default get deployment -o json web
+   3.5 TEL | [11] captured in 0.09 secs.
+   3.5 TEL | END SPAN remote.py:78(get_deployment_json)    0.1s
+   3.5 TEL | [12] Running: kubectl --context minikube --namespace default delete deployment web-ff87a247b2a74cd0b0ab51c35863018e --ignore-not-found
+   3.5 TEL | [12] ran in 0.08 secs.
+   3.5 TEL | [13] Running: kubectl --context minikube --namespace default apply -f -
+   3.7  13 | deployment.extensions/web-ff87a247b2a74cd0b0ab51c35863018e created
+   3.7 TEL | [13] ran in 0.17 secs.
+   3.7 TEL | [14] Running: kubectl --context minikube --namespace default scale deployment web --replicas=0
+   3.9  14 | deployment.extensions/web scaled
+   3.9 TEL | [14] ran in 0.17 secs.
+   3.9 TEL | END SPAN deployment.py:179(supplant_deployment)    0.5s
+   3.9 TEL | BEGIN SPAN remote.py:151(get_remote_info)
+   3.9 TEL | BEGIN SPAN remote.py:78(get_deployment_json)
+   3.9 TEL | [15] Capturing: kubectl --context minikube --namespace default get deployment -o json --selector=telepresence=ff87a247b2a74cd0b0ab51c35863018e
+   4.0 TEL | [15] captured in 0.08 secs.
+   4.0 TEL | END SPAN remote.py:78(get_deployment_json)    0.1s
+   4.0 TEL | Searching for Telepresence pod:
+   4.0 TEL |   with name web-ff87a247b2a74cd0b0ab51c35863018e-*
+   4.0 TEL |   with labels {'app': 'web', 'telepresence': 'ff87a247b2a74cd0b0ab51c35863018e'}
+   4.0 TEL | [16] Capturing: kubectl --context minikube --namespace default get pod -o json --selector=telepresence=ff87a247b2a74cd0b0ab51c35863018e
+   4.0 TEL | [16] captured in 0.09 secs.
+   4.0 TEL | Checking web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2
+   4.0 TEL | Looks like we've found our pod!
+   4.0 TEL | BEGIN SPAN remote.py:113(wait_for_pod)
+   4.0 TEL | [17] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   4.1 TEL | [17] captured in 0.11 secs.
+   4.4 TEL | [18] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   4.5 TEL | [18] captured in 0.09 secs.
+   4.7 TEL | [19] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   4.8 TEL | [19] captured in 0.11 secs.
+   5.1 TEL | [20] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   5.2 TEL | [20] captured in 0.09 secs.
+   5.4 TEL | [21] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   5.5 TEL | [21] captured in 0.10 secs.
+   5.8 TEL | [22] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   5.9 TEL | [22] captured in 0.10 secs.
+   6.1 TEL | [23] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   6.2 TEL | [23] captured in 0.11 secs.
+   6.5 TEL | [24] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   6.7 TEL | [24] captured in 0.17 secs.
+   6.9 TEL | [25] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   7.1 TEL | [25] captured in 0.18 secs.
+   7.4 TEL | [26] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   7.5 TEL | [26] captured in 0.14 secs.
+   7.7 TEL | [27] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   7.9 TEL | [27] captured in 0.15 secs.
+   8.1 TEL | [28] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   8.3 TEL | [28] captured in 0.16 secs.
+   8.5 TEL | [29] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   8.7 TEL | [29] captured in 0.14 secs.
+   8.9 TEL | [30] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   9.2 TEL | [30] captured in 0.22 secs.
+   9.4 TEL | [31] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   9.6 TEL | [31] captured in 0.14 secs.
+   9.8 TEL | [32] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+   9.9 TEL | [32] captured in 0.09 secs.
+  10.1 TEL | [33] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  10.3 TEL | [33] captured in 0.17 secs.
+  10.6 TEL | [34] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  10.7 TEL | [34] captured in 0.16 secs.
+  11.0 TEL | [35] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  11.1 TEL | [35] captured in 0.08 secs.
+  11.3 TEL | [36] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  11.4 TEL | [36] captured in 0.08 secs.
+  11.6 TEL | [37] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  11.7 TEL | [37] captured in 0.11 secs.
+  12.0 TEL | [38] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  12.1 TEL | [38] captured in 0.10 secs.
+  12.3 TEL | [39] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  12.5 TEL | [39] captured in 0.17 secs.
+  12.8 TEL | [40] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  12.9 TEL | [40] captured in 0.13 secs.
+  13.2 TEL | [41] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  13.3 TEL | [41] captured in 0.13 secs.
+  13.5 TEL | [42] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  13.7 TEL | [42] captured in 0.15 secs.
+  13.9 TEL | [43] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  14.1 TEL | [43] captured in 0.21 secs.
+  14.4 TEL | [44] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  14.6 TEL | [44] captured in 0.17 secs.
+  14.8 TEL | [45] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  14.9 TEL | [45] captured in 0.10 secs.
+  15.2 TEL | [46] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  15.2 TEL | [46] captured in 0.07 secs.
+  15.5 TEL | [47] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  15.6 TEL | [47] captured in 0.09 secs.
+  15.8 TEL | [48] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  15.9 TEL | [48] captured in 0.08 secs.
+  16.2 TEL | [49] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  16.2 TEL | [49] captured in 0.08 secs.
+  16.5 TEL | [50] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  16.6 TEL | [50] captured in 0.10 secs.
+  16.8 TEL | [51] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  16.9 TEL | [51] captured in 0.11 secs.
+  17.2 TEL | [52] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  17.3 TEL | [52] captured in 0.12 secs.
+  17.6 TEL | [53] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  17.7 TEL | [53] captured in 0.12 secs.
+  17.9 TEL | [54] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  18.0 TEL | [54] captured in 0.11 secs.
+  18.3 TEL | [55] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  18.4 TEL | [55] captured in 0.11 secs.
+  18.7 TEL | [56] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  18.7 TEL | [56] captured in 0.07 secs.
+  19.0 TEL | [57] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  19.1 TEL | [57] captured in 0.09 secs.
+  19.3 TEL | [58] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  19.4 TEL | [58] captured in 0.09 secs.
+  19.7 TEL | [59] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  19.7 TEL | [59] captured in 0.08 secs.
+  20.0 TEL | [60] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  20.1 TEL | [60] captured in 0.09 secs.
+  20.3 TEL | [61] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  20.4 TEL | [61] captured in 0.08 secs.
+  20.7 TEL | [62] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  20.7 TEL | [62] captured in 0.08 secs.
+  21.0 TEL | [63] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  21.1 TEL | [63] captured in 0.09 secs.
+  21.3 TEL | [64] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  21.4 TEL | [64] captured in 0.08 secs.
+  21.7 TEL | [65] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  21.8 TEL | [65] captured in 0.12 secs.
+  22.0 TEL | [66] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  22.1 TEL | [66] captured in 0.09 secs.
+  22.4 TEL | [67] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  22.5 TEL | [67] captured in 0.13 secs.
+  22.8 TEL | [68] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  22.9 TEL | [68] captured in 0.10 secs.
+  23.1 TEL | [69] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  23.2 TEL | [69] captured in 0.10 secs.
+  23.5 TEL | [70] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  23.5 TEL | [70] captured in 0.07 secs.
+  23.8 TEL | [71] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  23.9 TEL | [71] captured in 0.09 secs.
+  24.1 TEL | [72] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  24.2 TEL | [72] captured in 0.10 secs.
+  24.5 TEL | [73] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  24.5 TEL | [73] captured in 0.07 secs.
+  24.8 TEL | [74] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  24.9 TEL | [74] captured in 0.10 secs.
+  25.1 TEL | [75] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  25.2 TEL | [75] captured in 0.08 secs.
+  25.5 TEL | [76] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  25.5 TEL | [76] captured in 0.07 secs.
+  25.8 TEL | [77] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  25.9 TEL | [77] captured in 0.09 secs.
+  26.1 TEL | [78] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  26.2 TEL | [78] captured in 0.08 secs.
+  26.5 TEL | [79] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  26.6 TEL | [79] captured in 0.09 secs.
+  26.8 TEL | [80] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  26.9 TEL | [80] captured in 0.08 secs.
+  27.1 TEL | [81] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  27.2 TEL | [81] captured in 0.09 secs.
+  27.5 TEL | [82] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  27.6 TEL | [82] captured in 0.16 secs.
+  27.9 TEL | [83] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  28.0 TEL | [83] captured in 0.09 secs.
+  28.2 TEL | [84] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  28.4 TEL | [84] captured in 0.13 secs.
+  28.6 TEL | [85] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  28.7 TEL | [85] captured in 0.08 secs.
+  28.9 TEL | [86] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  29.0 TEL | [86] captured in 0.08 secs.
+  29.3 TEL | [87] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  29.3 TEL | [87] captured in 0.08 secs.
+  29.6 TEL | [88] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  29.7 TEL | [88] captured in 0.11 secs.
+  30.0 TEL | [89] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  30.1 TEL | [89] captured in 0.10 secs.
+  30.3 TEL | [90] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  30.4 TEL | [90] captured in 0.08 secs.
+  30.6 TEL | [91] Capturing: kubectl --context minikube --namespace default get pod web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 -o json
+  30.7 TEL | [91] captured in 0.08 secs.
+  30.7 TEL | END SPAN remote.py:113(wait_for_pod)   26.7s
+  30.7 TEL | END SPAN remote.py:151(get_remote_info)   26.8s
+  30.7 TEL | BEGIN SPAN connect.py:36(connect)
+  30.7 TEL | [92] Launching kubectl logs: kubectl --context minikube --namespace default logs -f web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 --container web --tail=10
+  30.7 TEL | [93] Launching kubectl port-forward: kubectl --context minikube --namespace default port-forward web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 44843:8022
+  30.7 TEL | [94] Running: ssh -F /dev/null -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -q -p 44843 telepresence@127.0.0.1 /bin/true
+  30.7 TEL | [94] exit 255 in 0.02 secs.
+  30.8  92 | Listening...
+  30.8  92 | 2019-07-24T02:57:58+0000 [-] Loading ./forwarder.py...
+  30.8  92 | 2019-07-24T02:57:58+0000 [-] SOCKSv5Factory starting on 9050
+  30.8  92 | 2019-07-24T02:57:58+0000 [socks.SOCKSv5Factory#info] Starting factory <socks.SOCKSv5Factory object at 0x7f4cb8800630>
+  30.8  92 | 2019-07-24T02:57:58+0000 [-] DNSDatagramProtocol starting on 9053
+  30.8  92 | 2019-07-24T02:57:58+0000 [-] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb88008d0>
+  30.8  92 | 2019-07-24T02:57:58+0000 [-] Loaded.
+  30.8  92 | 2019-07-24T02:57:58+0000 [twisted.scripts._twistd_unix.UnixAppLogger#info] twistd 19.2.1 (/usr/bin/python3.6 3.6.8) starting up.
+  30.8  92 | 2019-07-24T02:57:58+0000 [twisted.scripts._twistd_unix.UnixAppLogger#info] reactor class: twisted.internet.epollreactor.EPollReactor.
+  30.9  93 | Forwarding from 127.0.0.1:44843 -> 8022
+  30.9  93 | Forwarding from [::1]:44843 -> 8022
+  31.0 TEL | [95] Running: ssh -F /dev/null -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -q -p 44843 telepresence@127.0.0.1 /bin/true
+  31.0  93 | Handling connection for 44843
+  31.2 TEL | [95] ran in 0.17 secs.
+  31.2 >>> | Forwarding remote port 8090 to local port 8090.
+  31.2 TEL | [96] Launching SSH port forward (exposed ports): ssh -N -oServerAliveInterval=1 -oServerAliveCountMax=10 -F /dev/null -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -q -p 44843 telepresence@127.0.0.1 -R '*:8090:127.0.0.1:8090'
+  31.2 >>> | 
+  31.2 TEL | Launching Web server for proxy poll
+  31.2 TEL | [97] Launching SSH port forward (socks and proxy poll): ssh -N -oServerAliveInterval=1 -oServerAliveCountMax=10 -F /dev/null -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -q -p 44843 telepresence@127.0.0.1 -L127.0.0.1:43587:127.0.0.1:9050 -R9055:127.0.0.1:44339
+  31.2  93 | Handling connection for 44843
+  31.2 TEL | END SPAN connect.py:36(connect)    0.5s
+  31.2 TEL | BEGIN SPAN remote_env.py:28(get_remote_env)
+  31.2 TEL | [98] Capturing: kubectl --context minikube --namespace default exec web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 --container web -- python3 podinfo.py
+  31.2  93 | Handling connection for 44843
+  31.4 TEL | [98] captured in 0.27 secs.
+  31.4 TEL | END SPAN remote_env.py:28(get_remote_env)    0.3s
+  31.4 TEL | BEGIN SPAN mount.py:32(mount_remote_volumes)
+  31.4 TEL | [99] Running: sshfs -p 44843 -F /dev/null -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null telepresence@127.0.0.1:/ /tmp/tel-9pgabalz/fs
+  31.5  93 | Handling connection for 44843
+  31.6 TEL | [99] ran in 0.15 secs.
+  31.6 TEL | END SPAN mount.py:32(mount_remote_volumes)    0.2s
+  31.6 TEL | BEGIN SPAN vpn.py:264(connect_sshuttle)
+  31.6 TEL | BEGIN SPAN vpn.py:74(get_proxy_cidrs)
+  31.6 TEL | END SPAN vpn.py:74(get_proxy_cidrs)    0.0s
+  31.6 TEL | [100] Launching sshuttle: sshuttle-telepresence -v --dns --method nat -e 'ssh -F /dev/null -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null' -r telepresence@127.0.0.1:44843 --to-ns 127.0.0.1:9053 10.96.0.0/12
+  31.6 TEL | BEGIN SPAN vpn.py:287(connect_sshuttle,sshuttle-wait)
+  31.6 TEL | Wait for vpn-tcp connection: hellotelepresence-0
+  31.6 TEL | [101] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-0")'
+  31.8 TEL | [101] exit 1 in 0.22 secs.
+  31.8 TEL | [102] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-0.a.sanity.check.telepresence.io")'
+  32.1 100 | Starting sshuttle proxy.
+  32.1 TEL | [102] exit 1 in 0.32 secs.
+  32.2 TEL | Wait for vpn-tcp connection: hellotelepresence-1
+  32.2 TEL | [103] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-1")'
+  32.4 TEL | [103] exit 1 in 0.17 secs.
+  32.4 TEL | [104] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-1.a.sanity.check.telepresence.io")'
+  32.6 100 | firewall manager: Starting firewall with Python version 3.6.7
+  32.6 100 | firewall manager: ready method name nat.
+  32.6 100 | IPv6 enabled: False
+  32.6 100 | UDP enabled: False
+  32.6 100 | DNS enabled: True
+  32.6 100 | TCP redirector listening on ('127.0.0.1', 12300).
+  32.6 100 | DNS listening on ('127.0.0.1', 12300).
+  32.6 100 | Starting client with Python version 3.6.7
+  32.6 100 | c : connecting to server...
+  32.6  93 | Handling connection for 44843
+  32.6 TEL | [104] exit 1 in 0.17 secs.
+  32.6 100 | Warning: Permanently added '[127.0.0.1]:44843' (ECDSA) to the list of known hosts.
+  32.7 TEL | Wait for vpn-tcp connection: hellotelepresence-2
+  32.7 TEL | [105] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-2")'
+  32.8 100 | Starting server with Python version 3.6.8
+  32.8 100 |  s: latency control setting = True
+  32.8 100 |  s: available routes:
+  32.8 100 |  s:   2/172.17.0.0/16
+  32.8 100 | c : Connected.
+  32.8 100 | firewall manager: setting up.
+  32.8 100 | >> iptables -t nat -N sshuttle-12300
+  32.8 100 | >> iptables -t nat -F sshuttle-12300
+  32.8 100 | >> iptables -t nat -I OUTPUT 1 -j sshuttle-12300
+  32.8 100 | >> iptables -t nat -I PREROUTING 1 -j sshuttle-12300
+  32.8 100 | >> iptables -t nat -A sshuttle-12300 -j RETURN --dest 127.0.0.1/32 -p tcp
+  32.8 TEL | [106] Running: sudo -n echo -n
+  32.8 100 | >> iptables -t nat -A sshuttle-12300 -j REDIRECT --dest 10.96.0.0/12 -p tcp --to-ports 12300 -m ttl ! --ttl 42
+  32.8 TEL | [105] exit 1 in 0.17 secs.
+  32.8 TEL | [107] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-2.a.sanity.check.telepresence.io")'
+  32.9 TEL | [106] ran in 0.01 secs.
+  32.9 100 | >> iptables -t nat -A sshuttle-12300 -j REDIRECT --dest 127.0.0.53/32 -p udp --dport 53 --to-ports 12300 -m ttl ! --ttl 42
+  32.9 100 | >> iptables -t nat -A sshuttle-12300 -j REDIRECT --dest 224.0.0.252/32 -p udp --dport 5355 --to-ports 12300 -m ttl ! --ttl 42
+  32.9 100 | conntrack v1.4.4 (conntrack-tools): 0 flow entries have been deleted.
+  32.9 100 | c : DNS request from ('127.0.0.1', 46113) to None: 79 bytes
+  32.9  92 | 2019-07-24T02:58:01+0000 [stdout#info] Sanity check: b'hellotelepresence-2.a.sanity.check.telepresence.io'
+  33.0 TEL | [107] exit 1 in 0.17 secs.
+  33.1 TEL | Wait for vpn-tcp connection: hellotelepresence-3
+  33.1 TEL | [108] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-3")'
+  33.2 100 | c : DNS request from ('127.0.0.1', 33248) to None: 48 bytes
+  33.2  92 | 2019-07-24T02:58:01+0000 [stdout#info] Set DNS suffix we filter out to: [()]
+  33.2  92 | 2019-07-24T02:58:01+0000 [stdout#info] Result for b'hellotelepresence-3' is ['127.0.0.1']
+  33.2 TEL | [108] captured in 0.12 secs.
+  33.2 TEL | Resolved hellotelepresence-3. 2 more...
+  33.2 TEL | [109] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-3.a.sanity.check.telepresence.io")'
+  33.3 100 | c : DNS request from ('127.0.0.1', 34989) to None: 79 bytes
+  33.3  92 | 2019-07-24T02:58:01+0000 [stdout#info] Sanity check: b'hellotelepresence-3.a.sanity.check.telepresence.io'
+  33.4 TEL | [109] exit 1 in 0.17 secs.
+  33.5 TEL | Wait for vpn-tcp connection: hellotelepresence-4
+  33.5 TEL | [110] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-4")'
+  33.6 100 | c : DNS request from ('127.0.0.1', 45870) to None: 48 bytes
+  33.6  92 | 2019-07-24T02:58:01+0000 [stdout#info] Result for b'hellotelepresence-4' is ['127.0.0.1']
+  33.6 TEL | [110] captured in 0.07 secs.
+  33.6 TEL | Resolved hellotelepresence-4. 1 more...
+  33.6 TEL | [111] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-4.a.sanity.check.telepresence.io")'
+  33.6 100 | c : DNS request from ('127.0.0.1', 53254) to None: 79 bytes
+  33.6  92 | 2019-07-24T02:58:01+0000 [stdout#info] Sanity check: b'hellotelepresence-4.a.sanity.check.telepresence.io'
+  33.7 TEL | [111] exit 1 in 0.17 secs.
+  33.8 TEL | Wait for vpn-tcp connection: hellotelepresence-5
+  33.8 TEL | [112] Capturing: python3 -c 'import socket; socket.gethostbyname("hellotelepresence-5")'
+  33.9 100 | c : DNS request from ('127.0.0.1', 44009) to None: 48 bytes
+  33.9  92 | 2019-07-24T02:58:02+0000 [stdout#info] Result for b'hellotelepresence-5' is ['127.0.0.1']
+  33.9 TEL | [112] captured in 0.08 secs.
+  33.9 TEL | Resolved hellotelepresence-5. 0 more...
+  33.9 TEL | END SPAN vpn.py:287(connect_sshuttle,sshuttle-wait)    2.3s
+  33.9 TEL | END SPAN vpn.py:264(connect_sshuttle)    2.3s
+  33.9 >>> | Setup complete. Launching your command.
+  33.9 TEL | Everything launched. Waiting to exit...
+  33.9 TEL | BEGIN SPAN runner.py:682(wait_for_exit)
+  36.3 100 | c : DNS request from ('127.0.0.1', 52163) to None: 55 bytes
+  36.3 100 | c : DNS request from ('127.0.0.1', 52163) to None: 55 bytes
+  36.3 100 | c : DNS request from ('127.0.0.1', 54596) to None: 55 bytes
+  36.3  92 | 2019-07-24T02:58:04+0000 [stdout#info] A query: b'stackpath.bootstrapcdn.com'
+  36.4  92 | 2019-07-24T02:58:04+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 57523
+  36.4  92 | 2019-07-24T02:58:04+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880f550>
+  36.4  92 | 2019-07-24T02:58:04+0000 [stdout#info] AAAA query, sending back A instead: b'stackpath.bootstrapcdn.com'
+  36.4  92 | 2019-07-24T02:58:04+0000 [stdout#info] A query: b'stackpath.bootstrapcdn.com'
+  36.4  92 | 2019-07-24T02:58:04+0000 [stdout#info] A query: b'stackpath.bootstrapcdn.com'
+  36.4  92 | 2019-07-24T02:58:04+0000 [-] (UDP Port 57523 Closed)
+  36.4  92 | 2019-07-24T02:58:04+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880f550>
+  36.5 100 | c : DNS request from ('127.0.0.1', 36626) to None: 39 bytes
+  36.5 100 | c : DNS request from ('127.0.0.1', 36626) to None: 39 bytes
+  36.5 100 | c : DNS request from ('127.0.0.1', 60684) to None: 39 bytes
+  36.5  92 | 2019-07-24T02:58:04+0000 [stdout#info] A query: b'golang.org'
+  36.5  92 | 2019-07-24T02:58:04+0000 [stdout#info] RESOLVING b'golang.org.svc.cluster.local'
+  36.5  92 | 2019-07-24T02:58:04+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 39477
+  36.5  92 | 2019-07-24T02:58:04+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880f940>
+  36.5  92 | 2019-07-24T02:58:04+0000 [stdout#info] AAAA query, sending back A instead: b'golang.org'
+  36.5  92 | 2019-07-24T02:58:04+0000 [stdout#info] A query: b'golang.org'
+  36.5  92 | 2019-07-24T02:58:04+0000 [stdout#info] RESOLVING b'golang.org.svc.cluster.local'
+  36.5  92 | 2019-07-24T02:58:04+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 18956
+  36.5  92 | 2019-07-24T02:58:04+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880f668>
+  36.5  92 | 2019-07-24T02:58:04+0000 [stdout#info] A query: b'golang.org'
+  36.5  92 | 2019-07-24T02:58:04+0000 [stdout#info] RESOLVING b'golang.org.svc.cluster.local'
+  36.5  92 | 2019-07-24T02:58:04+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 32062
+  36.5  92 | 2019-07-24T02:58:04+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880ff98>
+  36.6  92 | 2019-07-24T02:58:04+0000 [stdout#info] FAILED to lookup b'golang.org.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=42829 rCode=3 maxSize=0 flags=answer,auth,recDes queries=[Query('golang.org.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=5s auth=True>]>
+  36.6  92 | 2019-07-24T02:58:04+0000 [stdout#info] ]), trying b'golang.org'
+  36.6  92 | 2019-07-24T02:58:04+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 48767
+  36.6  92 | 2019-07-24T02:58:04+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb87a8358>
+  36.6  92 | 2019-07-24T02:58:04+0000 [stdout#info] FAILED to lookup b'golang.org.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=1400 rCode=3 maxSize=0 flags=answer,auth,recDes queries=[Query('golang.org.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=5s auth=True>]>
+  36.6  92 | 2019-07-24T02:58:04+0000 [stdout#info] ]), trying b'golang.org'
+  36.6  92 | 2019-07-24T02:58:04+0000 [stdout#info] FAILED to lookup b'golang.org.svc.cluster.local' ([Failure instance: Traceback (failure with no frames): <class 'twisted.names.error.DNSNameError'>: <Message id=23703 rCode=3 maxSize=0 flags=answer,auth,recDes queries=[Query('golang.org.svc.cluster.local', 1, 1)] authority=[<RR name=cluster.local type=SOA class=IN ttl=5s auth=True>]>
+  36.6  92 | 2019-07-24T02:58:04+0000 [stdout#info] ]), trying b'golang.org'
+  36.6  92 | 2019-07-24T02:58:04+0000 [-] (UDP Port 18956 Closed)
+  36.6  92 | 2019-07-24T02:58:04+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880f668>
+  36.6  92 | 2019-07-24T02:58:04+0000 [-] (UDP Port 32062 Closed)
+  36.6  92 | 2019-07-24T02:58:04+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880ff98>
+  36.6  92 | 2019-07-24T02:58:04+0000 [-] (UDP Port 39477 Closed)
+  36.6  92 | 2019-07-24T02:58:04+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880f940>
+  36.6  92 | 2019-07-24T02:58:04+0000 [-] (UDP Port 48767 Closed)
+  36.6  92 | 2019-07-24T02:58:04+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb87a8358>
+  39.5 100 | c : DNS request from ('127.0.0.1', 45164) to None: 44 bytes
+  39.5 100 | c : DNS request from ('127.0.0.1', 45164) to None: 44 bytes
+  39.5  92 | 2019-07-24T02:58:07+0000 [stdout#info] A query: b'mail.google.com'
+  39.5  92 | 2019-07-24T02:58:07+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 48434
+  39.5  92 | 2019-07-24T02:58:07+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880f3c8>
+  39.5  92 | 2019-07-24T02:58:07+0000 [stdout#info] AAAA query, sending back A instead: b'mail.google.com'
+  39.5  92 | 2019-07-24T02:58:07+0000 [stdout#info] A query: b'mail.google.com'
+  39.5  92 | 2019-07-24T02:58:07+0000 [-] (UDP Port 48434 Closed)
+  39.5  92 | 2019-07-24T02:58:07+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880f3c8>
+  43.3 100 | c : DNS request from ('127.0.0.1', 52355) to None: 56 bytes
+  43.3 100 | c : DNS request from ('127.0.0.1', 52355) to None: 56 bytes
+  43.3 100 | c : DNS request from ('127.0.0.1', 46160) to None: 56 bytes
+  43.3  92 | 2019-07-24T02:58:11+0000 [stdout#info] A query: b'0.client-channel.google.com'
+  43.3  92 | 2019-07-24T02:58:11+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 28729
+  43.3  92 | 2019-07-24T02:58:11+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880f400>
+  43.3  92 | 2019-07-24T02:58:11+0000 [stdout#info] AAAA query, sending back A instead: b'0.client-channel.google.com'
+  43.3  92 | 2019-07-24T02:58:11+0000 [stdout#info] A query: b'0.client-channel.google.com'
+  43.3  92 | 2019-07-24T02:58:11+0000 [stdout#info] A query: b'0.client-channel.google.com'
+  43.5  92 | 2019-07-24T02:58:11+0000 [-] (UDP Port 28729 Closed)
+  43.5  92 | 2019-07-24T02:58:11+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880f400>
+  49.9 100 | c : DNS request from ('127.0.0.1', 49619) to None: 44 bytes
+  49.9 100 | c : DNS request from ('127.0.0.1', 49619) to None: 44 bytes
+  49.9 100 | c : DNS request from ('127.0.0.1', 48317) to None: 44 bytes
+  49.9  92 | 2019-07-24T02:58:18+0000 [stdout#info] A query: b'ssl.gstatic.com'
+  49.9  92 | 2019-07-24T02:58:18+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 39675
+  49.9  92 | 2019-07-24T02:58:18+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880f4e0>
+  49.9  92 | 2019-07-24T02:58:18+0000 [stdout#info] AAAA query, sending back A instead: b'ssl.gstatic.com'
+  49.9  92 | 2019-07-24T02:58:18+0000 [stdout#info] A query: b'ssl.gstatic.com'
+  49.9  92 | 2019-07-24T02:58:18+0000 [stdout#info] A query: b'ssl.gstatic.com'
+  49.9  92 | 2019-07-24T02:58:18+0000 [-] (UDP Port 39675 Closed)
+  49.9  92 | 2019-07-24T02:58:18+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880f4e0>
+  60.5 >>> | Keyboard interrupt (Ctrl-C/Ctrl-Break) pressed
+  60.5 >>> | Exit cleanup in progress
+  60.5 TEL | (Cleanup) Terminate local process
+  60.5 TEL | (Cleanup) Kill BG process [100] sshuttle
+  60.5 TEL | (Cleanup) Unmount remote filesystem
+  60.5 TEL | [113] Running: fusermount -z -u /tmp/tel-9pgabalz/fs
+  60.5 100 | >> iptables -t nat -D OUTPUT -j sshuttle-12300
+  60.5 113 | fusermount: entry for /tmp/tel-9pgabalz/fs not found in /etc/mtab
+  60.5 TEL | [113] exit 1 in 0.01 secs.
+  60.5 TEL | (Cleanup) Unmount remote filesystem failed:
+  60.5 TEL | (Cleanup)   Command '['fusermount', '-z', '-u', '/tmp/tel-9pgabalz/fs']' returned non-zero exit status 1.
+  60.5 TEL | (Cleanup) Kill BG process [97] SSH port forward (socks and proxy poll)
+  60.5 TEL | (Cleanup) Kill Web server for proxy poll
+  60.5 TEL | [97] SSH port forward (socks and proxy poll): exit 0
+  60.5 100 | >> iptables -t nat -D PREROUTING -j sshuttle-12300
+  60.6 100 | >> iptables -t nat -F sshuttle-12300
+  60.6 100 | >> iptables -t nat -X sshuttle-12300
+  60.6 TEL | [100] sshuttle: exit -15
+  60.7 TEL | (Cleanup) Kill BG process [96] SSH port forward (exposed ports)
+  60.7 TEL | [96] SSH port forward (exposed ports): exit 0
+  60.7 TEL | (Cleanup) Kill BG process [93] kubectl port-forward
+  60.7 TEL | [93] kubectl port-forward: exit -15
+  60.7 TEL | (Cleanup) Kill BG process [92] kubectl logs
+  60.7 TEL | [92] kubectl logs: exit -15
+  60.7 TEL | Background process (kubectl logs) exited with return code -15. Command was:
+  60.7 TEL |   kubectl --context minikube --namespace default logs -f web-ff87a247b2a74cd0b0ab51c35863018e-57b5989bfd-nxsg2 --container web --tail=10
+  60.7 TEL | 
+  60.7 TEL | Recent output was:
+  60.7 TEL |   2019-07-24T02:58:11+0000 [-] (UDP Port 28729 Closed)
+  60.7 TEL |   2019-07-24T02:58:11+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880f400>
+  60.7 TEL |   2019-07-24T02:58:18+0000 [stdout#info] A query: b'ssl.gstatic.com'
+  60.7 TEL |   2019-07-24T02:58:18+0000 [DNSDatagramProtocol (UDP)] DNSDatagramProtocol starting on 39675
+  60.7 TEL |   2019-07-24T02:58:18+0000 [DNSDatagramProtocol (UDP)] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880f4e0>
+  60.7 TEL |   2019-07-24T02:58:18+0000 [stdout#info] AAAA query, sending back A instead: b'ssl.gstatic.com'
+  60.7 TEL |   2019-07-24T02:58:18+0000 [stdout#info] A query: b'ssl.gstatic.com'
+  60.7 TEL |   2019-07-24T02:58:18+0000 [stdout#info] A query: b'ssl.gstatic.com'
+  60.7 TEL |   2019-07-24T02:58:18+0000 [-] (UDP Port 39675 Closed)
+  60.7 TEL |   2019-07-24T02:58:18+0000 [-] Stopping protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f4cb880f4e0>
+  60.7 TEL | (Cleanup) Re-scale original deployment
+  60.7 TEL | [114] Running: kubectl --context minikube --namespace default scale deployment web --replicas=1
+  60.8 114 | deployment.extensions/web scaled
+  60.8 TEL | [114] ran in 0.11 secs.
+  60.8 TEL | (Cleanup) Delete new deployment
+  60.8 >>> | Swapping Deployment web back to its original state
+  60.8 TEL | [115] Running: kubectl --context minikube --namespace default delete deployment web-ff87a247b2a74cd0b0ab51c35863018e
+  60.9 115 | deployment.extensions "web-ff87a247b2a74cd0b0ab51c35863018e" deleted
+  60.9 TEL | [115] ran in 0.11 secs.
+  60.9 TEL | (Cleanup) Kill sudo privileges holder
+  60.9 TEL | (Cleanup) Stop time tracking
+  60.9 TEL | END SPAN main.py:40(main)   60.9s
+  60.9 TEL | (Cleanup) Remove temporary directory
+  60.9 TEL | (Cleanup) Save caches
+  61.9 TEL | (sudo privileges holder thread exiting)

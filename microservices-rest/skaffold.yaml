@@ -1,0 +1,16 @@
+apiVersion: skaffold/v1beta13
+kind: Config
+build:
+  artifacts:
+  - image: docker.io/ellenkorbes/links
+    context: links
+  - image: docker.io/ellenkorbes/router
+    context: router
+  - image: docker.io/ellenkorbes/web
+    context: web
+deploy:
+  kubectl:
+    manifests:
+    - links/manifest.yml
+    - router/manifest.yml
+    - web/manifest.yml

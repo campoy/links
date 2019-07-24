@@ -1,0 +1,7 @@
+{
+    "contentHash": "e4f399d08a",
+    "files": [
+        "/home/circleci/project/garden-service/static/kubernetes/system/kubernetes-dashboard/.garden-version",
+        "/home/circleci/project/garden-service/static/kubernetes/system/kubernetes-dashboard/garden.yml"
+    ]
+}

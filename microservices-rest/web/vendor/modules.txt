@@ -1,0 +1,27 @@
+# github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9
+github.com/AndreasBriese/bbloom
+# github.com/campoy/links v0.0.0-20190723220915-fcda311bdce1
+github.com/campoy/links/microservices-rest/repository
+github.com/campoy/links/microservices-rest/repository/client
+# github.com/dgraph-io/badger v1.6.0
+github.com/dgraph-io/badger
+github.com/dgraph-io/badger/options
+github.com/dgraph-io/badger/pb
+github.com/dgraph-io/badger/skl
+github.com/dgraph-io/badger/table
+github.com/dgraph-io/badger/y
+# github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2
+github.com/dgryski/go-farm
+# github.com/dustin/go-humanize v1.0.0
+github.com/dustin/go-humanize
+# github.com/golang/protobuf v1.3.2
+github.com/golang/protobuf/proto
+# github.com/kelseyhightower/envconfig v1.4.0
+github.com/kelseyhightower/envconfig
+# github.com/pkg/errors v0.8.1
+github.com/pkg/errors
+# golang.org/x/net v0.0.0-20190628185345-da137c7871d7
+golang.org/x/net/trace
+golang.org/x/net/internal/timeseries
+# golang.org/x/sys v0.0.0-20190712062909-fae7ac547cb7
+golang.org/x/sys/unix
