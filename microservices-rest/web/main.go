@@ -28,7 +28,7 @@ func main() {
 
 	s := server{links: client.New(config.Repository),
 		router: config.Router,
-	}
+	} 
 
 	http.HandleFunc("/", s.handleNew)
 	log.Fatal(http.ListenAndServe(config.Address, nil))

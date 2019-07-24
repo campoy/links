@@ -32,13 +32,13 @@ func main() {
 	links = db
 
 	mux := mux.NewRouter()
-	// mux.HandleFunc("/link/", newLink).Methods("POST")
-	// mux.HandleFunc("/link/{id}", getLink).Methods("GET")
-	// mux.HandleFunc("/link/{id}", countVisit).Methods("POST")
-	mux.HandleFunc("/db/test/", test)
-	mux.HandleFunc("/db/link/", newLink).Methods("POST")
-	mux.HandleFunc("/db/link/{id}", getLink).Methods("GET")
-	mux.HandleFunc("/db/link/{id}", countVisit).Methods("POST")
+	mux.HandleFunc("/link/", newLink).Methods("POST")
+	mux.HandleFunc("/link/{id}", getLink).Methods("GET")
+	mux.HandleFunc("/link/{id}", countVisit).Methods("POST")
+	// mux.HandleFunc("/db/test/", test)
+	// mux.HandleFunc("/db/link/", newLink).Methods("POST")
+	// mux.HandleFunc("/db/link/{id}", getLink).Methods("GET")
+	// mux.HandleFunc("/db/link/{id}", countVisit).Methods("POST")
 	log.Fatal(http.ListenAndServe(config.Address, mux))
 }
 

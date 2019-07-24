@@ -19,16 +19,23 @@ func main() {
 		Repository string `default:"http://localhost:8080"`
 	}
 	if err := envconfig.Process("ROUTER", &config); err != nil {
-		log.Fatal(err)
+		log.Fatal(err) 
 	}
 
+	fmt.Println(config.Repository)
 	links = client.New(config.Repository)
 
-	// http.HandleFunc("/l/", handleVisit)
-	// http.HandleFunc("/s/", handleStats)
-	http.HandleFunc("/router/l/", handleVisit)
-	http.HandleFunc("/router/s/", handleStats)
+	http.HandleFunc("/l/", handleVisit)
+	http.HandleFunc("/s/", handleStats)
+	// http.HandleFunc("/router/test/", test)
+	// http.HandleFunc("/router/l/", handleVisit)
+	// http.HandleFunc("/router/s/", handleStats)
 	log.Fatal(http.ListenAndServe(config.Address, nil))
+}
+
+func test(w http.ResponseWriter, r *http.Request) {
+	message := []byte(fmt.Sprint("This is test."))
+	w.Write(message)
 }
 
 func handleVisit(w http.ResponseWriter, r *http.Request) {
