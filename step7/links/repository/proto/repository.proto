@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+
+message NewRequest {
+    string url = 1;
+}
+
+message IDRequest {
+    string id = 1;
+}
+
+message Link {
+    string id = 1;
+    string url = 2;
+    int64 count = 3;
+}
+
+message Nothing {}
+
+service Repository {
+    rpc New(NewRequest) returns (Link) {
+        /*
+        TODO: add options to make this into a REST endpoint with gRPC gateway
+        info: https://github.com/grpc-ecosystem/grpc-gateway
+        */
+    };
+    rpc Get(IDRequest) returns (Link) {};
+    rpc CountVisit(IDRequest) returns (Nothing) {};
+}

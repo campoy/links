@@ -1,0 +1,113 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: repository
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: repository
+  template:
+    metadata:
+      labels:
+        app: repository
+    spec:
+      containers:
+      - name: repository
+        image: docker.io/campoy/repository:grpc
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: docker.io/campoy/web:grpc
+        imagePullPolicy: Always
+        env:
+        - name: WEB_REPOSITORY
+          value: http://repository:8080
+        - name: WEB_ROUTER
+          value: http://router:8085
+        ports:
+        - containerPort: 8090
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: router
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: router
+  template:
+    metadata:
+      labels:
+        app: router
+    spec:
+      containers:
+      - name: router
+        image: docker.io/campoy/router:grpc
+        imagePullPolicy: Always
+        env:
+        - name: ROUTER_REPOSITORY
+          value: repository
+        ports:
+        - containerPort: 8085
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: repository
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: repository
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+spec:
+  type: NodePort
+  ports:
+  - port: 8090
+    targetPort: 8090
+    protocol: TCP
+    name: http
+  selector:
+    app: web
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: router
+spec:
+  type: NodePort
+  ports:
+  - port: 8085
+    targetPort: 8085
+    protocol: TCP
+    name: http
+  selector:
+    app: router

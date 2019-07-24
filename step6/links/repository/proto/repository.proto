@@ -1,0 +1,16 @@
+/* TODO(you): make fetch happen */
+
+/*
+Messages:
+
+- NewRequest
+- IDRequest
+- Link
+- Nothing
+
+Services:
+- Repository
+  - New
+  - Get
+  - CountVisit
+*/

@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	pb "github.com/campoy/links/microservices-grpc/repository/proto"
+	pb "github.com/campoy/links/repository/proto"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"github.com/kelseyhightower/envconfig"
 	"google.golang.org/grpc"
