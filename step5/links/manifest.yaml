@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: repository
-        image: docker.io/campoy/repository:rest
+        image: docker.io/campoy/repository-rest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: docker.io/campoy/web:rest
+        image: docker.io/campoy/web-rest
         imagePullPolicy: Always
         env:
         - name: WEB_REPOSITORY
@@ -62,7 +62,7 @@ spec:
     spec:
       containers:
       - name: router
-        image: docker.io/campoy/router:rest
+        image: docker.io/campoy/router-rest
         imagePullPolicy: Always
         env:
         - name: ROUTER_REPOSITORY
