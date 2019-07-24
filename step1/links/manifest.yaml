@@ -1,0 +1,36 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: links
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: links
+  template:
+    metadata:
+      labels:
+        app: links
+    spec:
+      containers:
+      - name: links
+        image: docker.io/campoy/links:step1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: links
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30000
+    protocol: TCP
+    name: http
+  selector:
+    app: links
